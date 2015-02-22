@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="author" content="Gema S. Careaga" />
+		<meta name="keywords" content="moodle, tfm, miw" />	
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<title>Gema S. Careaga</title>
+	</head>
+	<body>
+		<header><h1>TFM de Gema S.Careaga</h1><p>Actualizado 17/02/2015</p></header>
+		<div id="left">
+		<section>
+			<header><h2>Preparación</h2></header>
+			<article>
+				<header><h3>Instalación Apache, PHP y MySQL, y finalmente Moodle</h3></header>
+				<ul>
+					<li>Apache: Hecho</li>
+					<li>PHP 5.4: Hecho</li>
+					<li>MySQL: Hecho</li>
+					<li><a href="/moodle">Moodle 2.8.1</a>: Hecho. Warning php_setting</li>
+					
+				</ul>
+			</article>
+			<article>
+				<header><h3>D3.js</h3></header>
+			<p>Para probar la biblioteca se realizó un pequeño <a href="pruebas/test.html">ejemplo</a> con un fichero <a href="pruebas/treeData.json">JSON</a> de muestra.</p>
+			</article>
+		</section>
+		<section>
+			<header><h2>Estudio de Alternativas</h2><header>
+			<article>
+				<header><h3>Moodle 2.8.1</h3></header>
+				<ul>				
+					<li>Localizacion diagrama:<strong>Bloque</strong> / Plugin</li>
+					<li>Recogida de datos: MoodleWS /<strong> Acceder a BD y crear JSON (<a href="https://docs.moodle.org/dev/Data_manipulation_API">info1</a> , <a href="https://docs.moodle.org/dev/Database_schema_introduction">info2</a>)</strong> </li>
+					<li> Themes: Modificar existente / Crear propio </li>
+				</ul>
+			</article>
+		</section>
+		<section>
+			<header><h2>Ficheros</h2></header>
+			<article>
+				<header><h3>Propiedades</h3></header>
+				<ul>
+				<li><a href="/ficheros/thresholds.ini">.ini</a></li>
+				<li><a href="/ficheros/rules.xml">Reglas</a></li>
+				</ul>
+			</article>
+		</section>
+		<section>
+			<header><h2>Pruebas</h2></header>
+			<article>
+				<header><h3>Diagrama</h3></header>
+				<ul>
+					<li><a href="pruebas/testTFM.html">Ejemplo</a> con el <a href="pruebas/treeDataTFM.json">JSON proporcionado</a>, con estilo segun las características del nodo.</li>
+					<li><a href="pruebas/testTFMCollapsible.html">Ejemplo Collapsible</a></li>
+					<li><a href="http://156.35.95.149/pruebas/testTFMPopup.html">Ejemplo con Pop-Up con CSS y Javascript</a></li>
+					<li><a href="http://156.35.95.149/pruebas/testTFMLinks.html">Ejemplo ¿FINAL? (enlaces coloreados)</a></li>
+				</ul>
+			</article>
+		</section>
+		</div>
+		<div id="right">
+		<section>
+			<header><h2>TO DO</h2></header>
+			<ul>
+				<li>Diagrama en Moodle: Mejorar visualizacion en bloque ---- Responsive Design en el diagrama (tamaño global, de nodos, links y texto)</li>
+				<li>Crear bloque con contenido de la bd, de la <a href="https://docs.moodle.org/dev/images_dev/e/e0/Gradebook_erd.png">tabla grades</a> -> Importar datos (está vacío)</li>
+				<li>Añadir el estilo del diagrama al Theme de Moodle -> Dudas sobre como lo estoy haciendo</li>
+				<li id="future">Obtener de la BD datos del estudiante</li>
+				<li>Crear JSON dinámicamente</li>
+				<li id="future">Vision resumen en un circulo por sectores</li>
+			</ul>
+		</section>
+<br>
+		<section>
+			<header><h2>DONE</h2></header>
+			<ul>
+				<li>Diagrama en pop-up: 
+					<ul>
+						<li>Con componente modal de bootstrap >>> Añadidos nuevos themes para que funcionase correctamente (buscar más temas) >>>> Añadido bootstrap mediante CDN</li>
+					</ul>
+				</li>
+				<li>Elementos de estilo para el diagrama:
+					<ul>
+						<li>Links activos en azul, inactivos en gris</li>
+						<li> Nodos finales en verde,naranja y rojo (claro y oscuro),activos en azul e inactivos en gris</li>
+					</ul>
+				</li>
+				<li>Bloque de prueba con query a la DB de usuarios y cursos</li>
+				<li>Carga en memoria de ficheros .ini y .xml</li>
+			</ul>
+		</section>
+		</div>
+			</body>
+</html>
