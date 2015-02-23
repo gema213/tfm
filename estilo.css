@@ -1,0 +1,6 @@
+#left{position:absolute;/*top:30px;*/left:30px;width:700px;text-align:justify;}
+#right{position:absolute;/*top:30px;*/left:760px;margin-right:10px;color:white;background:black;}
+#right h2{text-align:center;}
+#right a:visited{color:white;}
+a:visited{color:black;}
+#future{color:#444;}
