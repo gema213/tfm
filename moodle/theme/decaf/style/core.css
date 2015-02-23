@@ -1,0 +1,350 @@
+/* W3C CSS Validated - 20 January 2012
+-------------------------------------*/
+html, html body {background-color:[[setting:backgroundcolor]];}
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
+.wrapper {margin: 0 25px;}
+h1,h2,h3,h4,h5,h6,p{text-shadow:0 1px 0 #FFF;}
+body input{font-family:Arial,Helvetica,sans-serif;}
+select,input,button,textarea{font-size:0.9em;}
+a:link,a:visited {color: #C22323;}
+a:hover,a:active {color: #251c17;}
+a img {border: none;}
+a:active {outline: none;}
+.singleselect option {text-align:left;}
+.span12 {padding:0 20px;}
+
+/* Fancy double borders
+------------------------- */
+.decaf-border, .course-content ul li.section.main {border:0px solid #cbcbcb;position:relative;}
+.decaf-border:before, .course-content ul li.section.main:before {position:absolute;display:block;content:"";border:0 solid #FFF;}
+.decaf-border-right, .decaf-border-right:before {border-right-width:1px;}
+.decaf-border-left, .decaf-border-left:before {border-left-width:1px;}
+.decaf-border-top, .decaf-border-top:before {border-top-width:1px;}
+.decaf-border-bottom, .decaf-border-bottom:before,
+.course-content ul li.section.main, .course-content ul li.section.main:before {border-bottom-width:1px;}
+.decaf-border-right:before {right:-2px;height:100%;}
+.decaf-border-left:before {left:-2px;height:100%;}
+.decaf-border-top:before {top:-2px;left:0;width:100%;}
+.decaf-border-bottom:before, .course-content ul li.section.main:before {bottom:-2px;left:0;width:100%;}
+
+/* Fixed header
+------------------------- */
+.navbar-fixed-top{margin-top:25px;} /* Offset for Awesomebar */
+.navbar-fixed-top .navbar-inner{background:none #CCC;filter:none;} /* Bootstrapbase uses filter for gradient BG in IE8 */
+.navbar-fixed-top .breadcrumb-nav .brand,
+.navbar-fixed-top .breadcrumb > li{text-shadow:none;}
+.navbar-fixed-top .breadcrumb .divider,
+.navbar-fixed-top .breadcrumb span{color:#777;}
+.navbar .brand{padding-right:0;}
+/* Page
+------------------------- */
+#page{padding:0;top:25px;}
+#page-header{padding:0 20px;margin-top:-4px;}
+#page-content{padding-top:15px;}
+#region-main.pull-right {padding:0 20px;}
+.used-region-side-post #region-main.pull-right {padding-right:0;}
+.used-region-side-pre #region-main.pull-right {padding-left:0;}
+
+/* Page header
+------------------------- */
+#page-header-wrapper{margin:0 0 0 50px;}
+#page-header{float:none;background:#E1E1E1;margin-right:0;position:relative;min-height:100px;}
+#page-header .sitelogo {float:left;margin:0.75em 0;}
+#page-header .headermain{color:#000;font-size:2.5em;font-weight:700;letter-spacing:-1px;text-decoration:none;text-transform:none;text-shadow:1px 1px 0 #FFF;margin:0.9em 20px 0.9em 0px;}
+#page-header .headermenu {width:235px;}
+#page-header .headermenu a:hover{color:#C30;}
+#page-header .breadcrumb-button{margin-top:14px;}
+#page-site-index .headermain{font-size:2.5em;margin:0.85em 0;}
+
+/* Menu Navigation
+-------------------------- */
+#page-navigation{font-size:1.1em;background-image:url();height:36px;margin:0;padding:0 40px;}
+#page-navigation li{list-style:none;float:left;}
+#page-navigation a{display:block;padding:5px 10px;}
+.navbutton { height:18px; margin-top:4px;}
+/* Dock
+---------------------------*/
+#dock{background-color:#f7f5f1;border-right-color:#433b30;}
+#dock .dockeditem_container{margin-top:10px;}
+#dock .dockeditem{background-color:#fff;}
+#dock .firstdockitem{margin-top:1em;}
+#dock .dockeditem .dockedtitle{border-color:#fff #ddd #ddd;}
+#dock .dockeditem .dockedtitle.activeitem{background:#f7f5f1;border-top-color:#f7f5f1;}
+#dock .firstdockitem .dockedtitle{border-top-color:#ddd;}
+#dock .dockeditem .dockedtitle h2{margin:12px 0 12px 7px;}
+#dockeditempanel .dockeditempanel_content{border-color:#433b30;}
+#dockeditempanel .dockeditempanel_hd{border-bottom:none;background:#eee;text-align:left;padding:3px 5px;}
+#dockeditempanel .dockeditempanel_hd h2{color:#333;text-align:left;font-weight:400;font-size:1.25em;padding:0 2px;}
+#dockeditempanel .dockeditempanel_hd .commands{float:right;}
+/* block expansion code */
+.block_js_expansion .block_tree{overflow-x:scroll;}
+.block_js_expansion.mouseover .content{width:200%;z-index:1000;position:relative;}
+.block_js_expansion.mouseover .content .block_tree{width:100%;background-color:#FAFAFA;padding-bottom:0;}
+
+/* Breadcrumb / Navbar
+--------------------------- */
+.navbar .breadcrumb-nav{margin-bottom:0;}
+.navbar .breadcrumb{font-size:1em;padding-top:0.8em;white-space:nowrap;vertical-align:baseline;background-color:transparent;float:left;}
+.navbar .breadcrumb > li > .divider{padding-right:0;}
+.breadcrumb a,a:link,a:active{color:#1D8AC3;}
+.navbar .nav-collapse .nav{margin-left:20px;}
+.navbar .nav > li > a{text-shadow:none;color:#1D8AC3;padding-top:11px;}
+
+/* Tabs
+--------------------------- */
+.tabtree .tabrow0 li.here a{background:#fff;}
+.tabtree .tabrow0 .tabrow1 li a{background:none !important;}
+
+/* Content
+--------------------------- */
+.headingblock, h2.headingblock { border-width:1px;margin:0;padding:5px;font-family:"Trebuchet MS", arial, helvetica, sans-serif;}
+/* YUI messes with IE unless we go overboard here */
+img.iconsmall, .commands a img {height:15px; margin:2px; width:15px; padding:1px;}
+img.iconlarge {width:16px;height:16px;margin:6px 4px 2px 4px;} /* Our icons are only 16x16, so we don't want to stretch them */
+.block .content .commands {position:relative;}
+ul.section li {clear:right;}
+ul.section li div {min-height:23px;}
+ul.section li.label div {height: auto;}
+ul.section li.label .commands {margin-bottom:2px;}
+ul.section li.label {padding-bottom:5px !important;}
+.sitetopic .section .activity .availabilityinfo,
+.sitetopic .section .activity .contentafterlink,
+.course-content .section .activity .availabilityinfo,
+.course-content .section .activity .contentafterlink {margin-left:26px;margin-top:0;}
+.coursebox {border:1px solid #cdcdcd;}
+ul.section .activity .contentafterlink p {margin:0 0 1em;}
+body.editing ul.section>li {border-bottom: 1px dashed #808080; position:relative;}
+
+/* Blocks
+--------------------------- */
+#block-region-side-pre, #block-region-side-post {padding:0 20px;}
+.block {border-style:none;background-color:transparent;box-shadow:none;padding-top:0;}
+/*.block .calendar-controls .current {width: 74%;}*/
+.block .calendar-controls .previous {background:transparent url([[pix:theme|previous]]) no-repeat left top; height:19px;}
+.block .calendar-controls .next {background:transparent url([[pix:theme|next]]) no-repeat right top;}
+.block .calendar-controls .previous:hover,.block .calendar-controls .next:hover {text-decoration:none;}
+.block .header{border-color:#EEE;border-width:0 1px;}
+.block .header .title h2{color:#555;font-family:"Droid Sans",Helvetica,Arial,sans-serif;font-size:16px;letter-spacing:-0.5px;line-height:30px;text-shadow:0 1px 0 #DDD;text-transform:uppercase;padding:0;margin:0 4px;}
+.block_with_controls .header .title {position:relative;padding-bottom:20px;}
+.block_with_controls .commands {position:absolute; top:0px; right:0px;}
+.block .commands{clear:both;padding:4px;top:auto;bottom:0px;}
+.block .content{padding:5px 10px;}
+.block .content .buttons{margin-top:2px;}
+.block_login label{font-size:0.85em;display:block;}
+.block_login .fld input{width:95%;margin:1px 0 5px;padding:2px;}
+.block_login .btn{padding:4px 0;}
+.block_login .footer{font-size:0.9em;padding:5px 0 3px;}
+.block_calendar_month .content{padding:5px;}
+.minicalendar h2.eventtitle, .minicalendarblock h2.eventtitle {font-size:1.3em;}
+.minicalendar .calendar-event-panel .eventcontent, .minicalendarblock .calendar-event-panel .eventcontent {text-align:left;}
+.block_course_summary .content{padding:10px;}
+.block_settings li > hr {border-top-color:#cdcdcd;}
+
+/* Question bank faux-block
+--------------------------- */
+.decaf_with_edit_buttons.jsenabled .block.questionbankwindow {min-height:auto;}
+#page-mod-quiz-edit .block.questionbankwindow div.header {background-color:transparent;}
+#page-mod-quiz-edit .block.questionbankwindow div.header a {color:#1D8AC3;font-size:0.9em;}
+
+/* Hide button when Persistent Editing mode is on
+------------------------ */
+.decaf_persistent_edit.path-course .breadcrumb-button > .singlebutton {display:none;}
+
+/* "Action menu" - replaces Decaf's previous "edit buttons" setting
+------------------------ */
+.decaf_with_actionmenus.jsenabled.editing ul.section>li {border-bottom:none;}
+.decaf_with_actionmenus.jsenabled .section .activity .actions {right:auto;}
+.decaf_with_actionmenus.jsenabled .section .activity.modtype_label .actions {right:0;}
+.editing .section .activity .activityinstance {padding-right:5px;}
+.editing .section .activity .contentwithoutlink, .decaf_persistent_edit .section .activity .contentwithoutlink {padding-right:60px;}
+.decaf_with_actionmenus.jsenabled .section .activity.modtype_folder .contentwithoutlink {display:inline-block;}
+.decaf_with_actionmenus.jsenabled .section-cm-edit-actions {position:relative;}
+.section .editing_title .iconsmall {margin:0 0 2px 4px;}
+.jsenabled .moodle-actionmenu .menubar > li {line-height:14px;}
+.decaf_with_actionmenus.jsenabled .moodle-actionmenu .toggle-display {opacity:0.4;height:14px;font-size:10px;font-weight:bold;background-color:#C6FFB3;margin: 0;padding: 1px 4px 2px 4px;text-align: center;vertical-align: middle;white-space: nowrap;cursor: default;outline: none;font-family: arial,sans-serif;color: black;border: 1px solid #BBB;border-radius: 3px;border-top-color: #CCC;border-bottom-color: #A0A0A0;}
+.jsenabled .moodle-actionmenu[data-enhanced] .toggle-display:hover,
+.jsenabled .moodle-actionmenu[data-enhanced].show .toggle-display {opacity:1;}
+.decaf_with_actionmenus.jsenabled .moodle-actionmenu .toggle-display.textmenu .caret {margin-top:6px;}
+.moodle-actionmenu.show[data-enhanced] .menu {background-color:#E1E1E1;}
+.moodle-actionmenu.show[data-enhanced] .menu a {color:#1D8AC3;}
+.activity .editing_move img {margin-top:5px;}
+#course-category-listings .moodle-actionmenu li {line-height:14px;}
+#course-category-listings .moodle-actionmenu[data-enhance] .toggle-display.textmenu .caret {margin-top: 6px;}
+
+/*YUI Reset */
+.yui3-skin-sam #page .yui3-splitbuttonnav .yui3-menu-label .yui3-menu-toggle{background-position:3px center;}
+.yui3-skin-sam #page .yui3-splitbuttonnav .yui3-menu-label-menuvisible .yui3-menu-toggle{background-position:0 50%;}
+.yui3-skin-sam #page .yui3-menu-label,.yui3-skin-sam #page .yui3-menuitem-content{color:#35251B;font-weight:400;}
+.custom_menu_submenu .yui3-menu-label,.custom_menu_submenu .yui3-menuitem-content{color:#35251B !important;}
+.yui3-skin-sam #page .yui3-menu-label.yui3-menu-label-active,.yui3-skin-sam #page .yui3-menuitem-active .yui3-menuitem-content{color:#DA5013;}
+.yui3-skin-sam #page .yui3-menu-content,.yui3-skin-sam #page .yui3-menu-content,.yui3-skin-sam #page .yui3-menu .yui3-menu .yui3-menu-content,.yui3-skin-sam #page .yui3-menu-horizontal .yui3-menu-label,.yui3-skin-sam #page .yui3-menu-horizontal .yui3-menuitem-content{border:none;}
+.yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label,.yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content{border-color:gray;border-style:solid;border-width:0;}
+.yui3-skin-sam #page .yui3-menu-horizontal .yui3-menu-content,.yui3-skin-sam #page .yui3-menu-horizontal .yui3-menu-label,.yui3-skin-sam #page .yui3-menu-horizontal .yui3-menu-label-active,.yui3-skin-sam #page .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content,.yui3-skin-sam #page .yui3-menu-horizontal .yui3-menu-label-menuvisible{background-position:-10000px -10000px;}
+.yui3-skin-sam #page .yui3-menu-label,.yui3-skin-sam #page .yui3-menu .yui3-menu .yui3-menu-label,.yui3-skin-sam #page .yui3-menubuttonnav .yui3-menu-label em{background-position:right center;}
+
+/* Forms
+------------------------ */
+.mform fieldset{border-color:#ddd;}
+.mform legend{border:1px solid #ddd;padding:2px 7px;}
+.mform .fitem .felement { margin-left: 31%; margin-right: 0px; width: 68%;}
+.mform .fitem fieldset.felement{float:left;}
+.mform .fitem .fitemtitle{width:30%;}
+/* Footer
+-------------------------- */
+#page-footer{width:100%;margin:25px 0;}
+#page-footer .logininfo{margin:1em 0;}
+
+#back-to-top {position: fixed;bottom: 32px;right: 40px;text-align: center;cursor: pointer;opacity: .5;filter:alpha(opacity=50);display:none;}
+#back-to-top a.arrow {padding: 5px 10px;font-size: 36px;color: #333;background: #EEE;border: 1px solid #CCC;border-bottom: 1px solid #AAA;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+#back-to-top a.text {display: block;background: white;visibility: hidden;position: relative;top: 10px;}
+#back-to-top a {text-decoration: none;border: 0;outline: none;}
+/* PerformanceInfo
+-------------------------- */
+.decaf_perfdebug {padding-bottom:35px;}
+.decaf_pagedebug {padding-bottom:15px;}
+.decaf_perfdebug.decaf_pagedebug {padding-bottom:60px;}
+.decaf_perfdebug #page-footer .performanceinfo,
+.decaf_pagedebug #page-footer .performanceinfo {border-radius:15px 15px 0 0;bottom:0;left:-290px;position:fixed;background-color:#222;width:580px;border-width:12px 12px medium;margin:0 50%;z-index:400;}
+#page-footer .performanceinfo ul {text-align: center; margin: 0 auto;}
+#page-footer .performanceinfo li{display:block;list-style-type:none;float:left;padding:5px 0;width:25%;}
+#page-footer .performanceinfo li var{font-size:1.3em;font-weight:700;}
+#page-footer .performanceinfo .green{color:#588E13 !important;}
+#page-footer .performanceinfo .blue{color:#3769A0 !important;}
+#page-footer .performanceinfo .purple{color:#953FA1 !important;}
+#page-footer .performanceinfo .orange{color:#D28C00 !important;}
+#page-footer .performanceinfo .red{color:#B72F09 !important;}
+#page-footer .performanceinfo .white{color:#FFF !important;}
+.decaf_perfdebug #page-footer .performanceinfo span,
+.decaf_pagedebug #page-footer .performanceinfo span{color:#fff;}
+.decaf_pagedebug #page-footer .performanceinfo.pageinfo {color:#fff;z-index:399;font-size:75%;padding:5px 15px;width:550px;}
+.decaf_perfdebug #page-footer .performanceinfo.pageinfo {padding-bottom:50px;}
+
+/* Course list
+-------------------------- */
+.courses .coursebox.odd, .courses .coursebox.even:hover{background-color:#F6F6F6;}
+
+/* Course
+-------------------------- */
+.course-content ul.topics li.section .left{font-size:2em;}
+.course-content ul.topics li.section{margin:0 0 30px;padding:0 0 30px;}
+.course-content ul.weeks li.section{margin:0;padding:0 0 30px;}
+.section-navigation.headingblock span.mdl-left, .section-navigation.headingblock span.mdl-right {font-size:0.7em;margin-top:0.3em;}
+.dir-ltr .section-navigation span.mdl-left a:before {content:'◄ ';font-size:0.8em;}
+.dir-rtl .section-navigation span.mdl-left a:after {content:' ◄';font-size:0.8em;}
+.dir-ltr .section-navigation span.mdl-right a:after {content:'►';font-size:0.8em;}
+.dir-rtl .section-navigation span.mdl-right a:before {content:'► ';font-size:0.8em;}
+
+#intro, #pageintro { background:#f7f7f7; }
+
+/* Forum
+---------------------------*/
+.path-mod-forum .forumheaderlist .r1 td { background:#f5f5f5; }
+.forumpost .topic { background:#eee;border-color:#aaa;border-width:0 0 2px 0;padding-left:7px; }
+.forumpost .topic .subject { font-size:1.25em; }
+.forumpost .topic .author { font-style:italic;color:#444;font-size:0.95em; }
+.forumpost .content { border-bottom:5px solid #aaa;padding:5px 7px 10px 7px; }
+
+/* Assignments
+--------------------------*/
+.path-mod-assignment #dates table .c0 { background:#f5f5f5; }
+#page-mod-assignment-submissions #region-main .header .commands a img {height:11px; width:11px; border:0px none; padding:0;}
+
+/* Folder
+--------------------------*/
+#page-mod-folder-edit .foldertree { width: 95% }
+
+/* Event list
+--------------------------*/
+div.eventlist table.event div.commands {position:relative; float:right; top:auto; right:auto;}
+
+/* Glossaries
+--------------------------*/
+table.glossarypost {
+    border-bottom: 1px solid #DDD;
+}
+
+/* Reports
+--------------------------*/
+body.pagelayout-report #page-content {
+    overflow:hidden;
+}
+body.pagelayout-report #page-content #region-main .region-content {
+    overflow-x:auto;
+}
+
+/* Grader report
+--------------------------*/
+body.pagelayout-report.path-grade-report-grader #page-content {overflow:visible;}
+body.pagelayout-report.path-grade-report-grader #page-content #region-main .region-content {overflow-x:visible;}
+.gradeparent > .floater.heading {margin-top:26px;} /* Account for AwesomeBar. */
+#user-grades input[type="text"] {margin-bottom:0;padding:0;}
+.path-grade-report-grader .grade_icons {margin-bottom:0;}
+.path-grade-report-grader div.left_scroller th.header,
+.path-grade-report-grader div.right_scroller th,
+.path-grade-report-grader table#fixed_column tr.heading th {height: 2.5em;}
+.path-grade-report-grader div.right_scroller th.category {height: 4.5em;padding-top:7px;}
+.path-grade-report-grader div.right_scroller th.category.catlevel1 {padding-top:8px;}
+.path-grade-report-grader .filler,
+.path-grade-report-grader .fillerlast {border-top:0px none;}
+.path-grade-report-grader .fillerlast {border-right:1px solid #DDD;}
+
+/* Quiz ordering/paging tool
+--------------------------*/
+#page-mod-quiz-edit div.question div.content div.qorder {right:60px;}
+#page-mod-quiz-edit div.question div.content div.questioncontrols {width:65px;}
+#page-mod-quiz-edit .editq div.question div.content .randomquestioncategory {margin-right:12.5em;}
+#page-mod-quiz-edit .editq div.question div.content .randomquestioncategory > a {white-space:normal;max-width:100%;display:inline;float:none;}
+
+/* Question bank
+--------------------------*/
+table#categoryquestions .iconcol {width:21px;}
+body#page-question-category.decaf_with_edit_buttons.jsenabled div.box.questioncategories .commands > img.iconsmall {display:none;}
+
+/* Question bank faux-block
+--------------------------- */
+#page-mod-quiz-edit .block.questionbankwindow div.header {background-color:transparent;padding:0;}
+#page-mod-quiz-edit .block.questionbankwindow div.header div.title h2 {color:#555;text-align:left;}
+#page-mod-quiz-edit .questionbankwindow a#showbankcmd, #page-mod-quiz-edit .questionbankwindow a#hidebankcmd {color:#1D8AC3;font-size:0.8em;}
+
+
+/* Mod chooser tiles
+--------------------------*/
+.decaf_modchooser_tiles .choosercontainer #chooseform .moduletypetitle {width:100%;font-size:120%;font-weight:bold;clear:both;padding:0.5em 0 0.3em 0;text-align:center;}
+.decaf_modchooser_tiles .choosercontainer #chooseform .options .option {float:left;width:70px;margin:0 2px;padding:0 2px;text-align:center;}
+.decaf_modchooser_tiles .choosercontainer #chooseform .options .option label {height:55px;margin-bottom:0;padding:8px 2px 4px;}
+.decaf_modchooser_tiles .choosercontainer #chooseform .options .option input {position:absolute;left:-10000px;}
+.decaf_modchooser_tiles .choosercontainer #chooseform .options .option .modicon {display:block;width:24px;height:24px;margin: 0 auto;}
+.decaf_modchooser_tiles .choosercontainer #chooseform .options .option .modicon img.icon {padding:0;}
+.decaf_modchooser_tiles .choosercontainer #chooseform .options .option .typename {padding:0;font-size:90%;line-height:1;}
+.decaf_modchooser_tiles .moodle-dialogue-base .moodle-dialogue.chooserdialogue .moodle-dialogue-bd .option label {line-height:1;}
+
+
+/* Responsiveness
+--------------------------*/
+@media(max-width:979px){
+    .navbar-fixed-top{margin-bottom:0;}
+    #page-header > h1{margin-top:0;}
+    #topadminsearchquery{width:105px;}
+    #block-region-side-pre, #block-region-side-post {padding:0 4px;}
+    .block-region .block .content {padding:5px 0;}
+    #page-footer{margin-bottom:0;}
+    #page-footer .performanceinfo{position:relative;width:100%;margin:0 auto;left:0;}
+    #page-footer .performanceinfo li{margin-top:10px;}
+    #page-footer .performanceinfo span{color:#000;}
+    #page-footer .performanceinfo.pageinfo {color:#000;background-color:transparent;width:auto;padding:10px 0;}
+}
+@media(max-width:767px){
+    .navbar-fixed-top {margin:0;position:fixed;}
+    .navbar-fixed-top .breadcrumb a {padding-top:10px;padding-bottom:10px;}
+    .navbar-fixed-top .breadcrumb {margin-right:50px;}
+    .navbar-fixed-top .btn-navbar {position:absolute;top:5px;right:5px;}
+    #page-header {margin-top:50px;}
+    #page{margin:0 -20px;}
+    #page #region-main.pull-right{padding:0 20px;}
+    #block-region-side-pre, #block-region-side-post {padding:0 20px;}
+    #block-region-side-pre, #block-region-side-post, #block-region-side-pre:before, #block-region-side-post:before {border-width:0;}
+}
+@media (max-width: 480px) {
+	/* Tiny width - mod chooser tiles' help text gets mangled. Just hide it. Rotate to landscape if you really need the help. */
+	.decaf_modchooser_tiles .choosercontainer #chooseform .options .option.selected .typesummary {display:none;}
+}

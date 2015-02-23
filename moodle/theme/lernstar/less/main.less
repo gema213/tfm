@@ -1,0 +1,123 @@
+
+body {
+  padding: 10px 15px;
+}
+
+.asymetric-page {
+  .border-radius(@borderRadiusAsymLarge);
+}
+
+#page {
+  background-color: @grayLighter;
+  .asymetric-page;
+  border: 2px solid @grayLight;
+  padding: 5px;
+}
+
+.container-design {
+  padding: 5px;
+  background-color: @grayLighter;
+  .asymetric-page;
+  .box-shadow(0 0 10px 5px #333);
+}
+
+#page-content {
+  .border-radius(@borderRadiusLarge);
+  background-color: @white;
+  border: 1px solid @grayLight;
+  width: auto;
+  padding: 10px;
+}
+#page-footer {
+  text-align: left;
+  margin-top: 0;
+  padding-top: 5px;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  margin: 0;
+  padding: 4px 15px;
+}
+
+body#tinymce {
+  background-color: @white;
+}
+
+header {
+  min-height: 100px;
+}
+header h1 {
+  color: @flavour;
+  display: inline;
+  float: left;
+  font-size: 125%;
+  font-style: italic;
+  line-height: normal;
+  margin: -20px 0 0 88px;
+  padding: 0;
+  text-align: left;
+  text-indent: 0;
+}
+.www-lernstar-com header h1 {
+  margin: -20px 0 0 163px;
+}
+.no-header {
+  height: 40px;
+}
+
+.course-content ul.topics li.section .content, .course-content ul.weeks li.section .content {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+    color: rgb(85, 85, 85);
+    background-color: rgb(245, 245, 245);
+}
+
+.block.lernstar_textbox {
+	h1 {
+	   text-align: center;
+	}
+    padding: 15px;
+}
+
+blockquote {
+    border: none;
+}
+
+.breadcrumb-button {
+  max-height: 40px;
+  margin: 0;
+}
+.navbar-text {
+	line-height: 20px;
+	text-align: right;
+}
+.copyright {
+    float: right;
+    border: none;
+}
+footer div {
+  display: inline;
+  margin-right: 5px;
+  padding-right: 5px;
+  border-right: 2px solid @grayLight;
+  font-size: 10px;
+}
+footer div.footnote {
+  border: none;
+}
+.sicons {
+  float: right;
+}
+.singlebutton div {
+  margin: 0;
+}
+
+@media (max-width: @navbarCollapseWidth) {
+  .empty-region-side-post.used-region-side-pre #region-main.span8,.empty-region-side-post.used-region-side-pre #block-region-side-pre.span4 {
+    width: auto;
+  }
+}

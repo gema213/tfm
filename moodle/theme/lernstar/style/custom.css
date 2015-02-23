@@ -1,0 +1,34 @@
+/* Lernstar Custom CSS
+-------------------------*/
+
+div.logo {
+  background: url([[setting:logo]]) no-repeat 15px 0;
+  margin: 0 0 0 15px;
+  padding: 0;
+  width: 95%;
+  min-height: 90px;
+}
+
+a.logo {
+	display: block;
+	max-width: 394px;
+	height: 90px;
+}
+
+.dir-rtl a.logo {
+    background: url([[setting:logo]]) no-repeat 100% 0;
+    display: block;
+    float: right;
+}
+
+.nav.pull-right {
+	margin: 0 0 0 15px;
+	position: absolute;
+	top: 15px;
+	right: 25px;
+}
+
+
+/* Custom CSS Settings
+-------------------------*/
+[[setting:customcss]]
