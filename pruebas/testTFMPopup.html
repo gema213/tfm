@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Ejemplo Arbol TFM</title>
+
+		<script type="text/javascript">
+			
+			    function toggle_visibility(id) {
+			       var e = document.getElementById(id);
+			       if(e.style.display == 'block')
+			          e.style.display = 'none';
+			       else
+			          e.style.display = 'block';
+			    }
+			
+		</script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<style type="text/css">
+
+			#popupBoxOnePosition{
+				top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+				background-color: rgba(0,0,0,0.7); display: none;
+			}
+			
+			.popupBoxWrapper{
+				width: 900px;height:500px; margin: 50px auto; text-align: left;
+			}
+			.popupBoxContent{
+				background-color: #FFF; padding: 15px;
+			}
+
+			/**/
+			.node {
+  cursor: pointer;
+}
+
+.node circle { stroke-width: 3px;}
+
+			.node	.inactive{fill:#ddd;stroke:#ccc;}
+			.node	.active{fill:aqua;stroke:blue;}
+			.node .good{fill:#00FF00;stroke:#04B404;}/*green*/
+			.node .pass{fill:#FE9A2E;stroke:#FF4000;}/*orange*/
+			.node .fail{fill:#FF0000;stroke:#610B0B;}/*red*/
+			.node .unknown {fill:black;stroke:black;}
+			
+			.node text {color:green;  font: 12px sans-serif; }
+			.node .off {fill:gray;}
+			.node text.on{fill:black;}
+
+			.link { fill: none;	stroke: #ccc;stroke-width: 2px;}
+
+		</style>
+
+	</head>
+
+	<body>
+
+<header>
+<h1><a href="http://156.35.95.149">TFM de Gema S.Careaga</a></h1>
+</header>
+
+		<div id="popupBoxOnePosition">
+			<div class="popupBoxWrapper">
+				<div class="popupBoxContent">
+					<h3>Tree Analytics</h3>
+					<script src="http://156.35.95.149/pruebas/tree.js"></script>	
+				<p><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">CLOSE</a></p>
+				</div>
+			</div>
+		</div>
+			<div id="wrapper">
+
+			<p><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">OPEN Analytics Tree</a></p>
+			<p><a href="javascript:void(0)">OPEN Resume Circle</a></p>
+	</div><!-- wrapper end -->
+	</body>
+
+</html>
+

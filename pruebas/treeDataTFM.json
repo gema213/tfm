@@ -1,0 +1,147 @@
+[{"name": "User",
+					"parent": "null",
+					"value": 10,
+					"active": 1,
+					"rootNode": 1,
+					"children": [
+						{
+							"name": "TTR=HIGH",
+							"parent": "User",
+							"value": 10,
+							"active": 0,
+							"children": [
+								{
+									"name": "TTA=HIGH",
+									"parent": "TTR=HIGH",
+									"value": 10,
+									"active": 0,
+									"children": [
+										{
+											"name": "FAIL",
+											"parent": "TTA=HIGH",
+											"value": 10,
+											"active": 0
+										}
+									]
+								},
+								{
+									"name": "TTA=LOW",
+									"parent": "TTR=HIGH",
+									"value": 10,
+									"active": 0,
+									"children": [
+										{
+											"name": "R=LOW",
+											"parent": "TTA=LOW",
+											"value": 10,
+											"active": 0,
+											"children": [
+												{
+													"name": "PASS",
+													"parent": "R=LOW",
+													"value": 10,
+													"active": 0
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "TTR=MEDIUM",
+							"parent": "User",
+							"value": 10,
+							"active": 1,
+							"children": [
+								{
+									"name": "UNKNOWN",
+									"parent": "TTR=MEDIUM",
+									"value": 10,
+									"active": 1
+								}
+							]
+						},
+						{
+							"name": "TTR=LOW",
+							"parent": "User",
+							"value": 10,
+							"active": 1,
+							"children": [
+								{
+									"name": "Q=MEDIUM",
+									"parent": "TTR=LOW",
+									"value": 10,
+									"active": 1,
+									"children": [
+										{
+											"name": "TTQ=LOW",
+											"parent": "Q=MEDIUM",
+											"value": 10,
+											"active": 0,
+											"children": [
+												{
+													"name": "GOOD",
+													"parent": "TTQ=LOW",
+													"value": 10,
+													"active": 0
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "TTA=LOW",
+									"parent": "TTR=LOW",
+									"value": 10,
+									"active": 1,
+									"children": [
+										{
+											"name": "Q=MEDIUM",
+											"parent": "TTA=LOW",
+											"value": 10,
+											"active": 1,
+											"children": [
+												{
+													"name": "GOOD",
+													"parent": "Q=MEDIUM",
+													"value": 10,
+													"active": 1
+												}
+											]
+										},
+										{
+											"name": "Q=HIGH",
+											"parent": "TTA=LOW",
+											"value": 10,
+											"active": 0,
+											"children": [
+												{
+													"name": "GOOD",
+													"parent": "Q=HIGH",
+													"value": 10,
+													"active": 0
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "R=HIGH",
+									"parent": "TTR=LOW",
+									"value": 10,
+									"active": 1,
+									"children": [
+										{
+											"name": "GOOD",
+											"parent": "R=HIGH",
+											"value": 10,
+											"active": 1
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
