@@ -1,6 +1,5 @@
 <?php
 require('jsCreation.php');
-//require('filesConnection.php');
 class block_treeanalytics extends block_base {
 	public function init() {
         	$this->title = get_string('treeanalytics', 'block_treeanalytics');
