@@ -43,6 +43,8 @@ function assignValue($original, $lowLimit,$highLimit){
 	}
 }
 
+
+
 function createJSON(){
 
 	$valorQuizzes= rand(0,100)/100;
@@ -67,11 +69,7 @@ $values.=$valorQuizzes.' '.$valorResources.' '.$valorRecommendedResources.' '.$v
 	$iniFile=iniFile();
 
 //	$xmlFile=xmlFile();
-/*
-$values=count($iniFile).'elementos: ';
-foreach($iniFile as $actual){
-$values.=$actual.' ';
-}*/
+$values.='<br>****************';
 $xmlIterator=new SimpleXMLIterator('http://156.35.95.149/moodle/blocks/treeanalytics/rules.xml',0,TRUE);
 //$xmlIterator = new SimpleXMLIterator(file_get_contents('rules.xml'),0,false);
 for( $xmlIterator->rewind(); $xmlIterator->valid(); $xmlIterator->next() ) {
@@ -79,6 +77,7 @@ for( $xmlIterator->rewind(); $xmlIterator->valid(); $xmlIterator->next() ) {
 $values.='<br>'.$name.' '.$data;
 //    $values.='The $name is '.$data.' from the class ' . get_class($data);
     }
+$values.='<br>-------------';
 }
 
 return $values;
