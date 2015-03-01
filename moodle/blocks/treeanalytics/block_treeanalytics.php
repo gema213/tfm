@@ -14,7 +14,7 @@ class block_treeanalytics extends block_base {
 		$this->content         =  new stdClass;
 		$this->content->text   = '<script src="http://d3js.org/d3.v3.min.js"></script>';
 //		$this->content->text.=style();
-$this->content->text.=createJSON();
+		$this->content->text.=createJSON();
 		/**/		
 		$this->content->text.='<br>';	
 

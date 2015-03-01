@@ -6,7 +6,6 @@ function style() {
 			.node { cursor: pointer;}
 			
 			.node circle { stroke-width: 3px;}
-
 			.node	.inactive{fill:#ddd;stroke:#ccc;}
 			.node	.active{fill:aqua;stroke:blue;}
 			.node .good{fill:#00FF00;stroke:#04B404;}/*green*/
@@ -17,7 +16,6 @@ function style() {
 			.node text {color:green;  font: 12px sans-serif; }
 			.node .off {fill:gray;}
 			.node text.on{fill:black;}
-
 			.link { fill: none;	stroke: #ccc;stroke-width: 2px;}			
 			.link.active{
 				stroke:#333;
@@ -25,10 +23,8 @@ function style() {
 		</style>
 	';
 }
-
 function assignValue($original, $lowLimit,$highLimit){
 	$iniFile=iniFile();
-
 	$high='high';
 	$medium='medium';
 	$low='low';		
@@ -42,11 +38,54 @@ function assignValue($original, $lowLimit,$highLimit){
 		}
 	}
 }
+ function createNode($name,$parent,$active,$rootnode,$hasChildren){
+         $node=array();
+         $node['name']=$name;
+         $node['parent']=$parent;
+         $node['value']=10;
+         $node['active']=$active;
+         $node['rootnode']=$rootnode;
+         if($hasChildren){
+                 $node['children']=array();
+         }
+         return $node;
+ }
 
-
+function getData($iterator,$numConditions=0){
+	$contCondition=1;
+	foreach($iterator as $keyInitial => $valueInitial){
+		switch($keyInitial){
+		case 'rule':
+			$ret.='<br>####rule###';
+			$ret.=getData($valueInitial);
+		break;	
+		case 'name':
+			$ret.='<br>####name###';
+		break;
+		case 'conditions';
+			$ret.='<br>####conditions###';
+			$numConditions=iterator_count($valueInitial);
+			$ret.=getData($valueInitial,$numConditions);
+		break;
+		case 'condition':
+			$ret.='<br>####condition '.$contCondition.' of '.$numConditions.'###';
+			$ret.=getData($valueInitial);
+		break;
+		case 'performance':
+			$ret.='<br>###FINAL **** '.$valueInitial.'###<br>~~~~~~';
+		break;
+		default:
+			$ret.='<br>'.$keyInitial.': '.$valueInitial;
+			$ret.=getData($valueInitial);
+		break;	
+		}
+		$cont++;
+//$ret.='<br>'.$keyInitial.' -- '.$valueInitial;
+	}
+	return $ret;
+}
 
 function createJSON(){
-
 	$valorQuizzes= rand(0,100)/100;
 	$valorResources= rand(0,100)/100;
 	$valorRecommendedResources= rand(0,100)/100;
@@ -55,7 +94,6 @@ function createJSON(){
 	$valorTimeToAssignments= rand(0,100)/100;
 	$valorTimeToRecommended= rand(0,100)/100;
 	$valorTimeToFirstAction= rand(0,100)/100;
-
 	$valorQuizzes=assignValue($valorQuizzes,'threshold.quizzes.low','threshold.quizzes.high' );
 	$valorResources=assignValue($valorResources,'threshold.resources.low','threshold.resources.high' );
 	$valorRecommendedResources=assignValue($valorRecommendedResources,'threshold.recommendedresources.low','threshold.recommendedresources.high' );
@@ -64,24 +102,25 @@ function createJSON(){
 	$valorTimeToAssignments=assignValue($valorTimeToAssignments,'threshold.timetoassignments.low','threshold.timetoassignments.high' );
 	$valorTimeToRecommended=assignValue($valorTimeToRecommended,'threshold.timetorecommended.low','threshold.timetorecommended.high' );
 	$valorTimeToFirstAction=assignValue($valorTimeToFirstAction,'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
+	
+	$values.='Quizzes: '.$valorQuizzes.'<br>Resources: '.$valorResources.'<br>Recomm. Resources: '.$valorRecommendedResources.'<br>Time To Quizzes: '.$valorTimeToQuizzes.'<br>Time To Resources: '.$valorTimeToResources.'<br>TimeToAssign: '.$valorTimeToAssignments.'<br>Time To Recomm.: '.$valorTimeToRecommended.'<br>Time To 1stAction: '.$valorTimeToFirstAction;
 
-$values.=$valorQuizzes.' '.$valorResources.' '.$valorRecommendedResources.' '.$valorTimeToQuizzes.' '.$valorTimeToResources.' '.$valorTimeToAssignments.' '.$valorTimeToRecommended.' '.$valorTimeToFirstAction;
-	$iniFile=iniFile();
 
-//	$xmlFile=xmlFile();
-$values.='<br>****************';
-$xmlIterator=new SimpleXMLIterator('http://156.35.95.149/moodle/blocks/treeanalytics/rules.xml',0,TRUE);
-//$xmlIterator = new SimpleXMLIterator(file_get_contents('rules.xml'),0,false);
-for( $xmlIterator->rewind(); $xmlIterator->valid(); $xmlIterator->next() ) {
-    foreach($xmlIterator->getChildren() as $name => $data) {
-$values.='<br>'.$name.' '.$data;
-//    $values.='The $name is '.$data.' from the class ' . get_class($data);
-    }
-$values.='<br>-------------';
+	$values.='<br>****************';
+
+	$rulesURL='http://'.$_SERVER['SERVER_ADDR'].$_SERVER['REQUEST_URI'].'/blocks/treeanalytics/rules.xml';
+
+	$xmlIterator = new SimpleXMLIterator($rulesURL,0,TRUE);
+
+	$json=array();
+	array_push($json, createNode('User',null,1,1,$xmlIterator->hasChildren()));
+
+//$json= createNode('User',null,1,1,$xmlIterator->hasChildren());
+
+$values.=getData($xmlIterator);	
+
+$json=getData($xmlIterator);
+	return $values;
 }
 
-return $values;
-//	return current($iniFile);
-
-}
 
