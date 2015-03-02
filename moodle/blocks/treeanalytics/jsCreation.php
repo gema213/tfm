@@ -51,35 +51,49 @@ function assignValue($original, $lowLimit,$highLimit){
          return $node;
  }
 
-function getData($iterator,$numConditions=0){
+function getData($iterator,$isActive=0,$numConditions=0){
 	$contCondition=1;
 	foreach($iterator as $keyInitial => $valueInitial){
 		switch($keyInitial){
-		case 'rule':
-			$ret.='<br>####rule###';
-			$ret.=getData($valueInitial);
-		break;	
+//		case 'rule':
+//			$ret.='<br>####rule###';
+//			$ret.=getData($valueInitial);
+//		break;	
 		case 'name':
-			$ret.='<br>####name###';
+//			$ret.='<br>####name###';
 		break;
 		case 'conditions';
-			$ret.='<br>####conditions###';
+//			$ret.='<br>####conditions###';
 			$numConditions=iterator_count($valueInitial);
-			$ret.=getData($valueInitial,$numConditions);
+			$ret.=getData($valueInitial,1,$numConditions);
 		break;
 		case 'condition':
 			$ret.='<br>####condition '.$contCondition.' of '.$numConditions.'###';
-			$ret.=getData($valueInitial);
+			$actualVariable;
+			$actualValue;
+			foreach($valueInitial as $keyFinal => $valueFinal){
+
+				switch($keyFinal){
+					case 'variable':
+						$actualVariable=$valueFinal;
+					break;
+					case 'value':
+						$actualValue=$valueFinal;
+					break;
+				}
+			}
+			$ret.='<br>'.$actualVariable.': '.$actualValue;
+//			$ret.=getData($valueInitial);
 		break;
 		case 'performance':
 			$ret.='<br>###FINAL **** '.$valueInitial.'###<br>~~~~~~';
 		break;
 		default:
-			$ret.='<br>'.$keyInitial.': '.$valueInitial;
+//			$ret.='<br>'.$keyInitial.': '.$valueInitial;
 			$ret.=getData($valueInitial);
 		break;	
 		}
-		$cont++;
+		$contCondition++;
 //$ret.='<br>'.$keyInitial.' -- '.$valueInitial;
 	}
 	return $ret;
