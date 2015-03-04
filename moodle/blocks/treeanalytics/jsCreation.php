@@ -39,7 +39,7 @@ function assignValue($original, $lowLimit,$highLimit){
 	}
 }
  function createNode($name,$parent,$active,$rootnode,$hasChildren){
-         $node=array();
+         $node=array();//array que forma el nodo
          $node['name']=$name;
          $node['parent']=$parent;
          $node['value']=10;
@@ -51,7 +51,7 @@ function assignValue($original, $lowLimit,$highLimit){
          return $node;
  }
 
-function getData($iterator,$isActive=0,$numConditions=0){
+function getData($iterator,$actualNode,$isActive=0,$numConditions=0){
 	$contCondition=1;
 	foreach($iterator as $keyInitial => $valueInitial){
 		switch($keyInitial){
@@ -65,7 +65,7 @@ function getData($iterator,$isActive=0,$numConditions=0){
 		case 'conditions';
 //			$ret.='<br>####conditions###';
 			$numConditions=iterator_count($valueInitial);
-			$ret.=getData($valueInitial,1,$numConditions);
+			$ret.=getData($valueInitial,0,1,$numConditions);
 		break;
 		case 'condition':
 			$ret.='<br>####condition '.$contCondition.' of '.$numConditions.'###';
@@ -90,7 +90,7 @@ function getData($iterator,$isActive=0,$numConditions=0){
 		break;
 		default:
 //			$ret.='<br>'.$keyInitial.': '.$valueInitial;
-			$ret.=getData($valueInitial);
+			$ret.=getData($valueInitial,0);
 		break;	
 		}
 		$contCondition++;
