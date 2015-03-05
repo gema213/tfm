@@ -23,6 +23,16 @@ function style() {
 		</style>
 	';
 }
+$studentValues=array();
+$studentValues['QUIZZES']=0;
+$studentValues['RESOURCES']=0;
+$studentValues['RECOMMENDEDRESOURCES']=0;
+$studentValues['TIMETOQUIZZES']=0;
+$studentValues['TIMETORESOURCES']=0;
+$studentValues['TIMETOASSIGNMENTS']=0;
+$studentValues['TIMETORECOMMENDED']=0;
+$studentValues['TIMETOFIRSTACTION']=0;
+
 function assignValue($original, $lowLimit,$highLimit){
 	$iniFile=iniFile();
 	$high='high';
@@ -38,6 +48,7 @@ function assignValue($original, $lowLimit,$highLimit){
 		}
 	}
 }
+
  function createNode($name,$parent,$active,$rootnode,$hasChildren){
          $node=array();//array que forma el nodo
          $node['name']=$name;
@@ -49,75 +60,29 @@ function assignValue($original, $lowLimit,$highLimit){
                  $node['children']=array();
          }
          return $node;
- }
-
-function getData($iterator,$actualNode,$isActive=0,$numConditions=0){
-	$contCondition=1;
-	foreach($iterator as $keyInitial => $valueInitial){
-		switch($keyInitial){
-//		case 'rule':
-//			$ret.='<br>####rule###';
-//			$ret.=getData($valueInitial);
-//		break;	
-		case 'name':
-//			$ret.='<br>####name###';
-		break;
-		case 'conditions';
-//			$ret.='<br>####conditions###';
-			$numConditions=iterator_count($valueInitial);
-			$ret.=getData($valueInitial,0,1,$numConditions);
-		break;
-		case 'condition':
-			$ret.='<br>####condition '.$contCondition.' of '.$numConditions.'###';
-			$actualVariable;
-			$actualValue;
-			foreach($valueInitial as $keyFinal => $valueFinal){
-
-				switch($keyFinal){
-					case 'variable':
-						$actualVariable=$valueFinal;
-					break;
-					case 'value':
-						$actualValue=$valueFinal;
-					break;
-				}
-			}
-			$ret.='<br>'.$actualVariable.': '.$actualValue;
-//			$ret.=getData($valueInitial);
-		break;
-		case 'performance':
-			$ret.='<br>###FINAL **** '.$valueInitial.'###<br>~~~~~~';
-		break;
-		default:
-//			$ret.='<br>'.$keyInitial.': '.$valueInitial;
-			$ret.=getData($valueInitial,0);
-		break;	
-		}
-		$contCondition++;
-//$ret.='<br>'.$keyInitial.' -- '.$valueInitial;
-	}
-	return $ret;
 }
 
 function createJSON(){
-	$valorQuizzes= rand(0,100)/100;
-	$valorResources= rand(0,100)/100;
-	$valorRecommendedResources= rand(0,100)/100;
-	$valorTimeToQuizzes= rand(0,100)/100;
-	$valorTimeToResources= rand(0,100)/100;
-	$valorTimeToAssignments= rand(0,100)/100;
-	$valorTimeToRecommended= rand(0,100)/100;
-	$valorTimeToFirstAction= rand(0,100)/100;
-	$valorQuizzes=assignValue($valorQuizzes,'threshold.quizzes.low','threshold.quizzes.high' );
-	$valorResources=assignValue($valorResources,'threshold.resources.low','threshold.resources.high' );
-	$valorRecommendedResources=assignValue($valorRecommendedResources,'threshold.recommendedresources.low','threshold.recommendedresources.high' );
-	$valorTimeToQuizzes=assignValue($valorTimeToQuizzes,'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
-	$valorTimeToResources=assignValue($valorTimeToResources,'threshold.timetoresources.low','threshold.timetoresources.high' );
-	$valorTimeToAssignments=assignValue($valorTimeToAssignments,'threshold.timetoassignments.low','threshold.timetoassignments.high' );
-	$valorTimeToRecommended=assignValue($valorTimeToRecommended,'threshold.timetorecommended.low','threshold.timetorecommended.high' );
-	$valorTimeToFirstAction=assignValue($valorTimeToFirstAction,'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
+	$studentValues['QUIZZES']=rand(0,100)/100;
+	$studentValues['RESOURCES']=rand(0,100)/100;
+	$studentValues['RECOMMENDEDRESOURCES']=rand(0,100)/100;
+	$studentValues['TIMETOQUIZZES']=rand(0,100)/100;
+	$studentValues['TIMETORESOURCES']=rand(0,100)/100;
+	$studentValues['TIMETOASSIGNMENTS']=rand(0,100)/100;
+	$studentValues['TIMETORECOMMENDED']=rand(0,100)/100;
+	$studentValues['TIMETOFIRSTACTION']=rand(0,100)/100;
+
+
+	$studentValues['QUIZZES']=assignValue($studentValues['QUIZZES'],'threshold.quizzes.low','threshold.quizzes.high' );
+	$studentValues['RESOURCES']=assignValue($studentValues['RESOURCES'],'threshold.resources.low','threshold.resources.high' );
+	$studentValues['RECOMMENDEDRESOURCES']=assignValue($studentValues['RECOMMENDEDRESOURCES'],'threshold.recommendedresources.low','threshold.recommendedresources.high' );
+	$studentValues['TIMETOQUIZZES']=assignValue($studentValues['TIMETOQUIZZES'],'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
+	$studentValues['TIMETORESOURCES']=assignValue($studentValues['TIMETORESOURCES'],'threshold.timetoresources.low','threshold.timetoresources.high' );
+	$studentValues['TIMETOASSIGNMENTS']=assignValue($studentValues['TIMETOASSIGNMENTS'],'threshold.timetoassignments.low','threshold.timetoassignments.high' );
+	$studentValues['TIMETORECOMMENDED']=assignValue($studentValues['TIMETORECOMMENDED'],'threshold.timetorecommended.low','threshold.timetorecommended.high' );
+	$studentValues['TIMETOFIRSTACTION']=assignValue($studentValues['TIMETOFIRSTACTION'],'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
 	
-	$values.='Quizzes: '.$valorQuizzes.'<br>Resources: '.$valorResources.'<br>Recomm. Resources: '.$valorRecommendedResources.'<br>Time To Quizzes: '.$valorTimeToQuizzes.'<br>Time To Resources: '.$valorTimeToResources.'<br>TimeToAssign: '.$valorTimeToAssignments.'<br>Time To Recomm.: '.$valorTimeToRecommended.'<br>Time To 1stAction: '.$valorTimeToFirstAction;
+	$values.='Quizzes: '.$studentValues['QUIZZES'].'<br>Resources: '.$studentValues['RESOURCES'].'<br>Recomm. Resources: '.$studentValues['RECOMMENDEDRESOURCES'].'<br>Time To Quizzes: '.$studentValues['TIMETOQUIZZES'].'<br>Time To Resources: '.$studentValues['TIMETORESOURCES'].'<br>TimeToAssign: '.$studentValues['TIMETOASSIGNMENTS'].'<br>Time To Recomm.: '.$studentValues['TIMETORECOMMENDED'].'<br>Time To 1stAction: '.$studentValues['TIMETOFIRSTACTION'];
 
 
 	$values.='<br>****************';
@@ -131,10 +96,99 @@ function createJSON(){
 
 //$json= createNode('User',null,1,1,$xmlIterator->hasChildren());
 
-$values.=getData($xmlIterator);	
+$values.=getDataTexto($xmlIterator);	
 
-$json=getData($xmlIterator);
+//$json=getData($xmlIterator);
+$values.='<br><br>*************<br>'.getDataTexto($json).'<br>';
+
 	return $values;
 }
 
+function getDataTexto($iterator,$actualNode,$isActive=0,$numConditions=0){
+	$contCondition=1;
+	foreach($iterator as $keyInitial => $valueInitial){
+		switch($keyInitial){
+		case 'rule':
+			$ret.=getDataTexto($valueInitial);
+		break;	
+		case 'conditions';
+			$numConditions=iterator_count($valueInitial);
+			$ret.=getDataTexto($valueInitial,0,1,$numConditions);
+		break;
+		case 'condition':
+			$ret.='<br>####condition '.$contCondition.' of '.$numConditions.'###';
+			$actualVariable;
+			$actualValue;
+			foreach($valueInitial as $keyFinal => $valueFinal){
+				switch($keyFinal){
+					case 'variable':
+						$actualVariable=$valueFinal;
+					break;
+					case 'value':
+						$actualValue=$valueFinal;
+					break;
+				}
+			}
+			$ret.='<br>'.$actualVariable.': '.$actualValue;
+		break;
+		case 'performance':
+			$ret.='<br>###FINAL **** '.$valueInitial.'###<br>~~~~~~';
+		break;
+		default:
+			$ret.='<br>'.$keyInitial.' --- ';
+			if($valueInitial==null){
+				$ret.='null';
+			}else{
+				$ret.=$valueInitial;
+			}
+		break;
+		}
+		$contCondition++;
+	}
+	$ret.='<br>////';
+	return $ret;
+}
 
+function getData($iterator,$parentNode,$isActive=0,$numConditions=0){
+	$contCondition=1;
+	$actualNode;
+	foreach($iterator as $keyInitial => $valueInitial){
+		switch($keyInitial){
+			case 'rule':
+				getData($valueInitial,$parentNode,0,1);
+			break;
+			case 'conditions';
+				$numConditions=iterator_count($valueInitial);
+				getData($valueInitial,$parentNode,0,1,$numConditions);
+			break;
+			case 'condition':
+				$ret.='<br>####condition '.$contCondition.' of '.$numConditions.'###';
+				$actualVariable;
+				$actualValue;
+				foreach($valueInitial as $keyFinal => $valueFinal){
+					switch($keyFinal){
+						case 'variable':
+							$actualVariable=$valueFinal;
+						break;
+						case 'value':
+							$actualValue=$valueFinal;
+						break;
+					}
+				}
+				if($isActive==1 && $actualValue!=$studentValues[$actualVariable]){
+					$isActive=0;
+				}
+				$actualNode=createNode($variableInitial.'='.$studentValues[$actualVariable],$parentNode,$isActive,0,true);
+				$parentNode=$actualNode;
+			break;
+			case 'performance':
+				createNode($valueInitial,$parentNode,$isActive,0,false);
+			break;
+		}
+		$contCondition++;
+		if($actualNode!=null){
+			array_push($parentNode['children'],$actualNode);
+		}
+	}
+	return $actualNode;
+}
