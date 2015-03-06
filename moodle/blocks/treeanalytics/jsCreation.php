@@ -111,12 +111,14 @@ function getDataTexto($iterator,$actualNode,$isActive=0,$numConditions=0){
 		case 'rule':
 			$ret.=getDataTexto($valueInitial);
 		break;	
+		case 'name':
+		break;
 		case 'conditions';
 			$numConditions=iterator_count($valueInitial);
 			$ret.=getDataTexto($valueInitial,0,1,$numConditions);
 		break;
 		case 'condition':
-			$ret.='<br>####condition '.$contCondition.' of '.$numConditions.'###';
+			$ret.='<br>#condition '.$contCondition.' of '.$numConditions.'#';
 			$actualVariable;
 			$actualValue;
 			foreach($valueInitial as $keyFinal => $valueFinal){
@@ -132,7 +134,7 @@ function getDataTexto($iterator,$actualNode,$isActive=0,$numConditions=0){
 			$ret.='<br>'.$actualVariable.': '.$actualValue;
 		break;
 		case 'performance':
-			$ret.='<br>###FINAL **** '.$valueInitial.'###<br>~~~~~~';
+			$ret.='<br><br>### '.$valueInitial.' ###<br>~~~~~~';
 		break;
 		default:
 			$ret.='<br>'.$keyInitial.' --- ';
@@ -145,7 +147,7 @@ function getDataTexto($iterator,$actualNode,$isActive=0,$numConditions=0){
 		}
 		$contCondition++;
 	}
-	$ret.='<br>////';
+//	$ret.='<br>////';
 	return $ret;
 }
 
@@ -162,7 +164,7 @@ function getData($iterator,$parentNode,$isActive=0,$numConditions=0){
 				getData($valueInitial,$parentNode,0,1,$numConditions);
 			break;
 			case 'condition':
-				$ret.='<br>####condition '.$contCondition.' of '.$numConditions.'###';
+//				$ret.='<br>###condition '.$contCondition.' of '.$numConditions.'###';
 				$actualVariable;
 				$actualValue;
 				foreach($valueInitial as $keyFinal => $valueFinal){
