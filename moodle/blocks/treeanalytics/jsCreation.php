@@ -49,13 +49,12 @@ function assignValue($original, $lowLimit,$highLimit){
 	}
 }
 
- function createNode($name,$parent,$active,$rootnode,$hasChildren){
+ function createNode($name,$parent,$hasChildren){
          $node=array();//array que forma el nodo
          $node['name']=$name;
          $node['parent']=$parent;
          $node['value']=10;
-         $node['active']=$active;
-         $node['rootnode']=$rootnode;
+         $node['active']=0;
          if($hasChildren){
                  $node['children']=array();
          }
@@ -97,20 +96,17 @@ function createJSON(){
 	}
 
 	$json=array();
-	$userNode= createNode('User',null,1,1,$hasRules);
+	$userNode= createNode('User',null,$hasRules);
 	if($hasRules){
-//	$userNode['children'][]='Meh';
-//		array_push();
-//		$userNode['children'][]='Meeeh';
+$userNode['children']['testing']='Meh';
 //		array_push($userNode['children'],'Meeeh');
 	}
 array_push($json,$userNode);
 //$values.='Count:'.count($userNode['children']).$userNode['children'][0].'<br><br>';
 
 $values.=getDataTexto($xmlIterator);	
-$values.='rules<br>';
 //$json=getData($xmlIterator);
-$values.='<br><br>*************<br>'.getDataTexto($json).'<br>';
+$values.='<br><br>******TESTING*******<br>'.getDataTexto($json).'<br>';
 
 	return $values;
 }
@@ -121,17 +117,15 @@ function getDataTexto($iterator,$actualNode,$isActive=0,$numConditions=0){
 		switch($keyInitial){
 		case 'rule':
 			$ret.=getDataTexto($valueInitial);
-$ret.='rule<br>';
 		break;	
-		case 'name':
+/*		case 'name':
 		break;
-		case 'tree':
+*/		case 'tree':
 			$ret.='<<<'.$valueInitial.'>>>';
 		break;
 		case 'expression':
 			$numConditions=iterator_count($valueInitial);
 			$ret.=getDataTexto($valueInitial,0,1,$numConditions);
-$ret.='expression<br>';
 		break;
 		case 'condition':
 			$ret.='<br>#condition '.$contCondition.' of '.$numConditions.'#';
@@ -154,17 +148,18 @@ $ret.='expression<br>';
 		break;
 		default:
 			$ret.='<br>'.$keyInitial.' --- ';
-			if($valueInitial==null){
+			if($valueInitial===null){
 				$ret.='null';
 			}else{
 				$ret.=$valueInitial;
 			}
-			$ret.=getDataTexto($valueInitial);
+$ret.=getDataTexto($valueInitial);
+//			$ret.=getDataTexto($valueInitial).' >> '.iterator_count($valueInitial);
 		break;
 		}
 		$contCondition++;
 	}
-	$ret.='////';
+//	$ret.='//////<br>';
 	return $ret;
 }
 
