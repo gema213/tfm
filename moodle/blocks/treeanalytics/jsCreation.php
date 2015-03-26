@@ -84,34 +84,105 @@ function createJSON(){
 	$values.='Quizzes: '.$studentValues['QUIZZES'].'<br>Resources: '.$studentValues['RESOURCES'].'<br>Recomm. Resources: '.$studentValues['RECOMMENDEDRESOURCES'].'<br>Time To Quizzes: '.$studentValues['TIMETOQUIZZES'].'<br>Time To Resources: '.$studentValues['TIMETORESOURCES'].'<br>TimeToAssign: '.$studentValues['TIMETOASSIGNMENTS'].'<br>Time To Recomm.: '.$studentValues['TIMETORECOMMENDED'].'<br>Time To 1stAction: '.$studentValues['TIMETOFIRSTACTION'];
 
 
-	$values.='<br>****************<br><br>';
+	
 
 	$rulesURL='http://'.$_SERVER['SERVER_ADDR'].$_SERVER['REQUEST_URI'].'/blocks/treeanalytics/rules.xml';
 
 	$xmlIterator = new SimpleXMLIterator($rulesURL,0,TRUE);
 
 	$hasRules=false;
-	if(iterator_count($xmlIterator)!=0)  
-		{$hasRules=true;
+	if(iterator_count($xmlIterator)!=0){
+		$hasRules=true;
 	}
-
+//$valus.=getDataTexto($xmlIterator);
 	$json=array();
 	$userNode= createNode('User',null,$hasRules);
 	if($hasRules){
+//$child=Array('1'=>'Meh','Meh2','bla');
+$child=Array('a','b','c');
+$userNode['children']=$child;
 $userNode['children']['testing']='Meh';
-//		array_push($userNode['children'],'Meeeh');
+//$userNode['children']=$child;
+
+$userNode['children']=getData($xmlIterator,$userNode);
+//$values.=count($userNode['children']);
 	}
 array_push($json,$userNode);
-//$values.='Count:'.count($userNode['children']).$userNode['children'][0].'<br><br>';
 
-$values.=getDataTexto($xmlIterator);	
-//$json=getData($xmlIterator);
 $values.='<br><br>******TESTING*******<br>'.getDataTexto($json).'<br>';
+
 
 	return $values;
 }
 
-function getDataTexto($iterator,$actualNode,$isActive=0,$numConditions=0){
+
+function getData($iterator,$parent,$numConditions=0){
+	$contCondition=1;
+	$hasChildren=false;
+	foreach($iterator as $keyInitial => $valueInitial){
+		switch($keyInitial){
+			case 'rule':
+				$ret.=getData($valueInitial,$parent);
+			break;	
+			case 'name':
+			break;
+			case 'tree':
+//				$ret.='<<<'.$valueInitial.'>>>';
+			break;
+			case 'expression':
+				$numConditions=iterator_count($valueInitial);
+			//	$ret.=getData($valueInitial,$numConditions);
+				$ret.=getData($valueInitial,$parent,$numConditions);
+			break;
+			case 'condition':
+//				$ret.='<br>#condition '.$contCondition.' of '.$numConditions.'#';
+				$actualVariable;
+				$actualValue;
+				foreach($valueInitial as $keyFinal => $valueFinal){
+					switch($keyFinal){
+						case 'variable':
+							$actualVariable=$valueFinal;
+						break;
+						case 'value':
+							$actualValue=$valueFinal;
+						break;
+					}
+				}	
+				if($contCondition<$numConditions){$hasChildren=true;}
+			
+				//crear nodo
+
+				$actualNode=createNode($actualVariable.'='.$actualValue,$parent['name'],$hasChildren);
+//$ret.='<br>~~~~'.getDataTexto($actualNode).'~~~~<br>';
+				//apilar en parentNodes
+				array_push($parent['children'],$actualNode);
+				//actualizar nodo padre
+				$parent=$actualNode;
+//$ret=$actualNode;
+			break;
+			case 'performance':
+			//	$ret.='<br><br>### '.$valueInitial.' ###<br>~~~~~~<br>';
+				$hasChildren=false;
+				//crear nodo
+				$actualNode=createNode($valueInitial,$parent['name'],$hasChildren);
+$ret.='<br>~~~~'.getDataTexto($actualNode).'~~~~<br>';
+				//apliar en parentNodes
+				array_push($parent['children'],$actualNode);
+//$ret=$actualNode;
+
+				break;
+			default:
+				$ret.=getData($valueInitial);
+			break;
+		}
+		$contCondition++;
+	}
+	return $ret;
+}
+
+
+
+function getDataTexto($iterator,$actualNode,$numConditions=0){
 	$contCondition=1;
 	foreach($iterator as $keyInitial => $valueInitial){
 		switch($keyInitial){
@@ -125,7 +196,7 @@ function getDataTexto($iterator,$actualNode,$isActive=0,$numConditions=0){
 		break;
 		case 'expression':
 			$numConditions=iterator_count($valueInitial);
-			$ret.=getDataTexto($valueInitial,0,1,$numConditions);
+			$ret.=getDataTexto($valueInitial,0,$numConditions);
 		break;
 		case 'condition':
 			$ret.='<br>#condition '.$contCondition.' of '.$numConditions.'#';
@@ -147,13 +218,13 @@ function getDataTexto($iterator,$actualNode,$isActive=0,$numConditions=0){
 			$ret.='<br><br>### '.$valueInitial.' ###<br>~~~~~~<br>';
 		break;
 		default:
-			$ret.='<br>'.$keyInitial.' --- ';
+			$ret.='<br>['.$keyInitial.' --- ';
 			if($valueInitial===null){
 				$ret.='null';
 			}else{
 				$ret.=$valueInitial;
 			}
-$ret.=getDataTexto($valueInitial);
+$ret.=getDataTexto($valueInitial).']';
 //			$ret.=getDataTexto($valueInitial).' >> '.iterator_count($valueInitial);
 		break;
 		}
