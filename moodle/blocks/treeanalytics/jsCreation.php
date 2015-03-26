@@ -101,11 +101,12 @@ function createJSON(){
 //$child=Array('1'=>'Meh','Meh2','bla');
 $child=Array('a','b','c');
 $userNode['children']=$child;
-$userNode['children']['testing']='Meh';
+//$userNode['children']['testing']='Meh';
 //$userNode['children']=$child;
 
 $userNode['children']=getData($xmlIterator,$userNode);
-//$values.=count($userNode['children']);
+//$values.='<br>/*/*/*/ '.count($userNode['children']).'<br>';
+
 	}
 array_push($json,$userNode);
 
@@ -115,14 +116,13 @@ $values.='<br><br>******TESTING*******<br>'.getDataTexto($json).'<br>';
 	return $values;
 }
 
-
 function getData($iterator,$parent,$numConditions=0){
-	$contCondition=1;
-	$hasChildren=false;
-	foreach($iterator as $keyInitial => $valueInitial){
+$ret=Array();
+foreach($iterator as $keyInitial => $valueInitial){
 		switch($keyInitial){
 			case 'rule':
-				$ret.=getData($valueInitial,$parent);
+			array_push($ret,getData($valueInitial,$parent));//	$ret.=getData($valueInitial,$parent);
+
 			break;	
 			case 'name':
 			break;
@@ -131,55 +131,66 @@ function getData($iterator,$parent,$numConditions=0){
 			break;
 			case 'expression':
 				$numConditions=iterator_count($valueInitial);
-			//	$ret.=getData($valueInitial,$numConditions);
-				$ret.=getData($valueInitial,$parent,$numConditions);
+				$ret.=getRoute($valueInitial,$parent,0,$numConditions);
+array_push($ret,getRoute($valueInitial,$parent,0,$numConditions));
 			break;
-			case 'condition':
-//				$ret.='<br>#condition '.$contCondition.' of '.$numConditions.'#';
-				$actualVariable;
-				$actualValue;
-				foreach($valueInitial as $keyFinal => $valueFinal){
-					switch($keyFinal){
-						case 'variable':
-							$actualVariable=$valueFinal;
-						break;
-						case 'value':
-							$actualValue=$valueFinal;
-						break;
-					}
-				}	
-				if($contCondition<$numConditions){$hasChildren=true;}
-			
-				//crear nodo
-
-				$actualNode=createNode($actualVariable.'='.$actualValue,$parent['name'],$hasChildren);
-//$ret.='<br>~~~~'.getDataTexto($actualNode).'~~~~<br>';
-				//apilar en parentNodes
-				array_push($parent['children'],$actualNode);
-				//actualizar nodo padre
-				$parent=$actualNode;
-//$ret=$actualNode;
-			break;
-			case 'performance':
-			//	$ret.='<br><br>### '.$valueInitial.' ###<br>~~~~~~<br>';
-				$hasChildren=false;
-				//crear nodo
-				$actualNode=createNode($valueInitial,$parent['name'],$hasChildren);
-$ret.='<br>~~~~'.getDataTexto($actualNode).'~~~~<br>';
-				//apliar en parentNodes
-				array_push($parent['children'],$actualNode);
-//$ret=$actualNode;
-
-				break;
 			default:
-				$ret.=getData($valueInitial);
+			//	$ret.=getData($valueInitial,$parent);
 			break;
+		}
+	}
+	return $ret;
+}
+
+
+function getRoute($iterator,$parent,$currentPos,$numConditions){
+	$contCondition=1;
+	$hasChildren=false;
+	
+	$slice =array_slice($iterator,$currentPos,1,true);
+//$ret.=$slice;
+	foreach($slice as $keyInitial => $valueInitial) {	
+		$ret.='<br>'.$keyInitial.' <----> '.$valueInitial;
+		switch($keyInitial){
+				case 'condition':
+					$actualVariable;
+					$actualValue;
+					foreach($valueInitial as $keyFinal => $valueFinal){
+						switch($keyFinal){
+							case 'variable':
+								$actualVariable=$valueFinal;
+							break;
+							case 'value':
+								$actualValue=$valueFinal;
+							break;
+						}
+					}	
+					
+					if($contCondition<$numConditions){$hasChildren=true;}
+				
+					//crear nodo
+					$actualNode=createNode($actualVariable.'='.$actualValue,$parent['name'],$hasChildren);
+					
+					if($hasChildren){
+						$newChildPosition=count($actualNode['children']);
+						//actualizar nodo padre
+						$parent=$actualNode;
+						$actualNode['children'][$newChildPosition]=getRoute($iterator,$parent,$contCondition,$numConditions);
+					}
+					$ret=$actualNode;
+				break;
+				case 'performance':
+					$hasChildren=false;
+					//crear nodo
+					$actualNode=createNode($valueInitial,$parent['name'],$hasChildren);
+					$ret=$actualNode;
+					break;
+			
 		}
 		$contCondition++;
 	}
 	return $ret;
 }
-
 
 
 function getDataTexto($iterator,$actualNode,$numConditions=0){
