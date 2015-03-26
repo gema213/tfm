@@ -94,35 +94,27 @@ function createJSON(){
 	if(iterator_count($xmlIterator)!=0){
 		$hasRules=true;
 	}
-//$valus.=getDataTexto($xmlIterator);
 	$json=array();
 	$userNode= createNode('User',null,$hasRules);
 	if($hasRules){
-//$child=Array('1'=>'Meh','Meh2','bla');
-$child=Array('a','b','c');
-$userNode['children']=$child;
-//$userNode['children']['testing']='Meh';
-//$userNode['children']=$child;
-
-$userNode['children']=getData($xmlIterator,$userNode);
-//$values.='<br>/*/*/*/ '.count($userNode['children']).'<br>';
-
+		$userNode['children']=getData($xmlIterator,$userNode,null);
+//		$values.='<br>/*/*/*/ '.count($userNode['children'][0][0]).'<br>';
+//		$values.='<br>¬¬¬¬¬¬¬ '.$userNode['children'][0][0].'<br>';
 	}
-array_push($json,$userNode);
+	array_push($json,$userNode);
 
-$values.='<br><br>******TESTING*******<br>'.getDataTexto($json).'<br>';
-
+	$values.='<br><br>******TESTING*******<br>'.getDataTexto($json).'<br>';
 
 	return $values;
 }
 
+
 function getData($iterator,$parent,$numConditions=0){
-$ret=Array();
-foreach($iterator as $keyInitial => $valueInitial){
+	$ret=Array();
+	foreach($iterator as $keyInitial => $valueInitial){
 		switch($keyInitial){
 			case 'rule':
-			array_push($ret,getData($valueInitial,$parent));//	$ret.=getData($valueInitial,$parent);
-
+				array_push($ret,getData($valueInitial,$parent));
 			break;	
 			case 'name':
 			break;
@@ -131,61 +123,45 @@ foreach($iterator as $keyInitial => $valueInitial){
 			break;
 			case 'expression':
 				$numConditions=iterator_count($valueInitial);
-				$ret.=getRoute($valueInitial,$parent,0,$numConditions);
-array_push($ret,getRoute($valueInitial,$parent,0,$numConditions));
-			break;
-			default:
-			//	$ret.=getData($valueInitial,$parent);
+				array_push($ret,getRoute($valueInitial,$parent,0,$numConditions));
 			break;
 		}
 	}
 	return $ret;
 }
-
-
 function getRoute($iterator,$parent,$currentPos,$numConditions){
 	$contCondition=1;
 	$hasChildren=false;
-	
 	$slice =array_slice($iterator,$currentPos,1,true);
-//$ret.=$slice;
+	$ret=Array();
 	foreach($slice as $keyInitial => $valueInitial) {	
-		$ret.='<br>'.$keyInitial.' <----> '.$valueInitial;
 		switch($keyInitial){
-				case 'condition':
-					$actualVariable;
-					$actualValue;
-					foreach($valueInitial as $keyFinal => $valueFinal){
-						switch($keyFinal){
-							case 'variable':
-								$actualVariable=$valueFinal;
-							break;
-							case 'value':
-								$actualValue=$valueFinal;
-							break;
-						}
-					}	
-					
-					if($contCondition<$numConditions){$hasChildren=true;}
-				
-					//crear nodo
-					$actualNode=createNode($actualVariable.'='.$actualValue,$parent['name'],$hasChildren);
-					
-					if($hasChildren){
-						$newChildPosition=count($actualNode['children']);
-						//actualizar nodo padre
-						$parent=$actualNode;
-						$actualNode['children'][$newChildPosition]=getRoute($iterator,$parent,$contCondition,$numConditions);
+			case 'condition':
+				$actualVariable;
+				$actualValue;
+				foreach($valueInitial as $keyFinal => $valueFinal){
+					switch($keyFinal){
+						case 'variable':
+							$actualVariable=$valueFinal;
+						break;
+						case 'value':
+							$actualValue=$valueFinal;
+						break;
 					}
-					$ret=$actualNode;
-				break;
-				case 'performance':
-					$hasChildren=false;
-					//crear nodo
-					$actualNode=createNode($valueInitial,$parent['name'],$hasChildren);
-					$ret=$actualNode;
-					break;
-			
+				}	
+				if($contCondition<$numConditions){$hasChildren=true;}
+				$actualNode=createNode($actualVariable.'='.$actualValue,$parent['name'],$hasChildren);
+				if($hasChildren){
+					$parent=$actualNode;
+					array_push($actualNode['children'],getRoute($iterator,$parent,$contCondition,$numConditions));
+				}
+				$ret=$actualNode;
+			break;
+			case 'performance':
+				$hasChildren=false;
+				$actualNode=createNode($valueInitial,$parent['name'],$hasChildren);
+				$ret=$actualNode;
+			break;		
 		}
 		$contCondition++;
 	}
@@ -193,7 +169,8 @@ function getRoute($iterator,$parent,$currentPos,$numConditions){
 }
 
 
-function getDataTexto($iterator,$actualNode,$numConditions=0){
+
+function  getDataTexto($iterator,$actualNode,$numConditions=0){
 	$contCondition=1;
 	foreach($iterator as $keyInitial => $valueInitial){
 		switch($keyInitial){
