@@ -98,12 +98,14 @@ function createJSON(){
 	$userNode= createNode('User',null,$hasRules);
 	if($hasRules){
 		$userNode['children']=getData($xmlIterator,$userNode,null);
-//		$values.='<br>/*/*/*/ '.count($userNode['children'][0][0]).'<br>';
+//		$values.='<br>/*/*/*/ '.count($userNode['children'][0]['children']).'<br>';
 //		$values.='<br>¬¬¬¬¬¬¬ '.$userNode['children'][0][0].'<br>';
 	}
+//$values.=getData($xmlIterator,$userNode,null);
 	array_push($json,$userNode);
 
 	$values.='<br><br>******TESTING*******<br>'.getDataTexto($json).'<br>';
+$values.= '<br><br>*******JSON*******'.json_encode($json);
 
 	return $values;
 }
@@ -114,6 +116,8 @@ function getData($iterator,$parent,$numConditions=0){
 	foreach($iterator as $keyInitial => $valueInitial){
 		switch($keyInitial){
 			case 'rule':
+//$ret.=getData($valueInitial,$parent);
+
 				array_push($ret,getData($valueInitial,$parent));
 			break;	
 			case 'name':
@@ -124,6 +128,8 @@ function getData($iterator,$parent,$numConditions=0){
 			case 'expression':
 				$numConditions=iterator_count($valueInitial);
 				array_push($ret,getRoute($valueInitial,$parent,0,$numConditions));
+//$ret.=count($valueInitial);
+//$ret.=getRoute($valueInitial,$parent,0,$numConditions);
 			break;
 		}
 	}
@@ -132,9 +138,12 @@ function getData($iterator,$parent,$numConditions=0){
 function getRoute($iterator,$parent,$currentPos,$numConditions){
 	$contCondition=1;
 	$hasChildren=false;
-	$slice =array_slice($iterator,$currentPos,1,true);
+$contPosition=0;
+$ret='buh!';
+//	$slice =array_slice($iterator,0,1,true); //WRONG
 	$ret=Array();
-	foreach($slice as $keyInitial => $valueInitial) {	
+	foreach($iterator as $keyInitial => $valueInitial) {	
+if($contPosition==$currentPos){
 		switch($keyInitial){
 			case 'condition':
 				$actualVariable;
@@ -163,6 +172,8 @@ function getRoute($iterator,$parent,$currentPos,$numConditions){
 				$ret=$actualNode;
 			break;		
 		}
+
+}$contPosition++;
 		$contCondition++;
 	}
 	return $ret;
