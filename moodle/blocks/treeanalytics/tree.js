@@ -21,7 +21,8 @@ var svg=d3.select(".tree").append("svg")
 
 	
 	// load the external data
-var url ="http://156.35.95.149/pruebas/treeDataTFM.json";
+//var url ="http://156.35.95.149/pruebas/treeDataTFM.json";
+var url="http://156.35.95.149/pruebas/generated.json";
 d3.json(url, function (treeData) {
   	root = treeData[0];
 

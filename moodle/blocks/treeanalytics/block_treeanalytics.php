@@ -18,7 +18,8 @@ class block_treeanalytics extends block_base {
 		/**/		
 		$this->content->text.='<br>';	
 
-	
+	$this->content->text.= getStudentValues();	
+
 	$this->content->text.='
 <div class="container">
   
@@ -54,9 +55,10 @@ class block_treeanalytics extends block_base {
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Tree Analytics</h4>
       </div>
-      <div class="modal-body tree">
-         <script src="http://156.35.95.149/moodle/blocks/treeanalytics/tree.js"/>
-
+      <div class="modal-body tree">';
+//$this->content->text.='         <script src="http://156.35.95.149/moodle/blocks/treeanalytics/tree.js"/>';
+$this->content->text.=createJS();
+$this->content->text.='
       </div>
 <!--      <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

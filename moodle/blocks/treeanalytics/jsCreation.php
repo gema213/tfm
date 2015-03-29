@@ -61,7 +61,8 @@ function assignValue($original, $lowLimit,$highLimit){
          return $node;
 }
 
-function createJSON(){
+function generateStudentValues(){
+global $studentValues;
 	$studentValues['QUIZZES']=rand(0,100)/100;
 	$studentValues['RESOURCES']=rand(0,100)/100;
 	$studentValues['RECOMMENDEDRESOURCES']=rand(0,100)/100;
@@ -71,7 +72,6 @@ function createJSON(){
 	$studentValues['TIMETORECOMMENDED']=rand(0,100)/100;
 	$studentValues['TIMETOFIRSTACTION']=rand(0,100)/100;
 
-
 	$studentValues['QUIZZES']=assignValue($studentValues['QUIZZES'],'threshold.quizzes.low','threshold.quizzes.high' );
 	$studentValues['RESOURCES']=assignValue($studentValues['RESOURCES'],'threshold.resources.low','threshold.resources.high' );
 	$studentValues['RECOMMENDEDRESOURCES']=assignValue($studentValues['RECOMMENDEDRESOURCES'],'threshold.recommendedresources.low','threshold.recommendedresources.high' );
@@ -80,12 +80,16 @@ function createJSON(){
 	$studentValues['TIMETOASSIGNMENTS']=assignValue($studentValues['TIMETOASSIGNMENTS'],'threshold.timetoassignments.low','threshold.timetoassignments.high' );
 	$studentValues['TIMETORECOMMENDED']=assignValue($studentValues['TIMETORECOMMENDED'],'threshold.timetorecommended.low','threshold.timetorecommended.high' );
 	$studentValues['TIMETOFIRSTACTION']=assignValue($studentValues['TIMETOFIRSTACTION'],'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
-	
+};
+function getStudentValues(){
+global $studentValues;
 	$values.='Quizzes: '.$studentValues['QUIZZES'].'<br>Resources: '.$studentValues['RESOURCES'].'<br>Recomm. Resources: '.$studentValues['RECOMMENDEDRESOURCES'].'<br>Time To Quizzes: '.$studentValues['TIMETOQUIZZES'].'<br>Time To Resources: '.$studentValues['TIMETORESOURCES'].'<br>TimeToAssign: '.$studentValues['TIMETOASSIGNMENTS'].'<br>Time To Recomm.: '.$studentValues['TIMETORECOMMENDED'].'<br>Time To 1stAction: '.$studentValues['TIMETOFIRSTACTION'];
+return $values;
+}
 
-
-	
-
+function createJSON(){
+	generateStudentValues();
+//	$values.=getStudentValues();
 	$rulesURL='http://'.$_SERVER['SERVER_ADDR'].$_SERVER['REQUEST_URI'].'/blocks/treeanalytics/rules.xml';
 
 	$xmlIterator = new SimpleXMLIterator($rulesURL,0,TRUE);
@@ -98,14 +102,10 @@ function createJSON(){
 	$userNode= createNode('User',null,$hasRules);
 	if($hasRules){
 		$userNode['children']=getData($xmlIterator,$userNode,null);
-//		$values.='<br>/*/*/*/ '.count($userNode['children'][0]['children']).'<br>';
-//		$values.='<br>¬¬¬¬¬¬¬ '.$userNode['children'][0][0].'<br>';
 	}
-//$values.=getData($xmlIterator,$userNode,null);
 	array_push($json,$userNode);
 
-	$values.='<br><br>******TESTING*******<br>'.getDataTexto($json).'<br>';
-$values.= '<br><br>*******JSON*******'.json_encode($json);
+$values.= '*******JSON*******'.json_encode($json);
 
 	return $values;
 }
@@ -119,6 +119,7 @@ function getData($iterator,$parent,$numConditions=0){
 //$ret.=getData($valueInitial,$parent);
 
 				array_push($ret,getData($valueInitial,$parent));
+
 			break;	
 			case 'name':
 			break;
@@ -127,9 +128,9 @@ function getData($iterator,$parent,$numConditions=0){
 			break;
 			case 'expression':
 				$numConditions=iterator_count($valueInitial);
-				array_push($ret,getRoute($valueInitial,$parent,0,$numConditions));
+				//array_push($ret,getRoute($valueInitial,$parent,0,$numConditions));
 //$ret.=count($valueInitial);
-//$ret.=getRoute($valueInitial,$parent,0,$numConditions);
+$ret=getRoute($valueInitial,$parent,0,$numConditions);
 			break;
 		}
 	}
@@ -139,7 +140,6 @@ function getRoute($iterator,$parent,$currentPos,$numConditions){
 	$contCondition=1;
 	$hasChildren=false;
 $contPosition=0;
-$ret='buh!';
 //	$slice =array_slice($iterator,0,1,true); //WRONG
 	$ret=Array();
 	foreach($iterator as $keyInitial => $valueInitial) {	
@@ -168,7 +168,7 @@ if($contPosition==$currentPos){
 			break;
 			case 'performance':
 				$hasChildren=false;
-				$actualNode=createNode($valueInitial,$parent['name'],$hasChildren);
+				$actualNode=createNode((string)$valueInitial,$parent['name'],$hasChildren);
 				$ret=$actualNode;
 			break;		
 		}
@@ -233,3 +233,165 @@ $ret.=getDataTexto($valueInitial).']';
 	return $ret;
 }
 
+function createJS(){
+$js='<script>var margin = {top: 0, right: 0, bottom: 0, left:50},
+    width = 1000 - margin.right - margin.left,
+    height = 400 - margin.top - margin.bottom;
+    
+var i = 0,
+    duration = 750,
+    root;
+
+var tree = d3.layout.tree()
+    .size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.y, d.x]; });
+
+//var svg = d3.select(".popupBoxContent").append("svg")
+var svg=d3.select(".tree").append("svg")
+    .attr("width", width + margin.right + margin.left)
+    .attr("height", height + margin.top + margin.bottom)
+.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");';
+//$js.='var treeData='.createJSON().';';
+$js.='var url ="http://156.35.95.149/pruebas/generated.json";
+d3.json(url, function (treeData) {';
+$js.='
+  	root = treeData[0];
+
+	  //---->>>
+  root.x0 = height / 2;
+  root.y0 = 0;
+
+  function collapse(d) {
+    if (d.children) {
+      d._children = d.children;
+      d._children.forEach(collapse);
+      d.children = null;
+    }
+  }
+
+  root.children.forEach(collapse);
+  //----<<<
+  update(root);';
+$js.='});';
+$js.='/*
+
+d3.select(self.frameElement).style("height", "800px");
+*/
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+      links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+      .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parents previous position.
+  var nodeEnter = node.enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+      .on("click", click);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-----------------------------------
+
+  nodeEnter.append("circle")
+    .attr("r", function(d){return d.value;})
+	.attr("class", function(d){
+						if(d.active==1){
+							if(d.name=="GOOD" || d.name=="PASS"){return "pass";}else{
+							if(d.name=="FAIL"){return "fail";}else{
+							if(d.name=="UNKNOWN"){return "unknown";}else{
+							return "active";}}}
+						}else{
+							return "inactive";
+						};
+					});
+      /*.style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });*/
+
+  nodeEnter.append("text")
+	  .attr("class",function(d){if(d.active==1){return "on"}else{return "off";}})
+      .attr("x", function(d) { return d.children || d._children ? -15 : 15; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+      .text(function(d) { return d.name; })
+      /*.style("fill-opacity", 1e-6)*/;
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+     .attr("r", function(d){return d.value;});
+
+  // Transition exiting nodes to the parents new position.
+  var nodeExit = node.exit().transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+      .remove();
+
+  nodeExit.select("circle")
+      .attr("r", 1e-10);
+
+  nodeExit.select("text")
+      .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+      .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parents previous position.
+  link.enter().insert("path", "g")
+				   .attr("class", function(d) {
+						if (d.target.active == 1) {
+							return "link active";
+						}
+						return "link inactive";
+					})
+      .attr("d", function(d) {
+        var o = {x: source.x0, y: source.y0};
+        return diagonal({source: o, target: o});
+      });
+
+  // Transition links to their new position.
+  link.transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+  // Transition exiting nodes to the parents new position.
+  link.exit().transition()
+      .duration(duration)
+      .attr("d", function(d) {
+        var o = {x: source.x, y: source.y};
+        return diagonal({source: o, target: o});
+      })
+      .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+    d.x0 = d.x;
+    d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+//----------->>>>>>>>>>>
+function click(d) {
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+  update(d);
+} //------<<<<<<<<<<<<<
+</script>';
+return $js;
+//return '<script src="http://156.35.95.149/moodle/blocks/treeanalytics/tree.js"/>';
+}
