@@ -82,14 +82,14 @@ global $studentValues;
 	$studentValues['TIMETOFIRSTACTION']=assignValue($studentValues['TIMETOFIRSTACTION'],'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
 };
 function getStudentValues(){
-global $studentValues;
+	global $studentValues;
 	$values.='Quizzes: '.$studentValues['QUIZZES'].'<br>Resources: '.$studentValues['RESOURCES'].'<br>Recomm. Resources: '.$studentValues['RECOMMENDEDRESOURCES'].'<br>Time To Quizzes: '.$studentValues['TIMETOQUIZZES'].'<br>Time To Resources: '.$studentValues['TIMETORESOURCES'].'<br>TimeToAssign: '.$studentValues['TIMETOASSIGNMENTS'].'<br>Time To Recomm.: '.$studentValues['TIMETORECOMMENDED'].'<br>Time To 1stAction: '.$studentValues['TIMETOFIRSTACTION'];
-return $values;
+	return $values;
 }
 
 function createJSON(){
 	generateStudentValues();
-//	$values.=getStudentValues();
+
 	$rulesURL='http://'.$_SERVER['SERVER_ADDR'].$_SERVER['REQUEST_URI'].'/blocks/treeanalytics/rules.xml';
 
 	$xmlIterator = new SimpleXMLIterator($rulesURL,0,TRUE);
@@ -101,11 +101,11 @@ function createJSON(){
 	$json=array();
 	$userNode= createNode('User',null,$hasRules);
 	if($hasRules){
-		$userNode['children']=getData($xmlIterator,$userNode,null);
+		$userNode['children']=getData($xmlIterator,$userNode);
 	}
 	array_push($json,$userNode);
-
-$values.= '*******JSON*******'.json_encode($json);
+$values.= '*******ARRAY******'.getDataTexto($json);
+$values.= '<br>*******JSON*******'.json_encode($json);
 
 	return $values;
 }
@@ -116,10 +116,7 @@ function getData($iterator,$parent,$numConditions=0){
 	foreach($iterator as $keyInitial => $valueInitial){
 		switch($keyInitial){
 			case 'rule':
-//$ret.=getData($valueInitial,$parent);
-
 				array_push($ret,getData($valueInitial,$parent));
-
 			break;	
 			case 'name':
 			break;
@@ -128,9 +125,7 @@ function getData($iterator,$parent,$numConditions=0){
 			break;
 			case 'expression':
 				$numConditions=iterator_count($valueInitial);
-				//array_push($ret,getRoute($valueInitial,$parent,0,$numConditions));
-//$ret.=count($valueInitial);
-$ret=getRoute($valueInitial,$parent,0,$numConditions);
+				$ret=getRoute($valueInitial,$parent,0,$numConditions);
 			break;
 		}
 	}
@@ -139,41 +134,42 @@ $ret=getRoute($valueInitial,$parent,0,$numConditions);
 function getRoute($iterator,$parent,$currentPos,$numConditions){
 	$contCondition=1;
 	$hasChildren=false;
-$contPosition=0;
-//	$slice =array_slice($iterator,0,1,true); //WRONG
+	$contPosition=0;
+
 	$ret=Array();
 	foreach($iterator as $keyInitial => $valueInitial) {	
-if($contPosition==$currentPos){
-		switch($keyInitial){
-			case 'condition':
-				$actualVariable;
-				$actualValue;
-				foreach($valueInitial as $keyFinal => $valueFinal){
-					switch($keyFinal){
-						case 'variable':
-							$actualVariable=$valueFinal;
-						break;
-						case 'value':
-							$actualValue=$valueFinal;
-						break;
+		if($contPosition==$currentPos){
+			switch($keyInitial){
+				case 'condition':
+					$actualVariable;
+					$actualValue;
+					foreach($valueInitial as $keyFinal => $valueFinal){
+						switch($keyFinal){
+							case 'variable':
+								$actualVariable=$valueFinal;
+							break;
+							case 'value':
+								$actualValue=$valueFinal;
+							break;
+						}
+					}	
+					if($contCondition<$numConditions){$hasChildren=true;}
+					$actualNode=createNode($actualVariable.'='.$actualValue,$parent['name'],$hasChildren);
+					if($hasChildren){
+						$parent=$actualNode;
+						array_push($actualNode['children'],getRoute($iterator,$parent,$contCondition,$numConditions));
+						
 					}
-				}	
-				if($contCondition<$numConditions){$hasChildren=true;}
-				$actualNode=createNode($actualVariable.'='.$actualValue,$parent['name'],$hasChildren);
-				if($hasChildren){
-					$parent=$actualNode;
-					array_push($actualNode['children'],getRoute($iterator,$parent,$contCondition,$numConditions));
-				}
-				$ret=$actualNode;
-			break;
-			case 'performance':
-				$hasChildren=false;
-				$actualNode=createNode((string)$valueInitial,$parent['name'],$hasChildren);
-				$ret=$actualNode;
-			break;		
+					$ret=$actualNode;
+				break;
+				case 'performance':
+					$hasChildren=false;
+					$actualNode=createNode((string)$valueInitial,$parent['name'],$hasChildren);
+					$ret=$actualNode;
+				break;		
+			}
 		}
-
-}$contPosition++;
+		$contPosition++;
 		$contCondition++;
 	}
 	return $ret;
