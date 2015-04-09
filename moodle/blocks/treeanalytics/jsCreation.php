@@ -12,14 +12,9 @@ $studentValues['TIMETORECOMMENDED']=0;
 $studentValues['TIMETOFIRSTACTION']=0;
 
 
-
 function createJSON(){
 	generateStudentValues();
 
-/*	$rulesURL='http://'.$_SERVER['SERVER_ADDR'].$_SERVER['REQUEST_URI'].'/blocks/treeanalytics/rules.xml';
-
-	$xmlIterator = new SimpleXMLIterator($rulesURL,0,TRUE);
-*/
 	$xmlIterator=xmlFile();
 
 	$hasRules=false;
@@ -189,12 +184,10 @@ function  getDataTexto($iterator,$actualNode,$numConditions=0){
 				$ret.=$valueInitial;
 			}
 $ret.=getDataTexto($valueInitial).']';
-//			$ret.=getDataTexto($valueInitial).' >> '.iterator_count($valueInitial);
 		break;
 		}
 		$contCondition++;
 	}
-//	$ret.='//////<br>';
 	return $ret;
 }
 
@@ -230,7 +223,6 @@ var svg=d3.select(".tree").append("svg")
 	// load the external data
 ';
 $js.='var treeData=['.tempJSON().'];';
-
 $js.='  	root = treeData[0];
 
 root.x0=0;
@@ -246,8 +238,6 @@ root.y0=height/2;
 
   root.children.forEach(collapse);
   update(root);
-
-
 
 function update(source) {
 
