@@ -1,5 +1,6 @@
 <?php
 require('jsCreation.php');
+require('htmlCreation.php');
 class block_treeanalytics extends block_base {
 	public function init() {
         	$this->title = get_string('treeanalytics', 'block_treeanalytics');
@@ -17,9 +18,7 @@ class block_treeanalytics extends block_base {
 		$this->content->text.=createJSON();
 		/**/		
 		$this->content->text.='<br>';	
-
 	$this->content->text.= getStudentValues();	
-
 	$this->content->text.='
 <div class="container">
   
@@ -29,7 +28,6 @@ class block_treeanalytics extends block_base {
       <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#basicModal">Resume Diagram</a>
   
 </div>
-
 <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -47,7 +45,6 @@ class block_treeanalytics extends block_base {
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -56,7 +53,6 @@ class block_treeanalytics extends block_base {
         <h4 class="modal-title" id="myModalLabel">Tree Analytics</h4>
       </div>
       <div class="modal-body tree">';
-//$this->content->text.='         <script src="http://156.35.95.149/moodle/blocks/treeanalytics/tree.js"/>';
 $this->content->text.=createJS();
 $this->content->text.='
       </div>
@@ -69,4 +65,4 @@ $this->content->text.='
 </div>	';  
 	return $this->content;
 	}
-}  
+} 
