@@ -12,7 +12,7 @@ $studentValues['TIMETORECOMMENDED']=0;
 $studentValues['TIMETOFIRSTACTION']=0;
 
 
-function createJSON(){
+function createJSONGe(){
 	generateStudentValues();
 
 	$xmlIterator=xmlFile();
@@ -99,22 +99,7 @@ function getRoute($iterator,$parent,$currentPos,$numConditions){
 }
 
 
-function assignValue($original, $lowLimit,$highLimit){
-	$iniFile=iniFile();
-	$high='high';
-	$medium='medium';
-	$low='low';		
-	if($original<=$iniFile[$lowLimit]){
-		return $low;
-	}else{
-		if($original>=$iniFile[$highLimit]){
-			return $high;
-		}else{
-			return $medium;
-		}
-	}
-}
- function createNode($name,$parent,$hasChildren){
+ function createNodeGe($name,$parent,$hasChildren){
          $node=array();//array que forma el nodo
          $node['name']=$name;
          $node['parent']=$parent;
@@ -125,26 +110,6 @@ function assignValue($original, $lowLimit,$highLimit){
          }
          return $node;
 }
-function generateStudentValues(){
-global $studentValues;
-	$studentValues['QUIZZES']=rand(0,100)/100;
-	$studentValues['RESOURCES']=rand(0,100)/100;
-	$studentValues['RECOMMENDEDRESOURCES']=rand(0,100)/100;
-	$studentValues['TIMETOQUIZZES']=rand(0,100)/100;
-	$studentValues['TIMETORESOURCES']=rand(0,100)/100;
-	$studentValues['TIMETOASSIGNMENTS']=rand(0,100)/100;
-	$studentValues['TIMETORECOMMENDED']=rand(0,100)/100;
-	$studentValues['TIMETOFIRSTACTION']=rand(0,100)/100;
-	$studentValues['QUIZZES']=assignValue($studentValues['QUIZZES'],'threshold.quizzes.low','threshold.quizzes.high' );
-	$studentValues['RESOURCES']=assignValue($studentValues['RESOURCES'],'threshold.resources.low','threshold.resources.high' );
-	$studentValues['RECOMMENDEDRESOURCES']=assignValue($studentValues['RECOMMENDEDRESOURCES'],'threshold.recommendedresources.low','threshold.recommendedresources.high' );
-	$studentValues['TIMETOQUIZZES']=assignValue($studentValues['TIMETOQUIZZES'],'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
-	$studentValues['TIMETORESOURCES']=assignValue($studentValues['TIMETORESOURCES'],'threshold.timetoresources.low','threshold.timetoresources.high' );
-	$studentValues['TIMETOASSIGNMENTS']=assignValue($studentValues['TIMETOASSIGNMENTS'],'threshold.timetoassignments.low','threshold.timetoassignments.high' );
-	$studentValues['TIMETORECOMMENDED']=assignValue($studentValues['TIMETORECOMMENDED'],'threshold.timetorecommended.low','threshold.timetorecommended.high' );
-	$studentValues['TIMETOFIRSTACTION']=assignValue($studentValues['TIMETOFIRSTACTION'],'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
-};
-
 
 function  getDataTexto($iterator,$actualNode,$numConditions=0){
 	$contCondition=1;

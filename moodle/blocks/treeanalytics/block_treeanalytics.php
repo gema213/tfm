@@ -1,5 +1,5 @@
 <?php
-require('jsCreation.php');
+require('jsCreation2.php');
 require('htmlCreation.php');
 class block_treeanalytics extends block_base {
 	public function init() {
