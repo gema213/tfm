@@ -230,16 +230,11 @@ var svg=d3.select(".tree").append("svg")
 	// load the external data
 ';
 $js.='var treeData=['.tempJSON().'];';
-//$js.='var treeData=['.tempJSON().'];';
 
 $js.='  	root = treeData[0];
 
-	  //---->>>
-//root.x0=margin.right;
-//  root.x0 = height / 2;
 root.x0=0;
 root.y0=height/2;
-//  root.y0 = 0;
 
   function collapse(d) {
     if (d.children) {
@@ -250,15 +245,10 @@ root.y0=height/2;
   }
 
   root.children.forEach(collapse);
-  //----<<<
   update(root);
-//});
 
 
 
-/*
-d3.select(self.frameElement).style("height", "800px");
-*/
 function update(source) {
 
   // Compute the new tree layout.
@@ -268,7 +258,7 @@ function update(source) {
   // Normalize for fixed-depth.
   nodes.forEach(function(d) { d.y = d.depth * 180; });
 
-  // Update the nodesâ€¦
+  // Update the nodes
   var node = svg.selectAll("g.node")
       .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
@@ -276,7 +266,7 @@ function update(source) {
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
       .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
-      .on("click", click);//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-----------------------------------
+      .on("click", click);
 
   nodeEnter.append("circle")
     .attr("r", function(d){return d.value;})
@@ -291,7 +281,6 @@ function update(source) {
 							return "inactive";
 						};
 					});
-      /*.style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });*/
 
   nodeEnter.append("text")
 	  .attr("class",function(d){if(d.active==1){return "on"}else{return "off";}})
@@ -299,7 +288,6 @@ function update(source) {
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
       .text(function(d) { return d.name; })
-      /*.style("fill-opacity", 1e-6)*/;
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -360,7 +348,6 @@ function update(source) {
 }
 
 // Toggle children on click.
-//----------->>>>>>>>>>>
 function click(d) {
   if (d.children) {
     d._children = d.children;
@@ -375,162 +362,8 @@ function click(d) {
 ';
 
 return $js;
-//return '<script src="http://156.35.95.149/moodle/blocks/treeanalytics/tree.js"/>';
 }
 
-function geJSON(){
-return '
-
-				{
-					"name": "User",
-					"parent": "null",
-					"value": 10,
-					"active": 1,
-					"rootNode": 1,
-					"children": [
-						{
-							"name": "TTR=HIGH",
-							"parent": "User",
-							"value": 10,
-							"active": 0,
-							"children": [
-								{
-									"name": "TTA=HIGH",
-									"parent": "TTR=HIGH",
-									"value": 10,
-									"active": 0,
-									"children": [
-										{
-											"name": "FAIL",
-											"parent": "TTA=HIGH",
-											"value": 10,
-											"active": 0
-										}
-									]
-								},
-								{
-									"name": "TTA=LOW",
-									"parent": "TTR=HIGH",
-									"value": 10,
-									"active": 0,
-									"children": [
-										{
-											"name": "R=LOW",
-											"parent": "TTA=LOW",
-											"value": 10,
-											"active": 0,
-											"children": [
-												{
-													"name": "PASS",
-													"parent": "R=LOW",
-													"value": 10,
-													"active": 0
-												}
-											]
-										}
-									]
-								}
-							]
-						},
-						{
-							"name": "TTR=MEDIUM",
-							"parent": "User",
-							"value": 10,
-							"active": 0,
-							"children": [
-								{
-									"name": "UNKNOWN",
-									"parent": "TTR=MEDIUM",
-									"value": 10,
-									"active": 0
-								}
-							]
-						},
-						{
-							"name": "TTR=LOW",
-							"parent": "User",
-							"value": 10,
-							"active": 1,
-							"children": [
-								{
-									"name": "Q=MEDIUM",
-									"parent": "TTR=LOW",
-									"value": 10,
-									"active": 1,
-									"children": [
-										{
-											"name": "TTQ=LOW",
-											"parent": "Q=MEDIUM",
-											"value": 10,
-											"active": 0,
-											"children": [
-												{
-													"name": "GOOD",
-													"parent": "TTQ=LOW",
-													"value": 10,
-													"active": 0
-												}
-											]
-										}
-									]
-								},
-								{
-									"name": "TTA=LOW",
-									"parent": "TTR=LOW",
-									"value": 10,
-									"active": 1,
-									"children": [
-										{
-											"name": "Q=MEDIUM",
-											"parent": "TTA=LOW",
-											"value": 10,
-											"active": 1,
-											"children": [
-												{
-													"name": "GOOD",
-													"parent": "Q=MEDIUM",
-													"value": 10,
-													"active": 1
-												}
-											]
-										},
-										{
-											"name": "Q=HIGH",
-											"parent": "TTA=LOW",
-											"value": 10,
-											"active": 0,
-											"children": [
-												{
-													"name": "GOOD",
-													"parent": "Q=HIGH",
-													"value": 10,
-													"active": 0
-												}
-											]
-										}
-									]
-								},
-								{
-									"name": "R=HIGH",
-									"parent": "TTR=LOW",
-									"value": 10,
-									"active": 1,
-									"children": [
-										{
-											"name": "GOOD",
-											"parent": "R=HIGH",
-											"value": 10,
-											"active": 1
-										}
-									]
-								}
-							]
-						}
-					]
-				}
-
-';
-}
 
 function tempJSON(){
 return'
