@@ -1,4 +1,11 @@
 <rules>
+	<rule id="0" tree="1">
+		<condition>
+			<variable>RESOURCES</variable>
+			<value>LOW</value>
+		</condition>
+		<performance>GOOD</performance>
+	</rule>
 	<rule id="1" tree="1">
 		<condition>
 			<variable>RESOURCES</variable>
@@ -65,7 +72,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>HIGH</value>
 		</condition>
 		<performance>FAIL</performance>
@@ -192,7 +199,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<performance>GOOD</performance>
@@ -222,7 +229,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<performance>PASS</performance>
@@ -248,7 +255,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<performance>GOOD</performance>
@@ -281,7 +288,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<performance>PASS</performance>
@@ -292,7 +299,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>LOW</value>
 		</condition>
 		<performance>PASS</performance>
@@ -307,7 +314,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<performance>FAIL</performance>
@@ -337,7 +344,7 @@
 			<value>MEDIUM</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<performance>FAIL</performance>
@@ -378,7 +385,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>HIGH</value>
 		</condition>
 		<performance>PASS</performance>
@@ -393,7 +400,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>HIGH</value>
 		</condition>
 		<performance>PASS</performance>
@@ -408,7 +415,7 @@
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>LOW</value>
 		</condition>
 		<performance>PASS</performance>
@@ -475,7 +482,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>HIGH</value>
 		</condition>
 		<performance>PASS</performance>
@@ -512,7 +519,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<performance>FAIL</performance>
@@ -527,7 +534,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>HIGH</value>
 		</condition>
 		<performance>PASS</performance>
@@ -538,7 +545,7 @@
 			<value>MEDIUM</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>LOW</value>
 		</condition>
 		<condition>
@@ -553,7 +560,7 @@
 			<value>MEDIUM</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>LOW</value>
 		</condition>
 		<performance>GOOD</performance>
@@ -564,11 +571,11 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>LOW</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>HIGH</value>
 		</condition>
 		<performance>GOOD</performance>
@@ -579,7 +586,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>LOW</value>
 		</condition>
 		<condition>
@@ -594,7 +601,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>LOW</value>
 		</condition>
 		<condition>
@@ -609,7 +616,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>LOW</value>
 		</condition>
 		<performance>GOOD</performance>
@@ -620,7 +627,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<condition>
@@ -635,7 +642,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>MEDIUM</value>
 		</condition>
 		<performance>FAIL</performance>
@@ -646,7 +653,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>HIGH</value>
 		</condition>
 		<condition>
@@ -661,7 +668,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>TIMETOEXTERNALS</variable>
+			<variable>TIMETORECOMMENDED</variable>
 			<value>HIGH</value>
 		</condition>
 		<performance>GOOD</performance>
@@ -717,7 +724,7 @@
 			<value>HIGH</value>
 		</condition>
 		<condition>
-			<variable>EXTERNALRESOURCES</variable>
+			<variable>RECOMMENDEDRESOURCES</variable>
 			<value>HIGH</value>
 		</condition>
 		<performance>FAIL</performance>

@@ -1,5 +1,5 @@
 <?php
-require('jsCreation2.php');
+require('jsCreation.php');
 require('htmlCreation.php');
 class block_treeanalytics extends block_base {
 	public function init() {
@@ -14,11 +14,12 @@ class block_treeanalytics extends block_base {
 	 
 		$this->content         =  new stdClass;
 		$this->content->text   = '<script src="http://d3js.org/d3.v3.min.js"></script>';
-//		$this->content->text.=style();
-		$this->content->text.=createJSON();
+	$this->content->text.=style();
+//createJSON();
+//		$this->content->text.=createJSON();
 		/**/		
 		$this->content->text.='<br>';	
-	$this->content->text.= getStudentValues();	
+//	$this->content->text.= getStudentValues();	
 	$this->content->text.='
 <div class="container">
   
