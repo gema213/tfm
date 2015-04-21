@@ -168,7 +168,10 @@ function createJSON(){
 	$studentValues = generateStudentValues();
 	$xmlIterator=xmlFile();
 
-	$rules = $xmlIterator -> xpath("//rule[@tree='1']");
+$numberTree=1;
+
+	//$rules = $xmlIterator -> xpath("//rule[@tree='1']");
+	$rules = $xmlIterator -> xpath("//rule[@tree=$numberTree]");
 
 	// Root node
 	$rootNode = createRoot();

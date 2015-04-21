@@ -1,11 +1,4 @@
 <rules>
-	<rule id="0" tree="1">
-		<condition>
-			<variable>RESOURCES</variable>
-			<value>LOW</value>
-		</condition>
-		<performance>GOOD</performance>
-	</rule>
 	<rule id="1" tree="1">
 		<condition>
 			<variable>RESOURCES</variable>
