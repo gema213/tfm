@@ -1,0 +1,1483 @@
+<html>
+<head>
+<!--<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>-->
+		<style>
+body{background:yellow;}
+.tree{background:white;}
+			.node circle {		 
+			  stroke-width: 3px;
+			}
+
+			.node	.inactive{fill:#ddd;stroke:#ccc;}
+			.node	.active{fill:aqua;stroke:blue;}
+			.node .good{fill:#00FF00;stroke:#04B404;}/*green*/
+			.node .pass{fill:#FE9A2E;stroke:#FF4000;}/*orange*/
+			.node .fail{fill:#FF0000;stroke:#610B0B;}/*red*/
+
+			.node text {font: 12px sans-serif; }
+			.node  .off {fill:gray; display:none;}
+			.node .on{fill:black;}
+
+			.link {
+			  fill: none;
+			  stroke: #ccc;
+			  stroke-width: 2px;
+			}
+			
+			div.tooltip {
+                position: absolute;
+                text-align: center;
+                padding: 20px;
+                font: 10px bold; 				
+			//	font-family: 'Chewy', cursive;
+                border: solid 3px;
+                border-radius: 5px;				
+            }	
+		</style>
+	</head>
+	<body>
+<header>
+<h1><a href="http://156.35.95.149">TFM de Gema S.Careaga</a></h1>
+</header>		
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<div class="modal-body tree">
+			<script>
+			var margin = {top: 0, right: 0, bottom: 0, left:50},
+				width = 1000 - margin.right - margin.left,
+				height = 590 - margin.top - margin.bottom;
+				
+			var i = 0,
+				duration = 750,
+				root;
+			var tree = d3.layout.tree()
+				.size([height, width]);
+			var diagonal = d3.svg.diagonal()
+				.projection(function(d) { return [d.y, d.x]; });
+			var svg=d3.select(".tree").append("svg")
+				.attr("width", width + margin.right + margin.left)
+				.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+				
+				// load the external data
+			var treeData=[{
+				"name": "User",
+				"value": 10,
+				"active": 1,
+				"children": [
+					{
+						"parent": "User",
+						"value": 10,
+						"active": 1,
+						"isLeaf": 0,
+						"name": "RESOURCES=LOW",
+						"children": [                
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 1,
+								"isLeaf": 0,
+								"name": "QUIZZES=LOW",
+								"children": [
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 1,
+										"isLeaf": 1,
+										"name": "FAIL"
+									},
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOQUIZZES=HIGH",
+										"children": [
+											{
+												"parent": "TIMETOQUIZZES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									},
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 1,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=LOW",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=LOW",
+												"value": 10,
+												"active": 1,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									},
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOASSIGNMENTS=HIGH",
+										"children": [
+											{
+												"parent": "TIMETOASSIGNMENTS=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									},
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORECOMMENDED=HIGH",
+										"children": [
+											{
+												"parent": "TIMETORECOMMENDED=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "QUIZZES=MEDIUM",
+								"children": [
+									{
+										"parent": "QUIZZES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOQUIZZES=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETOQUIZZES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "QUIZZES=HIGH",
+								"children": [
+									{
+										"parent": "QUIZZES=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									},
+									{
+										"parent": "QUIZZES=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOASSIGNMENTS=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETOASSIGNMENTS=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOASSIGNMENTS=LOW",
+								"children": [
+									{
+										"parent": "TIMETOASSIGNMENTS=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOASSIGNMENTS=MEDIUM",
+								"children": [
+									{
+										"parent": "TIMETOASSIGNMENTS=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOQUIZZES=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETOQUIZZES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOASSIGNMENTS=HIGH",
+								"children": [
+									{
+										"parent": "TIMETOASSIGNMENTS=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "FAIL"
+									},
+									{
+										"parent": "TIMETOASSIGNMENTS=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOASSIGNMENTS=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOFIRSTACTION=HIGH",
+										"children": [
+											{
+												"parent": "TIMETOFIRSTACTION=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOQUIZZES=LOW",
+								"children": [
+									{
+										"parent": "TIMETOQUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORECOMMENDED=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETORECOMMENDED=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOQUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOFIRSTACTION=HIGH",
+										"children": [
+											{
+												"parent": "TIMETOFIRSTACTION=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOQUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "RECOMMENDEDRESOURCES=MEDIUM",
+										"children": [
+											{
+												"parent": "RECOMMENDEDRESOURCES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOQUIZZES=HIGH",
+								"children": [
+									{
+										"parent": "TIMETOQUIZZES=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "FAIL"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOFIRSTACTION=LOW",
+								"children": [
+									{
+										"parent": "TIMETOFIRSTACTION=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "RECOMMENDEDRESOURCES=MEDIUM",
+										"children": [
+											{
+												"parent": "RECOMMENDEDRESOURCES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOFIRSTACTION=MEDIUM",
+								"children": [
+									{
+										"parent": "TIMETOFIRSTACTION=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "FAIL"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETORESOURCES=MEDIUM",
+								"children": [
+									{
+										"parent": "TIMETORESOURCES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "FAIL"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "RECOMMENDEDRESOURCES=MEDIUM",
+								"children": [
+									{
+										"parent": "RECOMMENDEDRESOURCES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "PASS"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=LOW",
+								"value": 10,
+								"active": 1,
+								"isLeaf": 0,
+								"name": "TIMETORECOMMENDED=LOW",
+								"children": [
+									{
+										"parent": "TIMETORECOMMENDED=LOW",
+										"value": 10,
+										"active": 1,
+										"isLeaf": 1,
+										"name": "PASS"
+									}
+								]
+							}
+						]
+					},
+					{
+						"parent": "User",
+						"value": 10,
+						"active": 0,
+						"isLeaf": 0,
+						"name": "RESOURCES=MEDIUM",
+						"children": [
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "QUIZZES=LOW",
+								"children": [
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORECOMMENDED=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETORECOMMENDED=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									},
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "PASS"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "QUIZZES=MEDIUM",
+								"children": [
+									{
+										"parent": "QUIZZES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 0,
+												"name": "RECOMMENDEDRESOURCES=MEDIUM",
+												"children": [
+													{
+														"parent": "RECOMMENDEDRESOURCES=MEDIUM",
+														"value": 10,
+														"active": 0,
+														"isLeaf": 1,
+														"name": "FAIL"
+													}
+												]
+											}
+										]
+									},
+									{
+										"parent": "QUIZZES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "PASS"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "QUIZZES=HIGH",
+								"children": [
+									{
+										"parent": "QUIZZES=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOFIRSTACTION=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETOFIRSTACTION=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									},
+									{
+										"parent": "QUIZZES=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "RECOMMENDEDRESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "RECOMMENDEDRESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOQUIZZES=LOW",
+								"children": [
+									{
+										"parent": "TIMETOQUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "RECOMMENDEDRESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "RECOMMENDEDRESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOQUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORECOMMENDED=LOW",
+										"children": [
+											{
+												"parent": "TIMETORECOMMENDED=LOW",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOQUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOQUIZZES=MEDIUM",
+								"children": [
+									{
+										"parent": "TIMETOQUIZZES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=LOW",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=LOW",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOQUIZZES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOFIRSTACTION=LOW",
+										"children": [
+											{
+												"parent": "TIMETOFIRSTACTION=LOW",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOASSIGNMENTS=LOW",
+								"children": [
+									{
+										"parent": "TIMETOASSIGNMENTS=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOASSIGNMENTS=HIGH",
+								"children": [
+									{
+										"parent": "TIMETOASSIGNMENTS=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "RECOMMENDEDRESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "RECOMMENDEDRESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOASSIGNMENTS=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "PASS"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOFIRSTACTION=LOW",
+								"children": [
+									{
+										"parent": "TIMETOFIRSTACTION=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOFIRSTACTION=HIGH",
+								"children": [
+									{
+										"parent": "TIMETOFIRSTACTION=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORECOMMENDED=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETORECOMMENDED=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOFIRSTACTION=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "RECOMMENDEDRESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "RECOMMENDEDRESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETORECOMMENDED=LOW",
+								"children": [
+									{
+										"parent": "TIMETORECOMMENDED=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=MEDIUM",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "RECOMMENDEDRESOURCES=LOW",
+								"children": [
+									{
+										"parent": "RECOMMENDEDRESOURCES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							}
+						]
+					},
+					{
+						"parent": "User",
+						"value": 10,
+						"active": 0,
+						"isLeaf": 0,
+						"name": "RESOURCES=HIGH",
+						"children": [
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETORECOMMENDED=LOW",
+								"children": [
+									{
+										"parent": "TIMETORECOMMENDED=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "RECOMMENDEDRESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "RECOMMENDEDRESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									},
+									{
+										"parent": "TIMETORECOMMENDED=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOQUIZZES=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETOQUIZZES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									},
+									{
+										"parent": "TIMETORECOMMENDED=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOFIRSTACTION=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETOFIRSTACTION=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									},
+									{
+										"parent": "TIMETORECOMMENDED=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETORECOMMENDED=MEDIUM",
+								"children": [
+									{
+										"parent": "TIMETORECOMMENDED=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									},
+									{
+										"parent": "TIMETORECOMMENDED=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "FAIL"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETORECOMMENDED=HIGH",
+								"children": [
+									{
+										"parent": "TIMETORECOMMENDED=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOASSIGNMENTS=HIGH",
+										"children": [
+											{
+												"parent": "TIMETOASSIGNMENTS=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									},
+									{
+										"parent": "TIMETORECOMMENDED=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOASSIGNMENTS=LOW",
+								"children": [
+									{
+										"parent": "TIMETOASSIGNMENTS=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOASSIGNMENTS=MEDIUM",
+								"children": [
+									{
+										"parent": "TIMETOASSIGNMENTS=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOASSIGNMENTS=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "QUIZZES=HIGH",
+										"children": [
+											{
+												"parent": "QUIZZES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "GOOD"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOASSIGNMENTS=HIGH",
+								"children": [
+									{
+										"parent": "TIMETOASSIGNMENTS=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "RECOMMENDEDRESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "RECOMMENDEDRESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOASSIGNMENTS=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									},
+									{
+										"parent": "TIMETOASSIGNMENTS=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "QUIZZES=LOW",
+								"children": [
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETOQUIZZES=HIGH",
+										"children": [
+											{
+												"parent": "TIMETOQUIZZES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									},
+									{
+										"parent": "QUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "FAIL"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "QUIZZES=MEDIUM",
+								"children": [
+									{
+										"parent": "QUIZZES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "QUIZZES=HIGH",
+								"children": [
+									{
+										"parent": "QUIZZES=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=MEDIUM",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=MEDIUM",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "PASS"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOQUIZZES=LOW",
+								"children": [
+									{
+										"parent": "TIMETOQUIZZES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOQUIZZES=MEDIUM",
+								"children": [
+									{
+										"parent": "TIMETOQUIZZES=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOQUIZZES=HIGH",
+								"children": [
+									{
+										"parent": "TIMETOQUIZZES=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 0,
+										"name": "TIMETORESOURCES=HIGH",
+										"children": [
+											{
+												"parent": "TIMETORESOURCES=HIGH",
+												"value": 10,
+												"active": 0,
+												"isLeaf": 1,
+												"name": "FAIL"
+											}
+										]
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOFIRSTACTION=LOW",
+								"children": [
+									{
+										"parent": "TIMETOFIRSTACTION=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOFIRSTACTION=MEDIUM",
+								"children": [
+									{
+										"parent": "TIMETOFIRSTACTION=MEDIUM",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETOFIRSTACTION=HIGH",
+								"children": [
+									{
+										"parent": "TIMETOFIRSTACTION=HIGH",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "FAIL"
+									}
+								]
+							},
+							{
+								"parent": "RESOURCES=HIGH",
+								"value": 10,
+								"active": 0,
+								"isLeaf": 0,
+								"name": "TIMETORESOURCES=LOW",
+								"children": [
+									{
+										"parent": "TIMETORESOURCES=LOW",
+										"value": 10,
+										"active": 0,
+										"isLeaf": 1,
+										"name": "GOOD"
+									}
+								]
+							}
+						]
+					}
+				]
+			}];  	
+			root = treeData[0];
+			root.x0=0;
+			root.y0=height/2;
+
+			collapse(root);
+		
+			update(root,true);
+
+			function collapse(d) {
+				if(d.active==0){
+					if (d.children) {
+					  d._children = d.children;
+					  d._children.forEach(collapse);
+					  d.children = null;
+					}	
+				}else{
+					if (d.children) {					  
+					  d.children.forEach(collapse);
+					}
+				}
+			}
+			
+			 
+			function update(source,initialUpdate) {
+			  // Compute the new tree layout.
+			  var nodes = tree.nodes(root).reverse(),
+				  links = tree.links(nodes);
+			  // Normalize for fixed-depth.
+			  nodes.forEach(function(d) { d.y = d.depth * 180; });
+			  // Update the nodes
+			  var node = svg.selectAll("g.node")
+				  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+			  // Enter any new nodes at the parents previous position.
+			  var nodeEnter = node.enter().append("g")
+				.attr("class", "node")
+				.attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+				.on("click", click)
+				.on("mouseover", function(d){mouseoverNode(d);});
+				  
+			var circle=  nodeEnter.append("circle")
+				.attr("r", function(d){return d.value;})
+				.attr("class", function(d){
+									if(d.active==1){
+										if(d.name=="GOOD"){return "good";} 
+										if( d.name=="PASS"){return "pass";}
+										if(d.name=="FAIL"){return "fail";}			
+										if(d.name=="UNKNOWN"){return "unknown";}else{
+										return "active";}
+									}else{
+										return "inactive";
+									};
+								});
+					if(initialUpdate){
+					circle.style("display", function(d){
+					if(d.active==0){return "none";}
+								});}			
+				  
+			  // Transition nodes to their new position.
+			  var nodeUpdate = node.transition()
+				  .duration(duration)
+				  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+			  nodeUpdate.select("circle")
+				 .attr("r", function(d){return d.value;});
+			  // Transition exiting nodes to the parents new position.
+			  var nodeExit = node.exit().transition()
+				  .duration(duration)
+				  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+				  .remove();
+			  nodeExit.select("circle")
+				  .attr("r", 1e-10);
+			
+			  // Update the links
+			  var link = svg.selectAll("path.link")
+				  .data(links, function(d) { return d.target.id; });
+			   // Enter any new links at the parents previous position.
+			var nodeCon= link.enter().insert("path", "g")
+				.attr("class", function(d) {
+					if (d.target.active == 1) {
+						return "link active";
+					}
+					return "link inactive";
+				})
+				  .attr("d", function(d) {
+					var o = {x: source.x0, y: source.y0};
+					return diagonal({source: o, target: o});
+				  });
+				  
+				if(initialUpdate){
+					nodeCon  .style("stroke", function (d){ 
+						if(d.target.active==0){
+							return "none";
+						}
+					});	
+				}
+								
+			  // Transition links to their new position.
+			  link.transition()
+				  .duration(duration)
+				  .attr("d", diagonal);
+			  // Transition exiting nodes to the parents new position.
+			  link.exit().transition()
+				  .duration(duration)
+				  .attr("d", function(d) {
+					var o = {x: source.x, y: source.y};
+					return diagonal({source: o, target: o});
+				  })
+				  .remove();
+			  // Stash the old positions for transition.
+			  nodes.forEach(function(d) {
+				d.x0 = d.x;
+				d.y0 = d.y;
+			  });
+			}
+			// Toggle children on click.
+			function click(d) {
+			  if (d.children) { 
+				d._children = d.children;
+				d.children = null;
+			  } else { 
+				d.children = d._children;
+				d._children = null;
+			  }
+			  update(d,false);
+			  }
+			  
+			 // Add tooltip div		
+			function mouseoverTooltip(d) {
+			alert(d);
+			
+			}
+			function getNodeName(original,space) {
+				var name = "";	
+				var separator="";
+				if(space){separator=" ";}
+				$.each(original.split("="), function( index, value ) {
+					name+=value+separator;
+				});
+				name=$.trim(name);
+				return name.replace(" ", ": ");
+			}
+			
+			function mouseoverNode(d) {
+				var tooltipName = getNodeName(d.name,false);	
+		
+				if( $( "#"+tooltipName ).length<1){	
+					var div = d3.select(".tree").append("div")
+							.attr("class", "tooltip" )
+							.attr("id",tooltipName)
+							.text(d.name)
+							.transition()
+							.duration(300)
+							.style("opacity", 1)
+							.style("left", (d3.event.pageX ) + "px")
+							.style("top", (d3.event.pageY) + "px")
+							.style("background",getColor(d))
+							.style("border-color",getColorBorder(d))
+							;
+				}else{
+					$( "#"+tooltipName ).remove();
+				}	
+			}
+
+			function getColor(n){	
+				if(n.active==1){
+					switch(n.name){
+						case "FAIL":
+						return "#FF0000";
+						case "PASS":
+						return "#FE9A2E";
+						case "GOOD":
+						return "#00FF00";		
+						default :
+						return "aqua";
+						//return "tooltip active";
+					}		
+				}else{
+					return "#ddd";
+				//	return "tooltip inactive";
+				}
+			}
+
+
+			function getColorBorder(n){				
+				if(n.active==1){
+					switch(n.name){
+						case "FAIL":
+						return "#610B0B";
+						case "PASS":
+						return "#FF4000";
+						case "GOOD":
+						return "#04B404";		
+						default:
+						return "blue";					
+					}
+				}else{
+					return "#ccc";
+				}
+			}
+
+			 
+			</script>
+		</div>
+	</body>
+</html>
