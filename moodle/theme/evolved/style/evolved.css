@@ -2,6 +2,11 @@
 -------------------------*/
 #dock {background: #32352c; }
 
+#page-header {
+  margin-top:5px;
+  margin-bottom: 35px;
+}
+
 .arrow {color: #3d3d3d; }
 
 .block .header h2 {color: #3d3d3d;}
@@ -13,7 +18,7 @@
 }
 
 .pagelayout-report .no-overflow {
-overflow: auto;
+overflow: hidden;
 }
 
 .service {
@@ -21,7 +26,7 @@ overflow: auto;
 	padding:10px;
 	margin: 10px;
 	text-align:left;
-        background-color: [[setting:marketboxcolor]];
+  background-color: [[setting:marketboxcolor]];
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;
@@ -33,6 +38,7 @@ overflow: auto;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  z-index:0;
 }
 
 /*Frontpage Login*/
@@ -115,18 +121,6 @@ overflow: auto;
 	border-bottom: 3px solid #307d63;
 	cursor: pointer;
 }
-
-/*.loginbox {
-background: rgba(100,100,100,.1);
-padding:50px;
--webkit-box-shadow: 1px 0px 29px 14px rgba(255,255,255,0.6);
--moz-box-shadow: 1px 0px 29px 14px rgba(255,255,255,0.6);
-box-shadow: 1px 0px 29px 14px rgba(255,255,255,0.6);
--webkit-border-radius:10px;
--moz-border-radius:10px;
-border-radius:10px;
-}*/
-
 .loginbox h2{
 color: #DBDBDB;
 text-align:center;
@@ -141,15 +135,6 @@ color: #fff;
 .loginbox p{
 color: #fff;
 }
-
-/*.loginpanel .loginsub {
-background: rgba(0,0,0,.6);
--webkit-border-radius:10px;
--moz-border-radius:10px;
-border-radius:10px;
-margin: 10px;
-}*/
-
 .loginpanel .loginsub {
 background: rgba(0,0,0,.8);
 max-width:400px;
@@ -175,6 +160,7 @@ border-radius:10px;
 margin: auto;
 }
 
+
 /* Alerts (aardvark) */
 #page-header-generalalert {
     clear:both;
@@ -189,7 +175,6 @@ margin: auto;
 	-moz-border-radius:4px;
 	border-radius:4px;
 }
-
 #page-header-generalalert:before {
     background-color: #ff9f00;
     color: #FFFFFF;
@@ -208,7 +193,6 @@ margin: auto;
 	border-radius: 3px 3px 3px 3px;
 	text-shadow:none;
 }
-
 #page-header-snowalert {
     clear:both;
 	display: block;
@@ -222,7 +206,6 @@ margin: auto;
 	-moz-border-radius:4px;
 	border-radius:4px;
 }
-
 #page-header-snowalert:before {
     background-color: #3a87ad;
     color: #FFFFFF;
@@ -241,6 +224,7 @@ margin: auto;
 	border-radius: 3px 3px 3px 3px;
 	text-shadow:none;
 }
+
 
 
 /*Google Fonts (Theme Essential)*/
@@ -467,6 +451,66 @@ for the colored icons in the blocks.
 }
 
 
+/*box shadows */
+
+.block, .service {
+  	position:relative;       
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.block:before, .block:after, .service:before, .service:after {
+content:"";
+    position:absolute; 
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+
+#region-main {
+position:relative;       
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+#region-main:before, #region-main:after {
+content:"";
+    position:absolute; 
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+
+#region-main:after
+{
+  right:10px; 
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg); 
+       -moz-transform:skew(8deg) rotate(3deg);     
+        -ms-transform:skew(8deg) rotate(3deg);     
+         -o-transform:skew(8deg) rotate(3deg); 
+            transform:skew(8deg) rotate(3deg);
+}
+
+
+
+
 /*Social Wall*/
 
 .format-socialwall .course-content ul.topics li.section {
@@ -474,11 +518,6 @@ border-bottom: 0px solid #ccc;
 margin-top: 0;
 }
 
-/*.mform {
-background-color: #f2f2f2;
-padding: 10px;
-border-radius: 10px;
-}*/
 .format-socialwall #section-2 .content {
 background-color: #f7f7f7;
 padding: 10px;
@@ -491,6 +530,7 @@ margin-bottom: 15px;
 -webkit-box-shadow: 0 0 25px #ccc;
 box-shadow: 0px 0px 25px #ccc;
 }
+
 .tl-post {
 margin: 30px 0px 50px 0px;
 padding:15px;
@@ -510,50 +550,44 @@ padding: 5px 5px 5px 50px;
 //border-right: 1px solid #ccc;
 margin:0px;
 }
-.tl-text {
+
+.format-socialwall .tl-text {
 margin-left: 40px;
-padding: 0 5px;
+padding:10px;
 border: 2px solid #efefef;
-padding: 10px;
 -moz-box-shadow: 0px 0px 25px #e7e7e7;
 -webkit-box-shadow: 0 0 25px #e7e7e7;
 box-shadow: 0px 0px 25px #e7e7e7;
 border-radius: 4px 4px 4px 4px;
 }
-/*.tl-text {
-margin-left: 40px;
-//border: none;
-border: 1px solid #efefef;
-background-color: #f7f7f7;
-padding:7px;
-border-radius: 10px 10px 10px 10px;
-}*/
 
-.tl-comments {
+.format-socialwall .tl-comments {
 background-color: #f7f7f7;
 padding:15px;
 margin:0px;
 }
 
-.tl-comment {
+.format-socialwall .tl-comment {
 padding-left:25px;
 padding-top: 0px;
 padding-bottom: 0px;
 }
 
-.tl-post-actionarea {
+.format-socialwall .tl-post-actionarea {
 //border: 1px solid #ccc;
 padding: 4px 4px 10px 4px;
 //background: #F0F3F7;
 //border-radius: 0px 0px 5px 5px;
 }
-.tl-timeago, .tl-counts {
+
+.format-socialwall .tl-timeago, .tl-counts {
 font-size: 12px;
 color: #666;
 line-height: 15px;
 padding-bottom: 5px;
 }
-.like {
+
+.format-socialwall .like {
    border-top: 1px solid #96d1f8;
    background: #65a9d7;
    background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
@@ -576,18 +610,18 @@ padding-bottom: 5px;
    vertical-align: middle;
    }
 
-.like:hover {
+.format-socialwall .like:hover {
    border-top-color: #28597a;
    background: #28597a;
    color: #ccc;
    }
 
-.like:active {
+.format-socialwall .like:active {
    border-top-color: #1b435e;
    background: #1b435e;
    }
 
-.likenomore {
+.format-socialwall .likenomore {
    border-top: 1px solid #96d1f8;
    background: #65a9d7;
    background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
@@ -609,17 +643,17 @@ padding-bottom: 5px;
    text-decoration: none;
    vertical-align: middle;
    }
-.likenomore:hover {
+.format-socialwall .likenomore:hover {
    border-top-color: #28597a;
    background: #28597a;
    color: #ccc;
    }
-.likenomore:active {
+.format-socialwall .likenomore:active {
    border-top-color: #1b435e;
    background: #1b435e;
    }
 
-form.tl-commentform {
+.format-socialwall form.tl-commentform {
 padding-top: 10px;
 }
 
@@ -628,3 +662,151 @@ margin:0px;
 }
 
 
+/* BREADCRUMBS */
+.breadcrumb-nav {  
+  background-color:none;
+}
+
+.breadcrumb {
+  /*centering*/
+  display: inline-block;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  border-radius: 5px;
+  background-color:none;
+margin:0px;
+padding:0px;
+background: none;
+}
+.breadcrumb a {
+  color:white;
+}
+
+.breadcrumb li {
+  text-decoration: none;
+  outline: none;
+  display: block;
+  float: left;
+  font-size: 14px;
+  line-height: 36px;
+  color: white;
+  /*need more margin on the left of links to accomodate the numbers*/
+  padding: 0 15px 0 30px;
+  background: #666;
+  background: linear-gradient(#666, #333);
+  position: relative;
+    background-color:none;
+}
+
+/*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+.breadcrumb li:first-child {
+  padding-left: 25px;
+  border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+}
+
+.breadcrumb li:first-child:before {
+  left: 14px;
+}
+
+.breadcrumb li:last-child {
+  border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
+  padding-right: 20px;
+}
+
+/*hover/active styles*/
+.breadcrumb li.active, .breadcrumb li:hover{
+  background: #333;
+  background: linear-gradient(#333, #000);
+}
+
+.breadcrumb li.active:after, .breadcrumb li:hover:after {
+  background: #333;
+  background: linear-gradient(135deg, #333, #000);
+}
+
+/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+.breadcrumb li:after {
+  content: '';
+  position: absolute;
+  top: 0; 
+  right: -18px; /*half of square's length*/
+  /*same dimension as the line-height of .breadcrumb li */
+  width: 36px; 
+  height: 36px;
+  /*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's: 
+  length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+  if diagonal required = 1; length = 1/1.414 = 0.707*/
+  transform: scale(0.707) rotate(45deg);
+  /*we need to prevent the arrows from getting buried under the next link*/
+  z-index: 1;
+  /*background same as links but the gradient will be rotated to compensate with the transform applied*/
+  background: #666;
+  background: linear-gradient(135deg, #666, #333);
+  /*stylish arrow design using box shadow*/
+  box-shadow: 
+    2px -2px 0 2px rgba(0, 0, 0, 0.4), 
+    3px -3px 0 2px rgba(255, 255, 255, 0.1);
+  /*
+    5px - for rounded arrows and 
+    50px - to prevent hover glitches on the border created using shadows*/
+  border-radius: 0 5px 0 50px;
+}
+/*we dont need an arrow after the last link*/
+.breadcrumb li:last-child:after {
+  content: none;
+}
+
+.course-title {
+  position: relative;
+  border-bottom: 4px solid #000;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  padding-left:15px;
+  padding-right: 15px;
+}
+
+#editbutton {
+  float: right;
+}
+
+.course-title:after, .course-title:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.course-title:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-width: 20px;
+  margin-left: -20px;
+}
+.course-title:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-top-color: #000;
+  border-width: 26px;
+  margin-left: -26px;
+}
+
+#dndupload-status {
+  position: fixed;
+  left: 0;
+  width: 40%;
+  margin: 0 30%;
+  padding: 6px;
+  border: 1px solid #bce8f1;
+  text-align: center;
+  background: #d9edf7;
+  color: #3a87ad;
+  z-index: 100;
+  -webkit-box-shadow: 2px 2px 5px 1px #ccc;
+  -moz-box-shadow: 2px 2px 5px 1px #ccc;
+  box-shadow: 2px 2px 5px 1px #ccc;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}

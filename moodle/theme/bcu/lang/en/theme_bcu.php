@@ -223,6 +223,7 @@ $string['frontpagerenderer'] = 'Frontpage Course Boxes';
 $string['frontpagerendererdesc'] = 'Control the way that the coure boxes on the front page are rendered.';
 $string['frontpagerendereroption1'] = 'Tiles';
 $string['frontpagerendereroption2'] = 'Tiles w/ overlay';
+$string['frontpagerendereroption3'] = 'Moodle default';
 
 $string['rendereroverlaycolour'] = 'Overlay colour';
 $string['rendereroverlaycolourdesc'] = 'The colour of the overlay, when the "Tiles w/ overlay" renderer is selected.';
@@ -263,3 +264,38 @@ $string['blocksidedesc'] = 'Control whether blocks appear on the left or right o
 
 $string['leftblocks'] = 'Left';
 $string['rightblocks'] = 'Right';
+
+$string['helptarget'] = 'Help target';
+$string['helptargetdesc'] = 'Do you want the help link to open in a new window?';
+
+$string['targetnewwindow'] = 'New window';
+$string['targetsamewindow'] = 'Same window';
+
+$string['tilesshowallcontacts'] = 'Show all course contacts';
+$string['tilesshowallcontactsdesc'] = 'Show all course contacts or just one';
+
+$string['toolsmenu'] = 'Tools menu';
+$string['toolsmenudesc'] = 'You can configure links to be shown under a tools menu. Each line consists of some menu text, a link URL (optional), a tooltip title (optional) and a language code or comma-separated list of codes (optional, for displaying the line to users of the specified language only), separated by pipe characters. You can specify a structure using hyphens. For example:
+<pre>
+Moodle community|https://moodle.org
+-Moodle free support|https://moodle.org/support
+-Moodle development|https://moodle.org/development
+--Moodle Docs|http://docs.moodle.org|Moodle Docs
+--German Moodle Docs|http://docs.moodle.org/de|Documentation in German|de
+Moodle.com|http://moodle.com/
+</pre>';
+
+$string['toolsmenulabel'] = 'Tools';
+$string['events'] = 'Events';
+$string['mysites'] = 'My Sites';
+$string['people'] = 'People';
+$string['help'] = 'Help';
+
+$string['dividingline'] = 'Dividing line in header and footer';
+$string['dividinglinedesc'] = 'The colour for the dividing line found in the header and footer';
+$string['navbarborder'] = 'Navbar bottom border colour';
+$string['navbarborderdesc'] = 'Colour for the bottom of the navbar';
+$string['navbarhover'] = 'Navbar hover colour';
+$string['navbarhoverdesc'] = 'When hovering on a navigation item, the colour of the border of the navbar.';
+$string['showfooterblocks'] = 'Show footer blocks';
+$string['showfooterblocksdesc'] = 'Show / hide the four configurable footer blocks';

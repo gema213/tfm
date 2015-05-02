@@ -23,17 +23,16 @@
  * @copyright   2014 Gareth J Barnard, David Bezemer
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class theme_essential_core_renderer extends core_renderer
-{
+class theme_essential_core_renderer extends core_renderer {
     public $language = null;
+    protected $theme = null;
 
     /**
      * This renders the breadcrumbs
      * @return string $breadcrumbs
      */
-    public function navbar()
-    {
-        $breadcrumbstyle = theme_essential_get_setting('breadcrumbstyle');
+    public function navbar() {
+        $breadcrumbstyle = $this->get_setting('breadcrumbstyle');
         if ($breadcrumbstyle) {
             if ($breadcrumbstyle == '4') {
                 $breadcrumbstyle = '1'; // Fancy style with no collapse.
@@ -59,8 +58,7 @@ class theme_essential_core_renderer extends core_renderer
      * @param string $class
      * @return string $notification
      */
-    public function notification($message, $class = 'notifyproblem')
-    {
+    public function notification($message, $class = 'notifyproblem') {
         $message = clean_text($message);
         $type = '';
 
@@ -81,8 +79,7 @@ class theme_essential_core_renderer extends core_renderer
      * Outputs the page's footer
      * @return string HTML fragment
      */
-    public function footer()
-    {
+    public function footer() {
         global $CFG;
 
         $output = $this->container_end_all(true);
@@ -97,17 +94,16 @@ class theme_essential_core_renderer extends core_renderer
                 error_log("PERF: " . $perf['txt']);
             }
             if (defined('MDL_PERFTOFOOT') || debugging() || $CFG->perfdebug > 7) {
-                $performanceinfo = theme_essential_performance_output($perf, theme_essential_get_setting('perfinfo'));
+                $performanceinfo = $this->performance_output($perf, $this->get_setting('perfinfo'));
             }
         }
 
         $footer = str_replace($this->unique_performance_info_token, $performanceinfo, $footer);
-
         $footer = str_replace($this->unique_end_html_token, $this->page->requires->get_end_code(), $footer);
-
         $this->page->set_state(moodle_page::STATE_DONE);
+        $info = '<!-- Essential theme version: '.$this->page->theme->settings->version.', developed, enhanced and maintained by Gareth J Barnard: about.me/gjbarnard -->';
 
-        return $output . $footer;
+        return $output . $footer . $info;
     }
 
     /**
@@ -115,8 +111,7 @@ class theme_essential_core_renderer extends core_renderer
      * @param string $custommenuitems
      * @return render_custom_menu for $custommenu
      */
-    public function custom_menu($custommenuitems = '')
-    {
+    public function custom_menu($custommenuitems = '') {
         global $CFG;
 
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
@@ -131,8 +126,7 @@ class theme_essential_core_renderer extends core_renderer
      * @param custom_menu $menu
      * @return string $content
      */
-    protected function render_custom_menu(custom_menu $menu)
-    {
+    protected function render_custom_menu(custom_menu $menu) {
 
         $content = '<ul class="nav">';
         foreach ($menu->get_children() as $item) {
@@ -148,8 +142,7 @@ class theme_essential_core_renderer extends core_renderer
      * @param int $level
      * @return string $content
      */
-    protected function render_custom_menu_item(custom_menu_item $menunode, $level = 0)
-    {
+    protected function render_custom_menu_item(custom_menu_item $menunode, $level = 0) {
         static $submenucount = 0;
 
         if ($menunode->has_children()) {
@@ -200,8 +193,7 @@ class theme_essential_core_renderer extends core_renderer
      * Outputs the language menu
      * @return custom_menu object
      */
-    public function custom_menu_language()
-    {
+    public function custom_menu_language() {
         global $CFG;
         $langmenu = new custom_menu();
 
@@ -234,15 +226,14 @@ class theme_essential_core_renderer extends core_renderer
      * Outputs the courses menu
      * @return custom_menu object
      */
-    public function custom_menu_courses()
-    {
+    public function custom_menu_courses() {
         global $CFG;
 
         $coursemenu = new custom_menu();
 
-        $hasdisplaymycourses = theme_essential_get_setting('displaymycourses');
+        $hasdisplaymycourses = $this->get_setting('displaymycourses');
         if (isloggedin() && !isguestuser() && $hasdisplaymycourses) {
-            $mycoursetitle = theme_essential_get_setting('mycoursetitle');
+            $mycoursetitle = $this->get_setting('mycoursetitle');
             if ($mycoursetitle == 'module') {
                 $branchtitle = get_string('mymodules', 'theme_essential');
             } else if ($mycoursetitle == 'unit') {
@@ -295,14 +286,13 @@ class theme_essential_core_renderer extends core_renderer
      * Outputs the alternative colours menu
      * @return custom_menu object
      */
-    public function custom_menu_themecolours()
-    {
+    public function custom_menu_themecolours() {
         $colourmenu = new custom_menu();
 
         if (!isguestuser()) {
             $alternativethemes = array();
             foreach (range(1, 3) as $alternativethemenumber) {
-                if (theme_essential_get_setting('enablealternativethemecolors' . $alternativethemenumber)) {
+                if ($this->get_setting('enablealternativethemecolors' . $alternativethemenumber)) {
                     $alternativethemes[] = $alternativethemenumber;
                 }
             }
@@ -317,8 +307,8 @@ class theme_essential_core_renderer extends core_renderer
                 $branch->add('<i class="fa fa-square colours-default"></i>' . $defaultthemecolorslabel,
                     new moodle_url($this->page->url, array('essentialcolours' => 'default')), $defaultthemecolorslabel);
                 foreach ($alternativethemes as $alternativethemenumber) {
-                    if (theme_essential_get_setting('alternativethemename' . $alternativethemenumber)) {
-                        $alternativethemeslabel = theme_essential_get_setting('alternativethemename' . $alternativethemenumber);
+                    if ($this->get_setting('alternativethemename' . $alternativethemenumber)) {
+                        $alternativethemeslabel = $this->get_setting('alternativethemename' . $alternativethemenumber);
                     } else {
                         $alternativethemeslabel = get_string('alternativecolors', 'theme_essential', $alternativethemenumber);
                     }
@@ -331,11 +321,82 @@ class theme_essential_core_renderer extends core_renderer
     }
 
     /**
+     * Outputs the Activity Stream menu
+     * @return custom_menu object
+     */
+    public function custom_menu_activitystream() {
+        if ($this->page->pagelayout != 'course') {
+            return '';
+        }
+
+        if (!isguestuser()) {
+            if (isset($this->page->course->id) && $this->page->course->id > 1) {
+                $activitystreammenu = new custom_menu();
+                $branchtitle = get_string('thiscourse', 'theme_essential');
+                $branchlabel = '<i class="fa fa-book"></i>'.$branchtitle;
+                $branchurl = new moodle_url('#');
+                $branch = $activitystreammenu->add($branchlabel, $branchurl, $branchtitle, 10002);
+                $branchtitle = get_string('people', 'theme_essential');
+                $branchlabel = '<i class="fa fa-users"></i>'.$branchtitle;
+                $branchurl = new moodle_url('/user/index.php', array('id' => $this->page->course->id));
+                $branch->add($branchlabel, $branchurl, $branchtitle, 100003);
+                $branchtitle = get_string('grades');
+                $branchlabel = '<i class="fa fa-list-alt icon"></i>'.$branchtitle;
+                $branchurl = new moodle_url('/grade/report/index.php', array('id' => $this->page->course->id));
+                $branch->add($branchlabel, $branchurl, $branchtitle, 100004);
+
+                $data = $this->get_course_activities();
+                foreach ($data as $modname => $modfullname) {
+                    if ($modname === 'resources') {
+                        $icon = $this->pix_icon('icon', '', 'mod_page', array('class' => 'icon'));
+                        $branch->add($icon.$modfullname, new moodle_url('/course/resources.php', array('id' => $this->page->course->id)));
+                    } else {
+                        $icon = '<img src="'.$this->pix_url('icon', $modname) . '" class="icon" alt="" />';
+                        $branch->add($icon.$modfullname, new moodle_url('/mod/'.$modname.'/index.php', array('id' => $this->page->course->id)));
+                    }
+                }
+                return $this->render_custom_menu($activitystreammenu);
+            }
+        }
+        return '';
+    }
+
+    private function get_course_activities() {
+        // A copy of block_activity_modules.
+        $course = $this->page->course;
+        $content = new stdClass();
+        $modinfo = get_fast_modinfo($course);
+        $modfullnames = array();
+        $archetypes = array();
+        foreach ($modinfo->cms as $cm) {
+            // Exclude activities which are not visible or have no link (=label).
+            if (!$cm->uservisible or !$cm->has_view()) {
+                continue;
+            }
+            if (array_key_exists($cm->modname, $modfullnames)) {
+                continue;
+            }
+            if (!array_key_exists($cm->modname, $archetypes)) {
+                $archetypes[$cm->modname] = plugin_supports('mod', $cm->modname, FEATURE_MOD_ARCHETYPE, MOD_ARCHETYPE_OTHER);
+            }
+            if ($archetypes[$cm->modname] == MOD_ARCHETYPE_RESOURCE) {
+                if (!array_key_exists('resources', $modfullnames)) {
+                    $modfullnames['resources'] = get_string('resources');
+                }
+            } else {
+                $modfullnames[$cm->modname] = $cm->modplural;
+            }
+        }
+        core_collator::asort($modfullnames);
+
+        return $modfullnames;
+    }
+
+    /**
      * Outputs the messages menu
      * @return custom_menu object
      */
-    public function custom_menu_messages()
-    {
+    public function custom_menu_messages() {
         global $CFG;
         $messagemenu = new custom_menu();
 
@@ -391,6 +452,9 @@ class theme_essential_core_renderer extends core_renderer
                     $messagecontent .= html_writer::span($message->text, 'notification-text');
                     $messagecontent .= html_writer::end_div();
                 } else {
+                    if (!is_object($message->from) || !empty($message->from->deleted)) {
+                        continue;
+                    }
                     $senderpicture = new user_picture($message->from);
                     $senderpicture->link = false;
                     $senderpicture->size = 60;
@@ -418,8 +482,7 @@ class theme_essential_core_renderer extends core_renderer
      * Retrieves messages from the database
      * @return array $messagelist
      */
-    private function get_user_messages()
-    {
+    private function get_user_messages() {
         global $USER, $DB;
         $messagelist['messages'] = array();
         $maxmessages = 5;
@@ -460,8 +523,7 @@ class theme_essential_core_renderer extends core_renderer
      * @param $message object
      * @return object $messagecontent
      */
-    private function process_message($message)
-    {
+    private function process_message($message) {
         global $DB, $USER;
         $messagecontent = new stdClass();
 
@@ -496,12 +558,9 @@ class theme_essential_core_renderer extends core_renderer
      * @param $created_time int
      * @return string
      */
-    private function get_time_difference($created_time)
-    {
-        $today = usertime(time());
-
+    private function get_time_difference($created_time) {
         // It returns the time difference in Seconds...
-        $time_difference = $today - $created_time;
+        $time_difference = time() - $created_time;
 
         // To Calculate the time difference in Years...
         $years = 60 * 60 * 24 * 365;
@@ -549,8 +608,7 @@ class theme_essential_core_renderer extends core_renderer
      * Outputs the goto bottom menu.
      * @return custom_menu object
      */
-    public function custom_menu_goto_bottom()
-    {
+    public function custom_menu_goto_bottom() {
         $html = '';
         if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse') || ($this->page->pagelayout == 'admin')) { // Go to bottom.
             $menu = new custom_menu();
@@ -565,8 +623,7 @@ class theme_essential_core_renderer extends core_renderer
      * Outputs the user menu.
      * @return custom_menu object
      */
-    public function custom_menu_user()
-    {
+    public function custom_menu_user() {
         // die if executed during install
         if (during_initial_install()) {
             return false;
@@ -730,19 +787,18 @@ class theme_essential_core_renderer extends core_renderer
      *
      * @return string
      */
-    private function theme_essential_render_helplink()
-    {
+    protected function theme_essential_render_helplink() {
         global $USER, $CFG;
-        if (!theme_essential_get_setting('helplinktype')) {
+        if (!$this->get_setting('helplinktype')) {
             return false;
         }
         $branchlabel = '<em><i class="fa fa-question-circle"></i>' . get_string('help') . '</em>';
         $branchurl = '';
         $target = '';
 
-        if (theme_essential_get_setting('helplinktype') === '1') {
-            if (theme_essential_get_setting('helplink') && filter_var(theme_essential_get_setting('helplink'), FILTER_VALIDATE_EMAIL)) {
-                $branchurl = 'mailto:' . theme_essential_get_setting('helplink') . '?cc=' . $USER->email;
+        if ($this->get_setting('helplinktype') === '1') {
+            if ($this->get_setting('helplink') && filter_var($this->get_setting('helplink'), FILTER_VALIDATE_EMAIL)) {
+                $branchurl = 'mailto:' . $this->get_setting('helplink') . '?cc=' . $USER->email;
             } else if ($CFG->supportemail && filter_var($CFG->supportemail, FILTER_VALIDATE_EMAIL)) {
                 $branchurl = 'mailto:' . $CFG->supportemail . '?cc=' . $USER->email;
             } else {
@@ -753,11 +809,11 @@ class theme_essential_core_renderer extends core_renderer
             }
         }
 
-        if (theme_essential_get_setting('helplinktype') === '2') {
-            if (theme_essential_get_setting('helplink') && filter_var(theme_essential_get_setting('helplink'), FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED)) {
-                $branchurl = theme_essential_get_setting('helplink');
+        if ($this->get_setting('helplinktype') === '2') {
+            if ($this->get_setting('helplink') && filter_var($this->get_setting('helplink'), FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED)) {
+                $branchurl = $this->get_setting('helplink');
                 $target = '_blank';
-            } else if ((!theme_essential_get_setting('helplink')) && (filter_var($CFG->supportpage, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED))) {
+            } else if ((!$this->get_setting('helplink')) && (filter_var($CFG->supportpage, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED))) {
                 $branchurl = $CFG->supportpage;
                 $target = '_blank';
             } else {
@@ -778,8 +834,7 @@ class theme_essential_core_renderer extends core_renderer
      * @param integer $context
      * @return string $preferences
      */
-    private function theme_essential_render_preferences($context)
-    {
+    protected function theme_essential_render_preferences($context) {
         global $USER, $CFG;
         $label = '<em><i class="fa fa-cog"></i>' . get_string('preferences') . '</em>';
         $preferences = html_writer::start_tag('li', array('class' => 'dropdown-submenu preferences'));
@@ -822,8 +877,7 @@ class theme_essential_core_renderer extends core_renderer
      * @param tabtree $tabtree
      * @return string
      */
-    public function render_tabtree(tabtree $tabtree)
-    {
+    public function render_tabtree(tabtree $tabtree) {
         if (empty($tabtree->subtree)) {
             return false;
         }
@@ -846,8 +900,7 @@ class theme_essential_core_renderer extends core_renderer
      * @param tabobject $tab
      * @return string HTML fragment
      */
-    public function render_tabobject(tabobject $tab)
-    {
+    public function render_tabobject(tabobject $tab) {
         if ($tab->selected or $tab->activated) {
             return html_writer::tag('li', html_writer::tag('a', $tab->text), array('class' => 'active'));
         } else if ($tab->inactive) {
@@ -868,8 +921,7 @@ class theme_essential_core_renderer extends core_renderer
     * FontAwesome variants where available.
     */
 
-    public function render_pix_icon(pix_icon $icon)
-    {
+    public function render_pix_icon(pix_icon $icon) {
         if (self::replace_moodle_icon($icon->pix)) {
             $newicon = self::replace_moodle_icon($icon->pix, $icon->attributes['alt']) . parent::render_pix_icon($icon) . "</i>";
             return $newicon;
@@ -878,8 +930,7 @@ class theme_essential_core_renderer extends core_renderer
         }
     }
 
-    private static function replace_moodle_icon($icon, $alt = false)
-    {
+    private static function replace_moodle_icon($icon, $alt = false) {
         $icons = array(
             'add' => 'plus',
             'book' => 'book',
@@ -955,8 +1006,7 @@ class theme_essential_core_renderer extends core_renderer
      * Written by G J Barnard
      */
 
-    public function edit_button(moodle_url $url)
-    {
+    public function edit_button(moodle_url $url) {
         $url->param('sesskey', sesskey());
         if ($this->page->user_is_editing()) {
             $url->param('edit', 'off');
@@ -973,9 +1023,8 @@ class theme_essential_core_renderer extends core_renderer
             html_writer::end_tag('i') . $title, array('href' => $url, 'class' => 'btn ' . $btn, 'title' => $title));
     }
 
-    public function render_social_network($socialnetwork)
-    {
-        if (theme_essential_get_setting($socialnetwork)) {
+    public function render_social_network($socialnetwork) {
+        if ($this->get_setting($socialnetwork)) {
             $icon = $socialnetwork;
             if ($socialnetwork === 'googleplus') {
                 $icon = 'google-plus';
@@ -989,7 +1038,7 @@ class theme_essential_core_renderer extends core_renderer
             $socialhtml = html_writer::start_tag('li');
             $socialhtml .= html_writer::start_tag('button', array('type' => "button",
                 'class' => 'socialicon ' . $socialnetwork,
-                'onclick' => "window.open('" . theme_essential_get_setting($socialnetwork) . "')",
+                'onclick' => "window.open('" . $this->get_setting($socialnetwork) . "')",
                 'title' => get_string($socialnetwork, 'theme_essential'),
             ));
             $socialhtml .= html_writer::start_tag('i', array('class' => 'fa fa-' . $icon . ' fa-inverse'));
@@ -1143,6 +1192,402 @@ class theme_essential_core_renderer extends core_renderer
 
         return $output;
     }
-}
 
-?>
+    // Essential custom bits.
+    // Moodle CSS file serving.
+    public function get_csswww() {
+        global $CFG;
+
+        if (!$this->theme_essential_lte_ie9()) {
+            if (right_to_left()) {
+                $moodlecss = 'essential-rtl.css';
+            } else {
+                $moodlecss = 'essential.css';
+            }
+
+            $syscontext = context_system::instance();
+            $itemid = theme_get_revision();
+            $url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_essential/style/$itemid/$moodlecss");
+            $url = preg_replace('|^https?://|i', '//', $url->out(false));
+            return '<link rel="stylesheet" href="'.$url.'">';
+        } else {
+            if (right_to_left()) {
+                $moodlecssone = 'essential-rtl_ie9-blessed1.css';
+                $moodlecsstwo = 'essential-rtl_ie9.css';
+            } else {
+                $moodlecssone = 'essential_ie9-blessed1.css';
+                $moodlecsstwo = 'essential_ie9.css';
+            }
+
+            $syscontext = context_system::instance();
+            $itemid = theme_get_revision();
+            $urlone = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_essential/style/$itemid/$moodlecssone");
+            $urlone = preg_replace('|^https?://|i', '//', $urlone->out(false));
+            $urltwo = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_essential/style/$itemid/$moodlecsstwo");
+            $urltwo = preg_replace('|^https?://|i', '//', $urltwo->out(false));
+            return '<link rel="stylesheet" href="'.$urlone.'"><link rel="stylesheet" href="'.$urltwo.'">';
+        }
+    }
+
+    /**
+     * Finds the given include file in the theme.  If it does not exist for the Essential child theme then the parent is checked.
+     * @param string $filename Filename without extension to get.
+     * @return string Complete path of the file.
+     */
+    public function get_include_file($filename) {
+        global $CFG;
+        $themedir = $this->page->theme->dir;
+        $themename = $this->page->theme->name;
+        $filename .= '.php';
+        if (file_exists("$themedir/layout/includes/$filename")) {
+            return "$themedir/layout/includes/$filename";
+        } else if (file_exists("$CFG->dirroot/theme/$themename/layout/includes/$filename")) {
+            return "$CFG->dirroot/theme/$themename/layout/includes/$filename";
+        } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/$themename/layout/includes/$filename")) {
+            return "$CFG->themedir/$themename/includes/$filename";
+        }
+        // Not here so check parent Essential.
+        if (file_exists("$CFG->dirroot/theme/essential/layout/includes/$filename")) {
+            return "$CFG->dirroot/theme/essential/layout/includes/$filename";
+        } else if (!empty($CFG->themedir) and file_exists("$CFG->themedir/essential/layout/includes/$filename")) {
+            return "$CFG->themedir/essential/includes/$filename";
+        } else {
+            return dirname(__FILE__)."$filename";
+        }
+    }
+
+    public function get_setting($setting, $format = false, $theme = null) {
+
+        if (empty($theme)) {
+            if (empty($this->theme)) {
+                $this->theme = theme_config::load('essential');
+            }
+            $theme = $this->theme;
+        }
+
+        global $CFG;
+        require_once($CFG->dirroot . '/lib/weblib.php');
+        if (empty($theme->settings->$setting)) {
+            return false;
+        } else if (!$format) {
+            return $theme->settings->$setting;
+        } else if ($format === 'format_text') {
+            return format_text($theme->settings->$setting, FORMAT_PLAIN);
+        } else if ($format === 'format_html') {
+            return format_text($theme->settings->$setting, FORMAT_HTML, array('trusted' => true, 'noclean' => true));
+        } else {
+            return format_string($theme->settings->$setting);
+        }
+    }
+
+    public function render_slide($i, $captionoptions, $theme = null) {
+
+        if (empty($theme)) {
+            if (empty($this->theme)) {
+                $this->theme = theme_config::load('essential');
+            }
+            $theme = $this->theme;
+        }
+
+        $slideurl = $this->get_setting('slide' . $i . 'url', false, $theme);
+        $slideurltarget = $this->get_setting('slide' . $i . 'target', false, $theme);
+        $slidetitle = $this->get_setting('slide' . $i, true, $theme);
+        $slidecaption = $this->get_setting('slide' . $i . 'caption', true, $theme);
+        if ($captionoptions == 0) {
+            $slideextraclass = ' side-caption';
+        } else {
+            $slideextraclass = '';
+        }
+        $slideextraclass .= ($i === 1) ? ' active' : '';
+        $slideimagealt = strip_tags($slidetitle);
+
+        // Get slide image or fallback to default.
+        $slideimage = $this->get_setting('slide' . $i . 'image', false, $theme);
+        if ($slideimage) {
+            $slideimage = $theme->setting_file_url('slide' . $i . 'image', 'slide' . $i . 'image');
+        } else {
+            $slideimage = $this->pix_url('default_slide', 'theme');
+        }
+
+        if ($slideurl) {
+            $slide = '<a href="' . $slideurl . '" target="' . $slideurltarget . '" class="item' . $slideextraclass . '">';
+        } else {
+            $slide = '<div class="item' . $slideextraclass . '">';
+        }
+
+        if ($captionoptions == 0) {
+            $slide .= '<div class="container-fluid">';
+            $slide .= '<div class="row-fluid">';
+        
+            if ($slidetitle || $slidecaption) {
+                $slide .= '<div class="span5 the-side-caption">';
+                $slide .= '<div class="the-side-caption-content">';
+                $slide .= '<h4>' . $slidetitle . '</h4>';
+                $slide .= '<p>' . $slidecaption . '</p>';
+                $slide .= '</div>';
+                $slide .= '</div>';
+                $slide .= '<div class="span7">';
+            } else {
+                $slide .= '<div class="span10 offset1 nocaption">';
+            }
+            $slide .= '<div class="carousel-image-container">';
+            $slide .= '<img src="' . $slideimage . '" alt="' . $slideimagealt . '" class="carousel-image"/>';
+            $slide .= '</div>';
+            $slide .= '</div>';
+
+            $slide .= '</div>';
+            $slide .= '</div>';
+        } else {
+            $nocaption = (!($slidetitle || $slidecaption)) ? ' nocaption' : '';
+            $slide .= '<div class="carousel-image-container'.$nocaption.'">';
+            $slide .= '<img src="' . $slideimage . '" alt="' . $slideimagealt . '" class="carousel-image"/>';
+            $slide .= '</div>';
+
+            // Output title and caption if either is present
+            if ($slidetitle || $slidecaption) {
+                $slide .= '<div class="carousel-caption">';
+                $slide .= '<div class="carousel-caption-inner">';
+                $slide .= '<h4>' . $slidetitle . '</h4>';
+                $slide .= '<p>' . $slidecaption . '</p>';
+                $slide .= '</div>';
+                $slide .= '</div>';
+            }
+        }
+        $slide .= ($slideurl) ? '</a>' : '</div>';
+
+        return $slide;
+    }
+
+    public function render_slide_controls($left) {
+        $faleft = 'left';
+        $faright = 'right';
+        if (!$left) {
+            $temp = $faleft;
+            $faleft = $faright;
+            $faright = $temp;
+        }
+        $prev = '<a class="left carousel-control" href="#essentialCarousel" data-slide="prev"><i class="fa fa-chevron-circle-' . $faleft . '"></i></a>';
+        $next = '<a class="right carousel-control" href="#essentialCarousel" data-slide="next"><i class="fa fa-chevron-circle-' . $faright . '"></i></a>';
+
+        return $prev . $next;
+    }
+
+    public function essential_edit_button($section) {
+        global $CFG;
+        if ($this->page->user_is_editing() && is_siteadmin()) {
+            $url = preg_replace("(https?:)", "", $CFG->wwwroot . '/admin/settings.php?section=');
+            return '<a class="btn btn-success" href="' . $url . $section . '">' . get_string('edit') . '</a>';
+        }
+    }
+
+    public function get_title($location) {
+        global $CFG, $SITE;
+        $title = '';
+        if ($location === 'navbar') {
+            $url = preg_replace("(https?:)", "", $CFG->wwwroot);
+            switch ($this->get_setting('navbartitle')) {
+                case 0:
+                    return false;
+                break;
+                case 1:
+                    $title = '<a class="brand" href="' . $url . '">' . format_string($SITE->fullname, true,
+                                    array('context' => context_course::instance(SITEID))) . '</a>';
+                    break;
+                case 2:
+                    $title = '<a class="brand" href="' . $url . '">' . format_string($SITE->shortname, true,
+                                    array('context' => context_course::instance(SITEID))) . '</a>';
+                    break;
+                default:
+                    $title = '<a class="brand" href="' . $url . '">' . format_string($SITE->shortname, true,
+                                    array('context' => context_course::instance(SITEID))) . '</a>';
+                    break;
+            }
+        } else if ($location === 'header') {
+            switch ($this->get_setting('headertitle')) {
+                case 0:
+                    return false;
+                    break;
+                case 1:
+                    $title = '<h1 id="title">' . format_string($SITE->fullname, true,
+                                    array('context' => context_course::instance(SITEID))) . '</h1>';
+                    break;
+                case 2:
+                    $title = '<h1 id="title">' . format_string($SITE->shortname, true,
+                                    array('context' => context_course::instance(SITEID))) . '</h1>';
+                    break;
+                case 3:
+                    $title = '<h1 id="smalltitle">' . format_string($SITE->fullname, true,
+                                    array('context' => context_course::instance(SITEID))) . '</h2>';
+                    $title .= '<h2 id="subtitle">' . strip_tags($SITE->summary) . '</h3>';
+                    break;
+                case 4:
+                    $title = '<h1 id="smalltitle">' . format_string($SITE->shortname, true,
+                                    array('context' => context_course::instance(SITEID))) . '</h2>';
+                    $title .= '<h2 id="subtitle">' . strip_tags($SITE->summary) . '</h3>';
+                    break;
+                default:
+                    break;
+            }
+        }
+        return $title;
+    }
+
+    /**
+     * get_performance_output() override get_peformance_info()
+     *  in moodlelib.php. Returns a string
+     * values ready for use.
+     * @param array $param
+     * @param string $perfinfo
+     * @return string $html
+     */
+    protected function performance_output($param, $perfinfo) {
+        $html = html_writer::start_tag('div', array('class' => 'container-fluid performanceinfo'));
+        $html .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+        $html .= html_writer::start_tag('div', array('class' => 'span12'));
+        $html .= html_writer::tag('h2', get_string('perfinfoheading', 'theme_essential'));
+        $html .= html_writer::end_tag('div');
+        $html .= html_writer::end_tag('div');
+        $html .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+        $colcount = 0;
+        if (isset($param['realtime'])) {
+            $colcount++;
+        }
+        if (isset($param['memory_total'])) {
+            $colcount++;
+        }
+        if (isset($param['includecount'])) {
+            $colcount++;
+        }
+        if (isset($param['dbqueries'])) {
+            $colcount++;
+        }
+        if ($colcount != 0) {
+            $thespan = 12 / $colcount;
+            if (isset($param['realtime'])) {
+                $html .= html_writer::start_tag('div', array('class' => 'span' . $thespan));
+                $html .= html_writer::tag('var', round($param['realtime'], 2) . ' ' . get_string('seconds'), array('id' => 'load'));
+                $html .= html_writer::span(get_string('loadtime', 'theme_essential'));
+                $html .= html_writer::end_tag('div');
+            }
+            if (isset($param['memory_total'])) {
+                $html .= html_writer::start_tag('div', array('class' => 'span' . $thespan));
+                $html .= html_writer::tag('var', display_size($param['memory_total']), array('id' => 'memory'));
+                $html .= html_writer::span(get_string('memused', 'theme_essential'));
+                $html .= html_writer::end_tag('div');
+            }
+            if (isset($param['includecount'])) {
+                $html .= html_writer::start_tag('div', array('class' => 'span' . $thespan));
+                $html .= html_writer::tag('var', $param['includecount'], array('id' => 'included'));
+                $html .= html_writer::span(get_string('included', 'theme_essential'));
+                $html .= html_writer::end_tag('div');
+            }
+            if (isset($param['dbqueries'])) {
+                $html .= html_writer::start_tag('div', array('class' => 'span' . $thespan));
+                $html .= html_writer::tag('var', $param['dbqueries'], array('id' => 'dbqueries'));
+                $html .= html_writer::span(get_string('dbqueries', 'theme_essential'));
+                $html .= html_writer::end_tag('div');
+            }
+        }
+        $html .= html_writer::end_tag('div');
+        if ($perfinfo === "max") {
+            $html .= html_writer::empty_tag('hr');
+            $html .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            $html .= html_writer::start_tag('div', array('class' => 'span12'));
+            $html .= html_writer::tag('h2', get_string('extperfinfoheading', 'theme_essential'));
+            $html .= html_writer::end_tag('div');
+            $html .= html_writer::end_tag('div');
+            $html .= html_writer::start_tag('div', array('class' => 'row-fluid'));
+            $colcountmax = 0;
+            if (isset($param['serverload'])) {
+                $colcountmax++;
+            }
+            if (isset($param['memory_peak'])) {
+                $colcountmax++;
+            }
+            if (isset($param['cachesused'])) {
+                $colcountmax++;
+            }
+            if (isset($param['sessionsize'])) {
+                $colcountmax++;
+            }
+            if (isset($param['dbtime'])) {
+                $colcountmax++;
+            }
+            if ($colcountmax != 0) {
+                $thespanmax = 12 / $colcountmax;
+                if (isset($param['serverload'])) {
+                    $html .= html_writer::start_tag('div', array('class' => 'span' . $thespanmax));
+                    $html .= html_writer::tag('var', $param['serverload'], array('id' => 'load'));
+                    $html .= html_writer::span(get_string('serverload', 'theme_essential'));
+                    $html .= html_writer::end_tag('div');
+                }
+                if (isset($param['memory_peak'])) {
+                    $html .= html_writer::start_tag('div', array('class' => 'span' . $thespanmax));
+                    $html .= html_writer::tag('var', display_size($param['memory_peak']), array('id' => 'peakmemory'));
+                    $html .= html_writer::span(get_string('peakmem', 'theme_essential'));
+                    $html .= html_writer::end_tag('div');
+                }
+                if (isset($param['cachesused'])) {
+                    $html .= html_writer::start_tag('div', array('class' => 'span' . $thespanmax));
+                    $html .= html_writer::tag('var', $param['cachesused'], array('id' => 'cache'));
+                    $html .= html_writer::span(get_string('cachesused', 'theme_essential'));
+                    $html .= html_writer::end_tag('div');
+                }
+                if (isset($param['sessionsize'])) {
+                    $html .= html_writer::start_tag('div', array('class' => 'span' . $thespanmax));
+                    $html .= html_writer::tag('var', $param['sessionsize'], array('id' => 'session'));
+                    $html .= html_writer::span(get_string('sessionsize', 'theme_essential'));
+                    $html .= html_writer::end_tag('div');
+                }
+                if (isset($param['dbtime'])) {
+                    $html .= html_writer::start_tag('div', array('class' => 'span' . $thespanmax));
+                    $html .= html_writer::tag('var', $param['dbtime'], array('id' => 'dbtime'));
+                    $html .= html_writer::span(get_string('dbtime', 'theme_essential'));
+                    $html .= html_writer::end_tag('div');
+                }
+            }
+            $html .= html_writer::end_tag('div');
+        }
+        $html .= html_writer::end_tag('div');
+        $html .= html_writer::end_tag('div');
+
+        return $html;
+    }
+
+    /**
+     * States if the browser is not IE9 or less.
+     */
+    public function theme_essential_not_lte_ie9() {
+        $properties = $this->theme_essential_ie_properties();
+        if (!is_array($properties)) {
+            return true;
+        }
+        // We have properties, it is a version of IE, so is it greater than 9?
+        return ($properties['version'] > 9.0);
+    }
+
+    /**
+     * States if the browser is IE9 or less.
+     */
+    public function theme_essential_lte_ie9() {
+        $properties = $this->theme_essential_ie_properties();
+        if (!is_array($properties)) {
+            return false;
+        }
+        // We have properties, it is a version of IE, so is it greater than 9?
+        return ($properties['version'] <= 9.0);
+    }
+
+    /**
+     * States if the browser is IE by returning properties, otherwise false.
+     */
+    public function theme_essential_ie_properties() {
+        $properties = core_useragent::check_ie_properties(); // In /lib/classes/useragent.php.
+        if (!is_array($properties)) {
+            return false;
+        } else {
+            return $properties;
+        }
+    }
+
+}

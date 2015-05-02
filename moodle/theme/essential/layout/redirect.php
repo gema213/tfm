@@ -23,22 +23,24 @@
  * @copyright   2014 Gareth J Barnard, David Bezemer
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-require_once(dirname(__FILE__) . '/../lib.php');
 
-echo $OUTPUT->doctype() ?>
+echo $OUTPUT->doctype();
+?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>"/>
-    <?php echo '<link rel="stylesheet" href="'.theme_essential_get_csswww().'">'; ?>
-    <?php echo $OUTPUT->standard_head_html() ?>
+    <?php 
+    echo $OUTPUT->get_csswww();
+    echo $OUTPUT->standard_head_html();
+    ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
 
-<?php echo $OUTPUT->standard_top_of_body_html() ?>
+<?php echo $OUTPUT->standard_top_of_body_html(); ?>
 <section role="main-content">
     <div id="page" class="container-fluid maintenance">
 
@@ -51,6 +53,6 @@ echo $OUTPUT->doctype() ?>
 
     </div>
 </section>
-<?php echo $OUTPUT->standard_end_of_body_html() ?>
+<?php echo $OUTPUT->standard_end_of_body_html(); ?>
 </body>
 </html>

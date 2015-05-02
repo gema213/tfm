@@ -54,19 +54,6 @@ next release.
 Please ensure that your hardware and software complies with 'Requirements' in 'Installing Moodle' on
 'docs.moodle.org/28/en/Installing_Moodle'.
 
-Required version of Bootstrap 3
-===============================
-You will need to get and install the parent Bootstrap theme from:
-
-https://moodle.org/plugins/view.php?plugin=theme_bootstrap - Currently release 2014120803.
-or
-https://github.com/gjb2048/theme_bootstrap
-
-in order to install and use Shoehorn.
-
-I would like to thank Bas Brands and David Scotson for their work on the theme.  With a special mention to: Stuart Lamour,
-Mark Aberdour, Paul Hibbitts and Joby Harding.
-
 Licenses used
 =============
 GPLv3 - http://www.gnu.org/licenses/license-list.html#GNUGPL
@@ -116,6 +103,8 @@ and restart (without the ` if you see them):
 </IfModule>
 ```
 
+I have created a screencast to help: https://www.youtube.com/watch?v=nI3LsN0XwKY
+
 Ref: https://github.com/bmbrands/theme_bootstrap/issues/342#issuecomment-58152495 and https://code.google.com/p/minify/issues/detail?id=62.
 
 Upgrading
@@ -159,14 +148,23 @@ It is essential that you provide as much information as possible, the critical i
 'version.php' file.  Other version information such as specific Moodle version, theme name and version also helps.  A screen shot
 can be really useful in visualising the issue along with any files you consider to be relevant.
 
+Customising the LESS
+====================
+To help you, I have created two screen casts, one 'Production' and one 'Development'. The latter follows the former, so watch
+'Production' first.
+
+Production:  https://www.youtube.com/watch?v=8uwYn2im008
+Development: https://www.youtube.com/watch?v=6yFAS5-a3o4
+
 Known issues
 ============
 1. RTL functionality is not quite ready.  In the 'General' settings there is an experimental switch 'dynamiclang' which is my first
    attempt at implementing an idea as described on: https://moodle.org/mod/forum/discuss.php?d=264955.  This idea has further been
    developed by me in the Essential theme: https://github.com/gjb2048/moodle-theme_essential/issues/249.  The main area of issue
-   has been the quiz.  Once Essential 2.7.8 is released and any other issues resolved, I will take what I have learnt there and apply
-   to Shoehorn.  Or it might be the case that the parent Bootstrap theme in https://github.com/bmbrands/theme_bootstrap/issues/262 will
-   help to resolve this.
+   has been the quiz.  Once Essential 2.7.8 is released and any other issues resolved, I will take what I have learnt there and
+   apply to Shoehorn.  Or it might be the case that the parent Bootstrap theme in
+   https://github.com/bmbrands/theme_bootstrap/issues/262 will help to resolve this.  Update 22/4/2015: I have not forgotten about
+   this, but do intend in the furture to make this happen with Shoehorn.
 
 Todo
 ====
@@ -175,6 +173,18 @@ Todo
 
 Version information
 ===================
+Version 2.8.1.1.
+  1. Fix source map URL for development version after upgrading to 'grunt-contrib-less' version '~1.0.0'.
+  2. Tidy up logo code and information in language file.
+  3. Tidy up experimental RTL serving.
+  4. Tidy up and fix syntax highlighting - work in progress.
+  5. Adjust carousel control icons responsively.
+  6. Messages popup on the left to avoid anti-gravity icon.
+  7. Tidy up compact navbar.
+  8. Remove dependancy on parent 'bootstrap' theme.
+  9. Update to Bootstrap 3.3.4.
+ 10. Update to Font Awesome 4.3.0.
+
 18th January 2015 - Version 2.8.1 - Stable.
   1. Tidied up slider such that it does not cause the content to jump on the frontpage and the images are centred.
   2. Added a 'Go to bottom of page' icon in the navbar to make it easier when on settings and course pages.

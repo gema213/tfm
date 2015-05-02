@@ -6516,6 +6516,9 @@ div[role="main"] ul,
 div[role="main"] ol {
   padding: 0 20px;
 }
+pre {
+  white-space: pre-wrap;
+}
 /* some very targetted corrections to roll back nameclashes between
  * Moodle and Bootstrap like .row, .label, .content, .controls
  *
@@ -12630,6 +12633,7 @@ body.path-question-type .mform fieldset.hidden {
 .formulation input[type="text"],
 .formulation select {
   width: auto;
+  vertical-align: baseline;
 }
 .path-mod-quiz input[size] {
   width: auto;
@@ -14544,6 +14548,7 @@ textarea.mform .fitem .felement input[type="password"] {
 }
 .mform span.error {
   color: #a94442;
+  background-color: #f2dede;
 }
 .mform fieldset.error {
   border: 1px solid #ebccd1;
@@ -17505,6 +17510,7 @@ fieldset[disabled] #page-grade-grading-manage .actions .action {
   background-color: #ddd;
 }
 #rubric-rubric.gradingform_rubric #rubric-criteria .criterion .scorevalue input {
+  display: inline;
   float: none;
   width: 3em;
 }

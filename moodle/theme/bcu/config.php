@@ -27,14 +27,15 @@
 $THEME->name = 'bcu';
 $THEME->doctype = 'html5';
 $THEME->parents = array('bootstrapbase');
-$THEME->sheets = array('custom', 'blocks', 'menu', 'course', 'slider', 'extras', 'zoom');
-$THEME->javascripts = array('jquery-1.7.2.min', 'bootstrap.min', 'jquery.flexslider-min', 'jquery.easing-1.3.min', 'custom');
+$THEME->sheets = array('custom', 'blocks', 'menu', 'course', 'slider', 'extras', 'zoom', 'button');
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 
 $THEME->editor_sheets = array();
 
-$THEME->enable_dock = false;
+if (floatval($CFG->version) >= 2013111803.02) {
+    $THEME->enable_dock = true;
+}
 
 $THEME->plugins_exclude_sheets = array(
     'block' => array(
@@ -143,7 +144,7 @@ $THEME->layouts = array(
     ),
     // The pagelayout used for reports.
     'report' => array(
-        'file' => 'columns2.php',
+        'file' => 'report.php',
         'regions' => array('side-post'),
         'defaultregion' => 'side-post',
     ),

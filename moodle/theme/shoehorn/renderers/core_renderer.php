@@ -25,12 +25,126 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-include_once($CFG->dirroot . "/theme/bootstrap/renderers/core_renderer.php");
-
-class theme_shoehorn_core_renderer extends theme_bootstrap_core_renderer {
+class theme_shoehorn_core_renderer extends core_renderer {
 
     protected $enrolledcourses = null;
     protected $syntaxhighlighterenabled = false;
+
+    public function notification($message, $classes = 'notifyproblem') {
+        $message = clean_text($message);
+
+        if ($classes == 'notifyproblem') {
+            return html_writer::div($message, 'alert alert-danger');
+        }
+        if ($classes == 'notifywarning') {
+            return html_writer::div($message, 'alert alert-warning');
+        }
+        if ($classes == 'notifysuccess') {
+            return html_writer::div($message, 'alert alert-success');
+        }
+        if ($classes == 'notifymessage') {
+            return html_writer::div($message, 'alert alert-info');
+        }
+        if ($classes == 'redirectmessage') {
+            return html_writer::div($message, 'alert alert-block alert-info');
+        }
+        if ($classes == 'notifytiny') {
+            // Not an appropriate semantic alert class!
+            return $this->debug_listing($message);
+        }
+        return html_writer::div($message, $classes);
+    }
+
+    private function debug_listing($message) {
+        $message = str_replace('<ul style', '<ul class="list-unstyled" style', $message);
+        return html_writer::tag('pre', $message, array('class' => 'alert alert-info'));
+    }
+
+    protected function render_custom_menu_item(custom_menu_item $menunode, $level = 0 ) {
+        static $submenucount = 0;
+
+        if ($menunode->has_children()) {
+
+            if ($level == 1) {
+                $dropdowntype = 'dropdown';
+            } else {
+                $dropdowntype = 'dropdown-submenu';
+            }
+
+            $content = html_writer::start_tag('li', array('class' => $dropdowntype));
+            // If the child has menus render it as a sub menu.
+            $submenucount++;
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#cm_submenu_'.$submenucount;
+            }
+            $linkattributes = array(
+                'href' => $url,
+                'class' => 'dropdown-toggle',
+                'data-toggle' => 'dropdown',
+                'title' => $menunode->get_title(),
+            );
+            $content .= html_writer::start_tag('a', $linkattributes);
+            $content .= $menunode->get_text();
+            if ($level == 1) {
+                $content .= '<b class="caret"></b>';
+            }
+            $content .= '</a>';
+            $content .= '<ul class="dropdown-menu">';
+            foreach ($menunode->get_children() as $menunode) {
+                $content .= $this->render_custom_menu_item($menunode, 0);
+            }
+            $content .= '</ul>';
+        } else {
+            $content = '<li>';
+            // The node doesn't have children so produce a final menuitem.
+            if ($menunode->get_url() !== null) {
+                $url = $menunode->get_url();
+            } else {
+                $url = '#';
+            }
+            $content .= html_writer::link($url, $menunode->get_text(), array('title' => $menunode->get_title()));
+        }
+        return $content;
+    }
+
+    protected function render_tabtree(tabtree $tabtree) {
+        if (empty($tabtree->subtree)) {
+            return '';
+        }
+        $firstrow = $secondrow = '';
+        foreach ($tabtree->subtree as $tab) {
+            $firstrow .= $this->render($tab);
+            if (($tab->selected || $tab->activated) && !empty($tab->subtree) && $tab->subtree !== array()) {
+                $secondrow = $this->tabtree($tab->subtree);
+            }
+        }
+        return html_writer::tag('ul', $firstrow, array('class' => 'nav nav-tabs nav-justified')) . $secondrow;
+    }
+
+    protected function render_tabobject(tabobject $tab) {
+        if ($tab->selected or $tab->activated) {
+            return html_writer::tag('li', html_writer::tag('a', $tab->text), array('class' => 'active'));
+        } else if ($tab->inactive) {
+            return html_writer::tag('li', html_writer::tag('a', $tab->text), array('class' => 'disabled'));
+        } else {
+            if (!($tab->link instanceof moodle_url)) {
+                // Backward compatibility when link was passed as quoted string.
+                $link = "<a href=\"$tab->link\" title=\"$tab->title\">$tab->text</a>";
+            } else {
+                $link = html_writer::link($tab->link, $tab->text, array('title' => $tab->title));
+            }
+            return html_writer::tag('li', $link);
+        }
+    }
+
+    public function box($contents, $classes = 'generalbox', $id = null, $attributes = array()) {
+        if (isset($attributes['data-rel']) && $attributes['data-rel'] === 'fatalerror') {
+            return html_writer::div($contents, 'alert alert-danger', $attributes);
+        }
+        return parent::box($contents, $classes, $id, $attributes);
+    }
 
     /**
      * Gets HTML for the page heading.
@@ -43,10 +157,18 @@ class theme_shoehorn_core_renderer extends theme_bootstrap_core_renderer {
 
         $logo = $this->page->theme->setting_file_url('logo', 'logo');
         if (!is_null($logo)) {
-            $o .= html_writer::empty_tag('img', array('src' => $logo, 'alt' => get_string('logo', 'theme_shoehorn'), 'class' => 'logo'));
-            $o .= html_writer::tag($tag, $this->page->heading, array('class' => 'logoheading'));
+            $o .= html_writer::start_tag('div', array('class' => 'row')).
+                  html_writer::start_tag('div', array('class' => 'col-xs-4 col-sm-2 col-md-1')).
+                  html_writer::link(new moodle_url('/'),
+                  html_writer::empty_tag('img', array('src' => $logo, 'alt' => get_string('logo', 'theme_shoehorn'), 'class' => 'logo img-responsive')),
+                  array('title' => get_string('home'), 'class' => 'logoarea')).
+                  html_writer::end_tag('div').
+                  html_writer::tag($tag, $this->page->heading, array('class' => 'logoheading')).
+                  html_writer::end_tag('div');
         } else {
-            $o .= html_writer::tag($tag, $this->page->heading, array('class' => 'heading'));
+            $o .= html_writer::link(new moodle_url('/'),
+                  html_writer::tag($tag, $this->page->heading, array('class' => 'heading')),
+                  array('title' => get_string('home'), 'class' => 'logoarea'));
         }
 
         $ieprop = core_useragent::check_ie_properties();
@@ -326,7 +448,7 @@ class theme_shoehorn_core_renderer extends theme_bootstrap_core_renderer {
             }
         }
 
-        if ($this->page->pagelayout == 'course') {
+        if (($this->page->pagelayout == 'course') || ($this->page->pagelayout == 'incourse')){
             if (!isguestuser()) {
                 if (isset($this->page->course->id) && $this->page->course->id > 1) {
                     $branchtitle = get_string('thiscourse', 'theme_shoehorn');
@@ -617,7 +739,7 @@ class theme_shoehorn_core_renderer extends theme_bootstrap_core_renderer {
         return $messagecontent;
     }
 
-    function footer_menu() {
+    public function footer_menu() {
         $o = '';
         $items = array();
         $loggedin = isloggedin();
@@ -667,7 +789,7 @@ class theme_shoehorn_core_renderer extends theme_bootstrap_core_renderer {
 
         // Syntax highlighting.
         if (($this->syntaxhighlighterenabled) || 
-            ((!empty($this->page->theme->settings->syntaxhighlight)) && ($this->page->theme->settings->syntaxhighlight == 2) && ($this->page->pagetype == 'course-edit'))) {
+            ((!empty($this->page->theme->settings->syntaxhighlight)) && ($this->page->theme->settings->syntaxhighlight == 2) && ($this->page->user_is_editing()))) {
             $url = new moodle_url('/theme/shoehorn/pages/syntaxhighlight.php');
             $url = preg_replace('|^https?://|i', '//', $url->out(false));
             $items[] = html_writer::tag('a', get_string('syntaxhighlightpage', 'theme_shoehorn'), array('href' => $url, 'target' => '_blank'));
@@ -1084,7 +1206,8 @@ class theme_shoehorn_core_renderer extends theme_bootstrap_core_renderer {
             $url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_shoehorn/syntaxhighlighter/$itemid/");
             $url = preg_replace('|^https?://|i', '//', $url->out(false));
 
-            $script = 'SyntaxHighlighter.autoloader(';
+            $script = "$('document').ready(function(){";  // Can use jQuery as included on every page.
+			$script .= "SyntaxHighlighter.autoloader(";
             $script .= "[ 'applescript', '".$url."shBrushAppleScript.js' ],";
             $script .= "[ 'actionscript3', 'as3', '".$url."shBrushAS3.js' ],";
             $script .= "[ 'bash', 'shell', '".$url."shBrushBash.js' ],";
@@ -1111,6 +1234,7 @@ class theme_shoehorn_core_renderer extends theme_bootstrap_core_renderer {
             $script .= "[ 'xml', 'xhtml', 'xslt', 'html', '".$url."shBrushXml.js' ]";
             $script .= ');';
             $script .= 'SyntaxHighlighter.all(); console.log("Syntax Highlighter Init");';
+            $script .= '});';
             $output .= html_writer::script($script);
         }
 
@@ -1126,5 +1250,22 @@ class theme_shoehorn_core_renderer extends theme_bootstrap_core_renderer {
         $anti_gravity = html_writer::tag('a', $icon, array('class' => 'antiGravity', 'title' => get_string('antigravity', 'theme_shoehorn')));
 
         return $anti_gravity;
+    }
+
+    // Moodle CSS file serving.
+    public function get_csswww() {
+        global $CFG;
+
+        if (right_to_left()) {
+            $moodlecss = 'moodle-rtl.css';
+        } else {
+            $moodlecss = 'moodle.css';
+        }
+
+        $syscontext = context_system::instance();
+        $itemid = theme_get_revision();
+        $url = moodle_url::make_file_url("$CFG->wwwroot/pluginfile.php", "/$syscontext->id/theme_shoehorn/style/$itemid/$moodlecss");
+        $url = preg_replace('|^https?://|i', '//', $url->out(false));
+        return $url;
     }
 }

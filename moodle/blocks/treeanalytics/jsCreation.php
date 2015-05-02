@@ -218,18 +218,21 @@ function createJS($numberTree,$studentValues){
 
 $js='<script>
 			var margin'.$numberTree.' = {top: 0, right: 0, bottom: 0, left:50},
-				width'.$numberTree.' = 1000 - margin'.$numberTree.'.right - margin'.$numberTree.'.left,
+	//			width'.$numberTree.' = 1000 - margin'.$numberTree.'.right - margin'.$numberTree.'.left,
 				height'.$numberTree.' = 590 - margin'.$numberTree.'.top - margin'.$numberTree.'.bottom;
 				
 			var i'.$numberTree.' = 0,
 				duration'.$numberTree.' = 750,
 				root'.$numberTree.';
 			var tree'.$numberTree.' = d3.layout.tree()
-				.size([height'.$numberTree.', width'.$numberTree.']);
+				.size([height'.$numberTree.',
+// width'.$numberTree.']);
+\'100%\']);
 			var diagonal'.$numberTree.' = d3.svg.diagonal()
 				.projection(function(d) { return [d.y, d.x]; });
 			var svg'.$numberTree.'=d3.select("#tree'.$numberTree.'").append("svg")
-				.attr("width", width'.$numberTree.' + margin'.$numberTree.'.right + margin'.$numberTree.'.left)
+	//			.attr("width", width'.$numberTree.' + margin'.$numberTree.'.right + margin'.$numberTree.'.left)
+.attr("width",\'100%\')
 				.attr("height", height'.$numberTree.' + margin'.$numberTree.'.top + margin'.$numberTree.'.bottom)
 			.append("g")
 				.attr("transform", "translate(" + margin'.$numberTree.'.left + "," + margin'.$numberTree.'.top + ")");
@@ -391,15 +394,13 @@ $js.='
 				}
 			}
 
+
 			function mousemove'.$numberTree.'(d) {			
 				if(d.active!=1){
 					div'.$numberTree.'
 					.text(d.name)
-					//.attr("class",getColor(d))
-					.style("left", (d3.event.pageX ) + "px")
+					.style("left",( (d3.event.pageX )-100) + "px")
 					.style("top", (d3.event.pageY) + "px")
-					/*.style("background",getColor(d))
-					.style("border-color",getColorBorder(d));*/
 					.style("background","#ddd")
 					.style("border-color","#ccc");
 					

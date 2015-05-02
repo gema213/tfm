@@ -69,14 +69,20 @@ echo $OUTPUT->doctype() ?>
         <?php echo $html->heading; ?>
         <div id="page-navbar" class="clearfix">
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
-            <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
-        </div>
-        <div id="course-header">
-            <?php echo $OUTPUT->course_header(); ?>
+            <div class="breadcrumb-button"></div>
         </div>
     </header>
 
     <div id="page-content" class="row-fluid">
+    <div class="course-title">
+         <div id="editbutton">
+      <?php echo $OUTPUT->page_heading_button(); ?>
+      </div>
+    <?php echo $html->heading; ?>
+    </div>
+        <div id="course-header">
+            <?php echo $OUTPUT->course_header(); ?>
+        </div>
         <section id="region-main" class="span12">
             <?php
             echo $OUTPUT->course_content_header();
@@ -87,6 +93,17 @@ echo $OUTPUT->doctype() ?>
     </div>
 
     <footer id="page-footer">
+        <!-- Start Marketing Spots -->
+    <?php 
+        if($PAGE->theme->settings->togglemarketing==1) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } else if($PAGE->theme->settings->togglemarketing==2 && !isloggedin()) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } else if($PAGE->theme->settings->togglemarketing==3 && isloggedin()) {
+            require_once(dirname(__FILE__).'/includes/marketingspots.php');
+        } 
+    ?>
+    <!-- End Marketing Spots -->
         <div id="course-footer"><?php echo $OUTPUT->course_footer(); ?></div>
         <p class="helplink"><?php echo $OUTPUT->page_doc_link(); ?></p>
         <?php

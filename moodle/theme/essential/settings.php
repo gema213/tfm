@@ -46,7 +46,7 @@ if (is_siteadmin()) {
     $temp->add(new admin_setting_heading('theme_essential_generalheading', get_string('generalheadingsub', 'theme_essential'),
         format_text(get_string('generalheadingdesc', 'theme_essential'), FORMAT_MARKDOWN)));
 
-    // Background Image.
+    // Page Background Image.
     $name = 'theme_essential/pagebackground';
     $title = get_string('pagebackground', 'theme_essential');
     $description = get_string('pagebackgrounddesc', 'theme_essential');
@@ -54,7 +54,7 @@ if (is_siteadmin()) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
-    // Background Image.
+    // Background Style.
     $name = 'theme_essential/pagebackgroundstyle';
     $title = get_string('pagebackgroundstyle', 'theme_essential');
     $description = get_string('pagebackgroundstyledesc', 'theme_essential');
@@ -84,15 +84,6 @@ if (is_siteadmin()) {
     $name = 'theme_essential/layout';
     $title = get_string('layout', 'theme_essential');
     $description = get_string('layoutdesc', 'theme_essential');
-    $default = false;
-    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $temp->add($setting);
-
-    // New or old navbar.
-    $name = 'theme_essential/oldnavbar';
-    $title = get_string('oldnavbar', 'theme_essential');
-    $description = get_string('oldnavbardesc', 'theme_essential');
     $default = false;
     $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
     $setting->set_updatedcallback('theme_reset_all_caches');
@@ -349,6 +340,15 @@ if (is_siteadmin()) {
     /* Header Settings */
     $temp = new admin_settingpage('theme_essential_header', get_string('headerheading', 'theme_essential'));
 
+    // New or old navbar.
+    $name = 'theme_essential/oldnavbar';
+    $title = get_string('oldnavbar', 'theme_essential');
+    $description = get_string('oldnavbardesc', 'theme_essential');
+    $default = false;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default, true, false);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
     // Default Site icon setting.
     $name = 'theme_essential/siteicon';
     $title = get_string('siteicon', 'theme_essential');
@@ -392,6 +392,24 @@ if (is_siteadmin()) {
         2 => get_string('shortname', 'theme_essential'),
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Header Background Image.
+    $name = 'theme_essential/headerbackground';
+    $title = get_string('headerbackground', 'theme_essential');
+    $description = get_string('headerbackgrounddesc', 'theme_essential');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'headerbackground');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    // Header text colour setting.
+    $name = 'theme_essential/headertextcolor';
+    $title = get_string('headertextcolor', 'theme_essential');
+    $description = get_string('headertextcolordesc', 'theme_essential');
+    $default = '#217a94';
+    $previewconfig = null;
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default, $previewconfig);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
@@ -454,7 +472,7 @@ if (is_siteadmin()) {
 
     // Website url setting.
     $name = 'theme_essential/website';
-    $title = get_string('website', 'theme_essential');
+    $title = get_string('websiteurl', 'theme_essential');
     $description = get_string('websitedesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -463,7 +481,7 @@ if (is_siteadmin()) {
 
     // Facebook url setting.
     $name = 'theme_essential/facebook';
-    $title = get_string('facebook', 'theme_essential');
+    $title = get_string('facebookurl', 'theme_essential');
     $description = get_string('facebookdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -472,7 +490,7 @@ if (is_siteadmin()) {
 
     // Flickr url setting.
     $name = 'theme_essential/flickr';
-    $title = get_string('flickr', 'theme_essential');
+    $title = get_string('flickrurl', 'theme_essential');
     $description = get_string('flickrdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -481,7 +499,7 @@ if (is_siteadmin()) {
 
     // Twitter url setting.
     $name = 'theme_essential/twitter';
-    $title = get_string('twitter', 'theme_essential');
+    $title = get_string('twitterurl', 'theme_essential');
     $description = get_string('twitterdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -490,7 +508,7 @@ if (is_siteadmin()) {
 
     // Google+ url setting.
     $name = 'theme_essential/googleplus';
-    $title = get_string('googleplus', 'theme_essential');
+    $title = get_string('googleplusurl', 'theme_essential');
     $description = get_string('googleplusdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -499,7 +517,7 @@ if (is_siteadmin()) {
 
     // LinkedIn url setting.
     $name = 'theme_essential/linkedin';
-    $title = get_string('linkedin', 'theme_essential');
+    $title = get_string('linkedinurl', 'theme_essential');
     $description = get_string('linkedindesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -508,7 +526,7 @@ if (is_siteadmin()) {
 
     // Pinterest url setting.
     $name = 'theme_essential/pinterest';
-    $title = get_string('pinterest', 'theme_essential');
+    $title = get_string('pinteresturl', 'theme_essential');
     $description = get_string('pinterestdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -517,7 +535,7 @@ if (is_siteadmin()) {
 
     // Instagram url setting.
     $name = 'theme_essential/instagram';
-    $title = get_string('instagram', 'theme_essential');
+    $title = get_string('instagramurl', 'theme_essential');
     $description = get_string('instagramdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -526,7 +544,7 @@ if (is_siteadmin()) {
 
     // YouTube url setting.
     $name = 'theme_essential/youtube';
-    $title = get_string('youtube', 'theme_essential');
+    $title = get_string('youtubeurl', 'theme_essential');
     $description = get_string('youtubedesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -535,7 +553,7 @@ if (is_siteadmin()) {
 
     // Skype url setting.
     $name = 'theme_essential/skype';
-    $title = get_string('skype', 'theme_essential');
+    $title = get_string('skypeuri', 'theme_essential');
     $description = get_string('skypedesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -544,7 +562,7 @@ if (is_siteadmin()) {
 
     // VKontakte url setting.
     $name = 'theme_essential/vk';
-    $title = get_string('vk', 'theme_essential');
+    $title = get_string('vkurl', 'theme_essential');
     $description = get_string('vkdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -557,7 +575,7 @@ if (is_siteadmin()) {
 
     // Android App url setting.
     $name = 'theme_essential/android';
-    $title = get_string('android', 'theme_essential');
+    $title = get_string('androidurl', 'theme_essential');
     $description = get_string('androiddesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -566,7 +584,7 @@ if (is_siteadmin()) {
 
     // Windows App url setting.
     $name = 'theme_essential/windows';
-    $title = get_string('windows', 'theme_essential');
+    $title = get_string('windowsurl', 'theme_essential');
     $description = get_string('windowsdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -575,7 +593,7 @@ if (is_siteadmin()) {
 
     // Windows PhoneApp url setting.
     $name = 'theme_essential/winphone';
-    $title = get_string('winphone', 'theme_essential');
+    $title = get_string('winphoneurl', 'theme_essential');
     $description = get_string('winphonedesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -584,7 +602,7 @@ if (is_siteadmin()) {
 
     // iOS App url setting.
     $name = 'theme_essential/ios';
-    $title = get_string('ios', 'theme_essential');
+    $title = get_string('iosurl', 'theme_essential');
     $description = get_string('iosdesc', 'theme_essential');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
@@ -693,6 +711,12 @@ if (is_siteadmin()) {
 
     } else if(get_config('theme_essential', 'fontselect') === "3") {
 
+        if (floatval($CFG->version) >= 2014111005.01) { // 2.8.5+ (Build: 20150313) which has MDL-49074 integrated into it.
+            $woff2 = true;
+        } else {
+            $woff2 = false;
+        }
+
         // This is the descriptor for the font files
         $name = 'theme_essential/fontfiles';
         $heading = get_string('fontfiles', 'theme_essential');
@@ -725,13 +749,15 @@ if (is_siteadmin()) {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $temp->add($setting);
 
-        // WOFF2 Font.
-        $name = 'theme_essential/fontfilewofftwoheading';
-        $title = get_string('fontfilewofftwoheading', 'theme_essential');
-        $description = '';
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilewofftwoheading');
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $temp->add($setting);
+        if ($woff2) {
+            // WOFF2 Font.
+            $name = 'theme_essential/fontfilewofftwoheading';
+            $title = get_string('fontfilewofftwoheading', 'theme_essential');
+            $description = '';
+            $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilewofftwoheading');
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $temp->add($setting);
+        }
 
         // EOT Font.
         $name = 'theme_essential/fontfileeotheading';
@@ -774,13 +800,15 @@ if (is_siteadmin()) {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $temp->add($setting);
 
-        // WOFF2 Font.
-        $name = 'theme_essential/fontfilewofftwobody';
-        $title = get_string('fontfilewofftwobody', 'theme_essential');
-        $description = '';
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilewofftwobody');
-        $setting->set_updatedcallback('theme_reset_all_caches');
-        $temp->add($setting);
+        if ($woff2) {
+            // WOFF2 Font.
+            $name = 'theme_essential/fontfilewofftwobody';
+            $title = get_string('fontfilewofftwobody', 'theme_essential');
+            $description = '';
+            $setting = new admin_setting_configstoredfile($name, $title, $description, 'fontfilewofftwobody');
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $temp->add($setting);
+        }
 
         // EOT Font.
         $name = 'theme_essential/fontfileeotbody';

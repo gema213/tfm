@@ -23,9 +23,9 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2014110100;
+$plugin->version   = 2015040200;
 $plugin->maturity = MATURITY_STABLE;              // this version's maturity level.
-$plugin->release = '1.0.1 Tin Lizzy (Build: 20141101)';
+$plugin->release = '2.0.0 Evolve-D Dearborn Public Schools (Build: 2015040200)';
 $plugin->requires  = 2014050800;
 $plugin->component = 'theme_evolved';
 $plugin->dependencies = array(

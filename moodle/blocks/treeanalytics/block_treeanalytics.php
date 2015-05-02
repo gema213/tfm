@@ -1,13 +1,20 @@
 <?php
+
 require('jsCreation.php');
 require('htmlCreation.php');
 class block_treeanalytics extends block_base {
+
 	public function init() {
+
         	$this->title = get_string('treeanalytics', 'block_treeanalytics');
 	}
 	function has_config(){return true;}
 	
-	public function get_content() {
+	public function get_content(){
+
+global $CFG,/* $OUTPUT,*/ $USER, $COURSE;       
+require_once($CFG->dirroot.'/message/lib.php');
+
 		if ($this->content !== null) {
 			return $this->content;
 		}
@@ -15,14 +22,18 @@ class block_treeanalytics extends block_base {
 		$this->content         =  new stdClass;
 		$this->content->text   = externalScripts();
 		$this->content->text.=style();
-		$studentValues=generateStudentValues();		
+		$studentValues=generateStudentValues();	
+
+$this->content->text.='User: '.$USER->id.' - '.$USER->username.'<br>';	
+$this->content->text.='Course: '.$COURSE->id.' - '.$COURSE->name.'<br>';
+
 		$this->content->text.='
 <div class="container">
   
       <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#largeModal">Tree Analytics</a>
   
 <br><br> 
-      <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#basicModal">Resume Diagram</a>
+      <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#basicModal">Summary Diagram</a>
   
 </div>
 
@@ -43,13 +54,13 @@ class block_treeanalytics extends block_base {
 						<div id="my-tab-content" class="tab-content">
 							<div class="active tab-pane" id="tree1">
 								<p>';
-$this->content->text.=createJS(1,$studentValues);
+//$this->content->text.=createJS(1,$studentValues);
 $this->content->text.='</p>
 								</div>
 							<div class="tab-pane" id="tree2">
 								<p>';
-//$this->content->text.=createJS(2);
-$this->content->text.=createJS(2,$studentValues);
+
+//$this->content->text.=createJS(2,$studentValues);
 $this->content->text.='</p>
 								</div>
 							<div class="tab-pane" id="tree3">
@@ -77,7 +88,6 @@ $this->content->text.='</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
       </div>
     </div>
   </div>

@@ -24,22 +24,24 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once(dirname(__FILE__) . '/includes/pagesettings.php');
-require_once(dirname(__FILE__) . '/../lib.php');
+require_once($OUTPUT->get_include_file('pagesettings'));
 
-echo $OUTPUT->doctype() ?>
+echo $OUTPUT->doctype();
+?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
 <head>
     <title><?php echo $OUTPUT->page_title(); ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>"/>
-    <?php echo '<link rel="stylesheet" href="'.theme_essential_get_csswww().'">'; ?>
-    <?php echo $OUTPUT->standard_head_html() ?>
+    <?php 
+    echo $OUTPUT->get_csswww();
+    echo $OUTPUT->standard_head_html();
+    ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body <?php echo $OUTPUT->body_attributes($bodyclasses); ?>>
 
-<?php echo $OUTPUT->standard_top_of_body_html() ?>
+<?php echo $OUTPUT->standard_top_of_body_html(); ?>
 
 <header role="banner" class="navbar navbar-fixed-top">
     <nav role="navigation" class="navbar-inner">
@@ -69,27 +71,25 @@ echo $OUTPUT->doctype() ?>
     <a href="#top" class="back-to-top" ><i class="fa fa-angle-up "></i></a>
     <script type="text/javascript">
         jQuery(document).ready(function () {
-            var offset = 220;
-            var duration = 500;
-            jQuery(window).scroll(function () {
-                if (jQuery(this).scrollTop() > offset) {
-                    jQuery('.back-to-top').fadeIn(duration);
-                } else {
-                    jQuery('.back-to-top').fadeOut(duration);
-                }
-            });
-
-            jQuery('.back-to-top').click(function (event) {
-                event.preventDefault();
-                jQuery('html, body').animate({scrollTop: 0}, duration);
-                return false;
-            });
-
-            $('.mediaplugin').fitVids();
+            <?php
+            if ($OUTPUT->theme_essential_not_lte_ie9()) {
+              echo "jQuery('#essentialnavbar').affix({";
+              echo "offset: {";
+              echo "top: $('#page-header').height()";
+              echo "}";
+              echo "});";
+              if ($breadcrumbstyle == '1') {
+                  echo "$('.breadcrumb').jBreadCrumb();";
+              }
+            }
+            if ($OUTPUT->get_setting('fitvids')) {
+                echo "$('#page').fitVids();";
+            }
+            ?>
         });
     </script>
 </footer>
 
-<?php echo $OUTPUT->standard_end_of_body_html() ?>
+<?php echo $OUTPUT->standard_end_of_body_html(); ?>
 </body>
 </html>

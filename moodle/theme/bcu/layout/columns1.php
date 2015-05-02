@@ -24,7 +24,7 @@
  *
  */
 
-require_once(dirname(__FILE__) . '/includes/header.php'); 
+require_once(dirname(__FILE__) . '/includes/header.php');
 
 ?>
 
@@ -43,4 +43,5 @@ require_once(dirname(__FILE__) . '/includes/header.php');
         </section>
     </div>
 </div>
-<?php require_once(dirname(__FILE__) . '/includes/footer.php'); ?>
+<?php
+require_once(dirname(__FILE__) . '/includes/footer.php');

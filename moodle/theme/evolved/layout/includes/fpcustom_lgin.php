@@ -31,11 +31,7 @@
     <header id="page-header" class="clearfix">
         <div id="page-navbar" class="clearfix">
             <div class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></div>
-            <nav class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></nav>
-        </div>
-        <?php echo $html->heading; ?>
-        <div id="course-header">
-            <?php echo $OUTPUT->course_header(); ?>
+            <nav class="breadcrumb-button"></nav>
         </div>
     </header>
 
@@ -47,6 +43,15 @@ if (!$left) { ?>
 <?php } else { ?>
     <section id="region-main" class="span9">
 <?php } ?>
+<div class="course-title">
+         <div id="editbutton">
+      <?php echo $OUTPUT->page_heading_button(); ?>
+      </div>
+    <?php echo $html->heading; ?>
+    </div>
+        <div id="course-header">
+            <?php echo $OUTPUT->course_header(); ?>
+        </div>
 <div class="block" style="width:96%;display:block;float:left;padding:10px;">
 <div style="display:inline;float:left;"><a href="<?php echo new moodle_url('/my/'); ?>"><img src="<?php echo $OUTPUT->pix_url('myhome', 'theme'); ?>" width="64" height="75" alt="My Personal Dashboard" style="margin-left: 15px; margin-right: 15px;"></a><a href="<?php echo new moodle_url('/calendar/view.php?view=month'); ?>"><img src="<?php echo $OUTPUT->pix_url('calendar', 'theme'); ?>" width="64" height="75" alt="My Calendar" style="margin-left: 15px; margin-right: 15px;"></a><a href="<?php echo new moodle_url('/course/'); ?>"><img src="<?php echo $OUTPUT->pix_url('courses', 'theme'); ?>" width="64" height="75" alt="View All Courses" style="margin-left: 15px; margin-right: 15px;"></a><a href="<?php echo new moodle_url('/badges/mybadges.php'); ?>"><img src="<?php echo $OUTPUT->pix_url('badges', 'theme'); ?>" width="64" height="75" alt="My Badges" style="margin-left: 15px; margin-right: 15px;"></a> </div>
 <div style="display:inline;float:right;padding-right:10px;"><form action="<?php echo new moodle_url('/course/search.php'); ?>" method="get"><fieldset><strong>Find and Enroll in Courses:</strong><br><input type="text" size="10" name="search" value="" /><input type="submit" value="Go" /></fieldset></form></div>
