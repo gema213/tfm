@@ -12,8 +12,8 @@ class block_treeanalytics extends block_base {
 	
 	public function get_content(){
 
-global $CFG,/* $OUTPUT,*/ $USER, $COURSE;       
-require_once($CFG->dirroot.'/message/lib.php');
+		global $CFG, $USER, $COURSE;       
+		require_once($CFG->dirroot.'/message/lib.php');
 
 		if ($this->content !== null) {
 			return $this->content;
@@ -22,12 +22,35 @@ require_once($CFG->dirroot.'/message/lib.php');
 		$this->content         =  new stdClass;
 		$this->content->text   = externalScripts();
 		$this->content->text.=style();
-		$studentValues=generateStudentValues();	
+		$studentValues=generateRandomStudentValues();	
 
-$this->content->text.='User: '.$USER->id.' - '.$USER->username.'<br>';	
-$this->content->text.='Course: '.$COURSE->id.' - '.$COURSE->name.'<br>';
+		if($USER->id==0){
+			$this->content->text.='Debe iniciar sesión para visualizar información en este bloque';
+		}else{
+			if($USER->id==1){
+				$this->content->text.='Debe iniciar sesión con un usuario registrado para visualizar información en este bloque';
+			}else{
+				if($COURSE->id==1){
+					 $this->content->text.='Debe acceder a un curso para visualizar informacion de este bloque';
+				
+				}else{	
+$this->content->text.='User: '.$USER->id.' - '.$USER->username.'<br>';
+$this->content->text.='Course: '.$COURSE->id.' - '.$COURSE->fullname.'<br><br>';
+$studentValues2=generateStudentValues();
 
-		$this->content->text.='
+$this->content->text.='
+
+QUIZZES: '.$studentValues2["QUIZZES"].'
+<br>RESOURCES: '.$studentValues2["RESOURCES"].'
+<br>RECOMMENDEDRESOURCES: '.$studentValues2["RECOMMENDEDRESOURCES"].'
+<br>TIMETOQUIZZES: '.$studentValues2["TIMETOQUIZZES"].'
+<br>TIMETORESOURCES: '.$studentValues2["TIMETORESOURCES"].'
+<br>TIMETOASSIGNMENTS: '.$studentValues2["TIMETOASSIGNMENTS"].'
+<br>TIMETORECOMMENDED: '.$studentValues2["TIMETORECOMMENDED"].'
+<br>TIMETOFIRSTACTION: '.$studentValues2["TIMETOFIRSTACTION"];
+
+$this->content->text.='<br><br>';
+				$this->content->text.='
 <div class="container">
   
       <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#largeModal">Tree Analytics</a>
@@ -54,13 +77,13 @@ $this->content->text.='Course: '.$COURSE->id.' - '.$COURSE->name.'<br>';
 						<div id="my-tab-content" class="tab-content">
 							<div class="active tab-pane" id="tree1">
 								<p>';
-//$this->content->text.=createJS(1,$studentValues);
+$this->content->text.=createJS(1,$studentValues);
 $this->content->text.='</p>
 								</div>
 							<div class="tab-pane" id="tree2">
 								<p>';
 
-//$this->content->text.=createJS(2,$studentValues);
+$this->content->text.=createJS(2,$studentValues);
 $this->content->text.='</p>
 								</div>
 							<div class="tab-pane" id="tree3">
@@ -93,6 +116,7 @@ $this->content->text.='</p>
   </div>
 </div>
 	';  
+}}}
 	return $this->content;
 	}
 } 
