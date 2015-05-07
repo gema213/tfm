@@ -41,18 +41,37 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 	$studentValues["RECOMMENDEDRESOURCES"]=count($dataRecommendedResources);
 	if(count($dataTimeToQuizzes)>0){
 		$studentValues["TIMETOQUIZZES"]= current($dataTimeToQuizzes)->timecreated -  current($startCourse)->startdate;
-	}
+	}else{
+		//$studentValues["TIMETOQUIZZES"]= current($startCourse)->startdate;
+		$studentValues["TIMETOQUIZZES"]= -1;
+	}		
+
 	if(count($dataTimeToResources)>0){
 		$studentValues["TIMETORESOURCES"]=current($dataTimeToResources)->timecreated -  current($startCourse)->startdate;
-	}
+	}else{
+		//$studentValues["TIMETORESOURCES"]= current($startCourse)->startdate;
+		$studentValues["TIMETORESOURCES"]= -1;
+	}	
+
 	if(count($dataTimeToAssignments)>0){
 		$studentValues["TIMETOASSIGNMENTS"]=current($dataTimeToAssignments)->timecreated -  current($startCourse)->startdate;
+	}else{
+		//$studentValues["TIMETOASSIGNMENTS"]= current($startCourse)->startdate;
+		$studentValues["TIMETOASSIGNMENTS"]= -1;
 	}
+
 	if(count($dataTimeToRecommended)>0){
 		$studentValues["TIMETORECOMMENDED"]=current($dataTimeToRecommended)->timecreated -  current($startCourse)->startdate;
+	}else{
+		//$studentValues["TIMETORECOMMENDED"]= current($startCourse)->startdate;
+		$studentValues["TIMETORECOMMENDED"]= -1;
 	}
+
 	if(count($firstActionTime)>0){
 		$studentValues["TIMETOFIRSTACTION"]=current($firstActionTime)->timecreated - current($startCourse)->startdate;
+	}else{
+		//$studentValues["TIMETOFIRSTACTION"]= current($startCourse)->startdate;
+		$studentValues["TIMETOFIRSTACTION"]= -1;
 	}
 
 
