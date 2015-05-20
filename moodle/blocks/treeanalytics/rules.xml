@@ -1,5 +1,5 @@
 <rules>
-<rule id="1" tree="1">
+<rule id="1" tree="2">
 <condition>
 <variable>RESOURCES</variable>
 <value>LOW</value>
@@ -10,7 +10,7 @@
 </condition>
 <performance>FAIL</performance>
 </rule>
-<rule id="2" tree="1">
+<rule id="2" tree="2">
 <condition>
 <variable>RESOURCES</variable>
 <value>LOW</value>

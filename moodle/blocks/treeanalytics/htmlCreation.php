@@ -44,10 +44,10 @@ function style(){			return '
 			}
 
 			.node	.inactive{fill:#ddd;stroke:#ccc;}
-			.node	.active{fill:aqua;stroke:blue;}
-			.node .good{fill:#00FF00;stroke:#04B404;}/*green*/
+			.node	.active{fill:#00C4C4;stroke:blue;}
+			.node .good{fill:#00D600;stroke:#04B404;}/*green*/
 			.node .pass{fill:#FE9A2E;stroke:#FF4000;}/*orange*/
-			.node .fail{fill:#FF0000;stroke:#610B0B;}/*red*/
+			.node .fail{fill:#D60000;stroke:#610B0B;}/*red*/
 
 			.node text {font: 12px sans-serif; }
 			.node  .off {fill:gray; display:none;}

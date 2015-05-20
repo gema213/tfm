@@ -22,7 +22,8 @@ class block_treeanalytics extends block_base {
 		$this->content         =  new stdClass;
 		$this->content->text   = externalScripts();
 		$this->content->text.=style();
-		$studentValues=generateRandomStudentValues();	
+//		$studentValues=generateRandomStudentValues();	
+$studentValues=generateStudentValues();
 
 		if($USER->id==0){
 			$this->content->text.='Debe iniciar sesión para visualizar información en este bloque';

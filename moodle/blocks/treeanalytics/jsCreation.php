@@ -20,9 +20,19 @@ function generateStudentValues(){
 		"TIMETORECOMMENDED"=>0,
 		"TIMETOFIRSTACTION"=>0
 	);
+$now=time();
+$possibleAction=false;
 	
 	//Queries 
 $startCourse=$DB->get_records_sql('SELECT * FROM {course} WHERE id=\''.$courseID.'\'' );
+
+$numResources= $DB->get_records_sql('SELECT * FROM {resource} WHERE course=\''.$courseID.'\'' );
+$numRecommendedResources= $DB->get_records_sql('SELECT * FROM {url} WHERE course=\''.$courseID.'\'' );
+$numQuizzes= $DB->get_records_sql('SELECT * FROM {quiz} WHERE course=\''.$courseID.'\'' );
+$numAssignments= $DB->get_records_sql('SELECT * FROM {assign} WHERE course=\''.$courseID.'\'' );
+
+
+$dataQuizStart= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'started\' ORDER BY timecreated ASC LIMIT 1');
 
 $dataResources=$DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'resource\'' );
 $dataRecommendedResources=$DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'url\'');
@@ -36,48 +46,88 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 
 	
 	//Set values
-	//$studentValues["QUIZZES"]= ;
-	$studentValues["RESOURCES"]=count($dataResources);
-	$studentValues["RECOMMENDEDRESOURCES"]=count($dataRecommendedResources);
-	if(count($dataTimeToQuizzes)>0){
-		$studentValues["TIMETOQUIZZES"]= current($dataTimeToQuizzes)->timecreated -  current($startCourse)->startdate;
+//QUIZZES
+	if(count($numQuizzes)>0){
+		$possibleAction=true;
+		//Quizzes
+		if(count($dataQuizStart)>0){
+			$quizID=current($dataQuizStart)->objectid;
+			$dataQuizReview= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'reviewed\' AND objectid=\''.$quizID.'\' ORDER BY timecreated ASC LIMIT 1');
+			$timeDedicated=current($dataQuizStart)->timecreated - current($dataQuizReview)->timecreated;
+//			if($timeDedicated>=600){//superior a 10minutos
+				
+//			}else{
+				$studentValues["QUIZZES"]=$timeDedicated;	
+//			}	
+		}else{
+			$studentValues["QUIZZES"]=$now;
+		}
+		//Time to Quizzes
+		if(count($dataTimeToQuizzes)>0){
+			$studentValues["TIMETOQUIZZES"]= current($dataTimeToQuizzes)->timecreated -  current($startCourse)->startdate;
+		}else{
+			$studentValues["TIMETOQUIZZES"]= $now;
+		}
 	}else{
-		//$studentValues["TIMETOQUIZZES"]= current($startCourse)->startdate;
-		$studentValues["TIMETOQUIZZES"]= -1;
-	}		
-
-	if(count($dataTimeToResources)>0){
-		$studentValues["TIMETORESOURCES"]=current($dataTimeToResources)->timecreated -  current($startCourse)->startdate;
+		$studentValues["QUIZZES"]= 0;
+		$studentValues["TIMETOQUIZZES"]=0;
+	}
+//RESOURCES
+	if(count($numResources)>0){
+		$possibleAction=true;
+		//Resources
+		$studentValues["RESOURCES"]=count($dataResources);
+		//Time to Resources
+ 		if(count($dataTimeToResources)>0){
+                	$studentValues["TIMETORESOURCES"]=current($dataTimeToResources)->timecreated -  current($startCourse)->startdate;
+		}else{
+                	$studentValues["TIMETORESOURCES"]=$now;
+		}
 	}else{
-		//$studentValues["TIMETORESOURCES"]= current($startCourse)->startdate;
-		$studentValues["TIMETORESOURCES"]= -1;
-	}	
-
-	if(count($dataTimeToAssignments)>0){
-		$studentValues["TIMETOASSIGNMENTS"]=current($dataTimeToAssignments)->timecreated -  current($startCourse)->startdate;
+		$studentValues["RESOURCES"]=$now;
+		$studentValues["TIMETORESOURCES"]=0;
+	}
+//RECOMMENDED RESOURCES
+	if(count($numRecommendedResources)>0){
+		$possibleAction=true;
+		//Recommended Resources
+		$studentValues["RECOMMENDEDRESOURCES"]=count($dataRecommendedResources);
+		//Time to Recommended
+		if(count($dataTimeToRecommended)>0){
+                	$studentValues["TIMETORECOMMENDED"]=current($dataTimeToRecommended)->timecreated -  current($startCourse)->startdate;
+	        }else{
+                	 $studentValues["TIMETORECOMMENDED"]= $now;
+	         }	
 	}else{
-		//$studentValues["TIMETOASSIGNMENTS"]= current($startCourse)->startdate;
-		$studentValues["TIMETOASSIGNMENTS"]= -1;
+		$studentValues["RECOMMENDEDRESOURCES"]=$now;
+		$studentValues["TIMETORECOMMENDED"]=0;
+	}
+//TIME TO ASSIGNMENTS
+	if(count($numAssignments)>0){
+		$possibleAction=true;
+		if(count($dataTimeToAssignments)>0){
+			$studentValues["TIMETOASSIGNMENTS"]=current($dataTimeToAssignments)->timecreated -  current($startCourse)->startdate;
+		}else{
+			$studentValues["TIMETOASSIGNMENTS"]= $now;
+		}
+	}else{
+		 $studentValues["TIMETOASSIGNMENTS"]=0;	
 	}
 
-	if(count($dataTimeToRecommended)>0){
-		$studentValues["TIMETORECOMMENDED"]=current($dataTimeToRecommended)->timecreated -  current($startCourse)->startdate;
+//TIME TO FIRST ACTIONi
+	if($possibleAction){
+		if(count($firstActionTime)>0){
+			$studentValues["TIMETOFIRSTACTION"]=current($firstActionTime)->timecreated - current($startCourse)->startdate;
+		}else{
+			$studentValues["TIMETOFIRSTACTION"]= $now;
+		}
 	}else{
-		//$studentValues["TIMETORECOMMENDED"]= current($startCourse)->startdate;
-		$studentValues["TIMETORECOMMENDED"]= -1;
-	}
-
-	if(count($firstActionTime)>0){
-		$studentValues["TIMETOFIRSTACTION"]=current($firstActionTime)->timecreated - current($startCourse)->startdate;
-	}else{
-		//$studentValues["TIMETOFIRSTACTION"]= current($startCourse)->startdate;
-		$studentValues["TIMETOFIRSTACTION"]= -1;
+		$studentValues["TIMETOFIRSTACTION"]= 0;
 	}
 
 
 
-
-/*	$studentValues["QUIZZES"]=assignValue($studentValues["QUIZZES"],'threshold.quizzes.low','threshold.quizzes.high' );
+	$studentValues["QUIZZES"]=assignValue($studentValues["QUIZZES"],'threshold.quizzes.low','threshold.quizzes.high' );
 	$studentValues["RESOURCES"]=assignValue($studentValues["RESOURCES"],'threshold.resources.low','threshold.resources.high' );
 	$studentValues["RECOMMENDEDRESOURCES"]=assignValue($studentValues["RECOMMENDEDRESOURCES"],'threshold.recommendedresources.low','threshold.recommendedresources.high' );
 	$studentValues["TIMETOQUIZZES"]=assignValue($studentValues["TIMETOQUIZZES"],'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
@@ -85,7 +135,7 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 	$studentValues["TIMETOASSIGNMENTS"]=assignValue($studentValues["TIMETOASSIGNMENTS"],'threshold.timetoassignments.low','threshold.timetoassignments.high' );
 	$studentValues["TIMETORECOMMENDED"]=assignValue($studentValues["TIMETORECOMMENDED"],'threshold.timetorecommended.low','threshold.timetorecommended.high' );
 	$studentValues["TIMETOFIRSTACTION"]=assignValue($studentValues["TIMETOFIRSTACTION"],'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
-*/
+
 	return $studentValues;
 }
 
