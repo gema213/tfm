@@ -8,7 +8,7 @@
 		<title>Gema S. Careaga</title>
 	</head>
 	<body>
-		<header><h1>TFM de Gema S.Careaga</h1><p>Actualizado 25/02/2015</p></header>
+		<header><h1>TFM de Gema S.Careaga</h1><p>Actualizado 26/04/2015</p></header>
 		<div id="left">
 		<section>
 			<header><h2>Preparación</h2></header>
@@ -43,7 +43,7 @@
 			<article>
 				<header><h3>Propiedades</h3></header>
 				<ul>
-				<li><a href="/ficheros/thresholds.ini">.ini</a></li>
+				<li><a href="/moodle/blocks/treeanalytics/thresholds.ini">.ini</a></li>
 				<li><a href="/ficheros/rules.xml">Reglas</a></li>
 				</ul>
 			</article>
@@ -63,7 +63,8 @@
 					<li><a href="http://156.35.95.149/pruebas/onlyActive.html">Texto en nodos activos</a></li>
 					<li><a href="http://156.35.95.149/pruebas/noText.html">Sin texto en nodos</a></li>
 					<li><a href="http://156.35.95.149/pruebas/doubleClick.html">Acceso a tooltip con dobleclick (NO texto en nodos)</a></li>
-
+			</br>
+					<li id="actual"><a href="http://156.35.95.149/pruebas/tooltipsFinal.html">Diagrama con texto en activos y tooltip en inactivos. Inicialmente muestra caminos activos</a></li>
 
 				</ul>
 			</article>
@@ -76,11 +77,8 @@
 		<section>
 			<header><h2>TO DO</h2></header>
 			<ul>
-				<li>Diagrama en Moodle: Mejorar visualizacion en bloque ---- Responsive Design en el diagrama (tamaño global, de nodos, links y texto)</li>
-				<li>Crear bloque con contenido de la bd, de la <a href="https://docs.moodle.org/dev/images_dev/e/e0/Gradebook_erd.png">tabla grades</a> -> Importar datos (está vacío)</li>
-				<li>Añadir el estilo del diagrama al Theme de Moodle -> Dudas sobre como lo estoy haciendo</li>
-				<li id="future">Obtener de la BD datos del estudiante</li>
-				<li>Crear JSON dinámicamente</li>
+				<li>Realizar una primera redimensión del árbol al abrir el modal(Responsive Design)</li>
+				<li>Actualizar la fórmula para los datos de Quizzes</li>
 				<li id="future">Vision resumen en un circulo por sectores</li>
 			</ul>
 		</section>
@@ -101,6 +99,16 @@
 				</li>
 				<li>Bloque de prueba con query a la DB de usuarios y cursos</li>
 				<li>Carga en memoria de ficheros .ini y .xml</li>
+				<li>Crear JSON dinámicamente</li>
+				<li>Arbol inicial mostrando caminos activos</li>
+				<li>Incorporacion de pestañas en la ventana modal. Un árbol en cada pestaña</li>
+				<li>Información de nodos. Tooltips en nodos inactivos, texto en activos</li>
+				<li>Obtener de la BD datos del estudiante</li>
+<h3>Esta semana</h3>
+<li>Perfeccionamiento de CSS (colores)</li>
+<li>Establecer rangos en el fichero .ini</li>
+<li>Incorporar valores de la BD en la llamada al árbol(eliminando valores aleatorios)</li>
+<li>Aplicar distintos casos de uso para recursos/quizzes/... no existentes en el curso</li>
 			</ul>
 		</section>
 		</div>
