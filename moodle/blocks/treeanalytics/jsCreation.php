@@ -386,9 +386,13 @@ $js.='
 			root'.$numberTree.'.y0=height'.$numberTree.'/2;
 
 			collapse'.$numberTree.'(root'.$numberTree.');
-		
+$firstTime'.$numberTree.'=true;
+$("#tree").click(function(){
+if($firstTime'.$numberTree.'==true){
 			update'.$numberTree.'(root'.$numberTree.',true);
-
+$firstTime'.$numberTree.'=false;
+}
+});
 			function collapse'.$numberTree.'(d) {
 				if(d.active==0){
 					if (d.children) {

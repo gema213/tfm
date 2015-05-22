@@ -54,7 +54,7 @@ $this->content->text.='<br><br>';
 				$this->content->text.='
 <div class="container">
   
-      <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#largeModal">Tree Analytics</a>
+      <a href="#" id="tree" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#largeModal">Tree Analytics</a>
   
 <br><br> 
       <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#basicModal">Summary Diagram</a>
