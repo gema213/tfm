@@ -1,7 +1,7 @@
 <?php
 require('filesConnection.php');
 
-function generateStudentValues(){
+function generateStudentValues($configData){
 	global $CFG,$USER,$COURSE,$DB;
 
 	require_once($CFG->dirroot.'/message/lib.php');
@@ -11,17 +11,16 @@ function generateStudentValues(){
 	
 	//Initialize
 	$studentValues=array(
-		"QUIZZES"=>0,
-		"RESOURCES"=>0,
-		"RECOMMENDEDRESOURCES"=>0,
-		"TIMETOQUIZZES"=>0,
-		"TIMETORESOURCES"=>0,
-		"TIMETOASSIGNMENTS"=>0,
-		"TIMETORECOMMENDED"=>0,
-		"TIMETOFIRSTACTION"=>0
+		"QUIZZES"=>-1,
+		"RESOURCES"=>-1,
+		"RECOMMENDEDRESOURCES"=>-1,
+		"TIMETOQUIZZES"=>-1,
+		"TIMETORESOURCES"=>-1,
+		"TIMETOASSIGNMENTS"=>-1,
+		"TIMETORECOMMENDED"=>-1,
+		"TIMETOFIRSTACTION"=>-1
 	);
-$now=time();
-$possibleAction=false;
+	$now=time();
 	
 	//Queries 
 $startCourse=$DB->get_records_sql('SELECT * FROM {course} WHERE id=\''.$courseID.'\'' );
@@ -47,34 +46,18 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 	
 	//Set values
 //QUIZZES
-	if(count($numQuizzes)>0){
-		$possibleAction=true;
 		//Quizzes
 		if(count($dataQuizStart)>0){
 			$quizID=current($dataQuizStart)->objectid;
 			$dataQuizReview= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'reviewed\' AND objectid=\''.$quizID.'\' ORDER BY timecreated ASC LIMIT 1');
-			$timeDedicated=current($dataQuizStart)->timecreated - current($dataQuizReview)->timecreated;
-//			if($timeDedicated>=600){//superior a 10minutos
-				
-//			}else{
-				$studentValues["QUIZZES"]=$timeDedicated;	
-//			}	
-		}else{
-			$studentValues["QUIZZES"]=$now;
+			$studentValues["QUIZZES"]=current($dataQuizStart)->timecreated - current($dataQuizReview)->timecreated;
 		}
 		//Time to Quizzes
 		if(count($dataTimeToQuizzes)>0){
 			$studentValues["TIMETOQUIZZES"]= current($dataTimeToQuizzes)->timecreated -  current($startCourse)->startdate;
-		}else{
-			$studentValues["TIMETOQUIZZES"]= $now;
-		}
-	}else{
-		$studentValues["QUIZZES"]= 0;
-		$studentValues["TIMETOQUIZZES"]=0;
 	}
 //RESOURCES
 	if(count($numResources)>0){
-		$possibleAction=true;
 		//Resources
 		$studentValues["RESOURCES"]=count($dataResources);
 		//Time to Resources
@@ -83,13 +66,9 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 		}else{
                 	$studentValues["TIMETORESOURCES"]=$now;
 		}
-	}else{
-		$studentValues["RESOURCES"]=$now;
-		$studentValues["TIMETORESOURCES"]=0;
 	}
 //RECOMMENDED RESOURCES
 	if(count($numRecommendedResources)>0){
-		$possibleAction=true;
 		//Recommended Resources
 		$studentValues["RECOMMENDEDRESOURCES"]=count($dataRecommendedResources);
 		//Time to Recommended
@@ -98,89 +77,54 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 	        }else{
                 	 $studentValues["TIMETORECOMMENDED"]= $now;
 	         }	
-	}else{
-		$studentValues["RECOMMENDEDRESOURCES"]=$now;
-		$studentValues["TIMETORECOMMENDED"]=0;
 	}
 //TIME TO ASSIGNMENTS
-	if(count($numAssignments)>0){
-		$possibleAction=true;
-		if(count($dataTimeToAssignments)>0){
-			$studentValues["TIMETOASSIGNMENTS"]=current($dataTimeToAssignments)->timecreated -  current($startCourse)->startdate;
-		}else{
-			$studentValues["TIMETOASSIGNMENTS"]= $now;
-		}
-	}else{
-		 $studentValues["TIMETOASSIGNMENTS"]=0;	
+	if(count($dataTimeToAssignments)>0){
+		$studentValues["TIMETOASSIGNMENTS"]=current($dataTimeToAssignments)->timecreated -  current($startCourse)->startdate;
 	}
 
 //TIME TO FIRST ACTIONi
-	if($possibleAction){
-		if(count($firstActionTime)>0){
-			$studentValues["TIMETOFIRSTACTION"]=current($firstActionTime)->timecreated - current($startCourse)->startdate;
-		}else{
-			$studentValues["TIMETOFIRSTACTION"]= $now;
-		}
-	}else{
-		$studentValues["TIMETOFIRSTACTION"]= 0;
+	if(count($firstActionTime)>0){
+		$studentValues["TIMETOFIRSTACTION"]=current($firstActionTime)->timecreated - current($startCourse)->startdate;
 	}
 
 
 
-	$studentValues["QUIZZES"]=assignValue($studentValues["QUIZZES"],'threshold.quizzes.low','threshold.quizzes.high' );
-	$studentValues["RESOURCES"]=assignValue($studentValues["RESOURCES"],'threshold.resources.low','threshold.resources.high' );
-	$studentValues["RECOMMENDEDRESOURCES"]=assignValue($studentValues["RECOMMENDEDRESOURCES"],'threshold.recommendedresources.low','threshold.recommendedresources.high' );
-	$studentValues["TIMETOQUIZZES"]=assignValue($studentValues["TIMETOQUIZZES"],'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
-	$studentValues["TIMETORESOURCES"]=assignValue($studentValues["TIMETORESOURCES"],'threshold.timetoresources.low','threshold.timetoresources.high' );
-	$studentValues["TIMETOASSIGNMENTS"]=assignValue($studentValues["TIMETOASSIGNMENTS"],'threshold.timetoassignments.low','threshold.timetoassignments.high' );
-	$studentValues["TIMETORECOMMENDED"]=assignValue($studentValues["TIMETORECOMMENDED"],'threshold.timetorecommended.low','threshold.timetorecommended.high' );
-	$studentValues["TIMETOFIRSTACTION"]=assignValue($studentValues["TIMETOFIRSTACTION"],'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
+$studentValues["QUIZZES"]=assignValue($configData,$studentValues["QUIZZES"],'quizzeslow'.$courseID,'quizzeshigh'.$courseID,'threshold.quizzes.low','threshold.quizzes.high' );
+$studentValues["RESOURCES"]=assignValue($configData,$studentValues["RESOURCES"],'resourceslow'.$courseID,'resourceshigh'.$courseID,'threshold.resources.low','threshold.resources.high' );
+$studentValues["RECOMMENDEDRESOURCES"]=assignValue($configData,$studentValues["RECOMMENDEDRESOURCES"],'recommendedresourceslow'.$courseID,'recommendedresourceshigh'.$courseID,'threshold.recommendedresources.low','threshold.recommendedresources.high' );
+$studentValues["TIMETOQUIZZES"]=assignValue($configData,$studentValues["TIMETOQUIZZES"],'timetoquizzeslow'.$courseID,'timetoquizzeshigh'.$courseID,'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
+$studentValues["TIMETORESOURCES"]=assignValue($configData,$studentValues["TIMETORESOURCES"],'timetoresourceslow'.$courseID,'timetoresourceshigh'.$courseID,'threshold.timetoresources.low','threshold.timetoresources.high' );
+$studentValues["TIMETOASSIGNMENTS"]=assignValue($configData,$studentValues["TIMETOASSIGNMENTS"],'timetoassignmentslow'.$courseID,'timetoassignmentshigh'.$courseID,'threshold.timetoassignments.low','threshold.timetoassignments.high' );
+$studentValues["TIMETORECOMMENDED"]=assignValue($configData,$studentValues["TIMETORECOMMENDED"],'timetorecommendedlow'.$courseID,'timetorecommendedhigh'.$courseID,'threshold.timetorecommended.low','threshold.timetorecommended.high' );
+$studentValues["TIMETOFIRSTACTION"]=assignValue($configData,$studentValues["TIMETOFIRSTACTION"],'timetofirstactionlow'.$courseID,'timetofirstactionhigh'.$courseID,'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
 
-	return $studentValues;
-}
-
-
-/**/
-function generateRandomStudentValues(){
-
-	$studentValues=array(
-		"QUIZZES"=>rand(0,100)/100,
-		"RESOURCES"=>rand(0,100)/100,
-		"RECOMMENDEDRESOURCES"=>rand(0,100)/100,
-		"TIMETOQUIZZES"=>rand(0,100)/100,
-		"TIMETORESOURCES"=>rand(0,100)/100,
-		"TIMETOASSIGNMENTS"=>rand(0,100)/100,
-		"TIMETORECOMMENDED"=>rand(0,100)/100,
-		"TIMETOFIRSTACTION"=>rand(0,100)/100
-	);
-
-	$studentValues["QUIZZES"]=assignValue($studentValues["QUIZZES"],'threshold.quizzes.low','threshold.quizzes.high' );
-	$studentValues["RESOURCES"]=assignValue($studentValues["RESOURCES"],'threshold.resources.low','threshold.resources.high' );
-	$studentValues["RECOMMENDEDRESOURCES"]=assignValue($studentValues["RECOMMENDEDRESOURCES"],'threshold.recommendedresources.low','threshold.recommendedresources.high' );
-	$studentValues["TIMETOQUIZZES"]=assignValue($studentValues["TIMETOQUIZZES"],'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
-	$studentValues["TIMETORESOURCES"]=assignValue($studentValues["TIMETORESOURCES"],'threshold.timetoresources.low','threshold.timetoresources.high' );
-	$studentValues["TIMETOASSIGNMENTS"]=assignValue($studentValues["TIMETOASSIGNMENTS"],'threshold.timetoassignments.low','threshold.timetoassignments.high' );
-	$studentValues["TIMETORECOMMENDED"]=assignValue($studentValues["TIMETORECOMMENDED"],'threshold.timetorecommended.low','threshold.timetorecommended.high' );
-	$studentValues["TIMETOFIRSTACTION"]=assignValue($studentValues["TIMETOFIRSTACTION"],'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
 
 	return $studentValues;
 }
 
 /*
-TODO: Pensar que como se inicializa a LOW, solo comprobar medium y high.
 */
-function assignValue($original, $lowLimit,$highLimit){
+function assignValue($configData,$original, $lowKey,$highKey,$lowLimit,$highLimit){
 	$iniFile=iniFile();
-	$high="HIGH";
-	$medium="MEDIUM";
-	$low="LOW";
-	if($original<=$iniFile[$lowLimit]){
-		return $low;
+	$highText="HIGH";
+	$mediumText="MEDIUM";
+	$lowText="LOW";
+	$notAvailable="NA";
+	if($original==-1){return $notAvailable;}
+	
+	$low=$configData->$lowKey;
+	$high=$configData->$highKey;
+	if($low==null || $low==''){$low=$lowLimit;}
+	if($high==null || $high==''){$low=$highLimit;}
+
+	if($original<=$iniFile[$low]){
+		return $lowText;
 	}else{
-		if($original>=$iniFile[$highLimit]){
-			return $high;
+		if($original>=$iniFile[$high]){
+			return $highText;
 		}else{
-			return $medium;
+			return $mediumText;
 		}
 	}
 }

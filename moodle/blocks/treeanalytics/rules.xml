@@ -1,5 +1,5 @@
 <rules>
-<rule id="1" tree="2">
+	<rule id="1" tree="2">
 <condition>
 <variable>RESOURCES</variable>
 <value>LOW</value>
@@ -885,4 +885,537 @@
 </condition>
 <performance>GOOD</performance>
 </rule>
+	
+	<rule id="67" tree="2">
+		<condition>
+			<variable>QUIZZES</variable>
+			<value>LOW</value>
+		</condition>
+		<condition>
+			<variable>TIMETOQUIZZES</variable>
+			<value>HIGH</value>
+		</condition>
+		<condition>
+			<variable>TIMETOFIRSTACTION</variable>
+			<value>MEDIUM</value>
+		</condition>
+		<performance>FAIL</performance>
+	</rule>
+	<rule id="68" tree="2">
+		<condition>
+			<variable>QUIZZES</variable>
+			<value>LOW</value>
+		</condition>
+		<condition>
+			<variable>TIMETOQUIZZES</variable>
+			<value>HIGH</value>
+		</condition>
+		<condition>
+			<variable>TIMETOFIRSTACTION</variable>
+			<value>HIGH</value>
+		</condition>
+		<performance>FAIL</performance>
+	</rule>
+	<rule id="69" tree="2">
+		<condition>
+			<variable>QUIZZES</variable>
+			<value>LOW</value>
+		</condition>
+		<condition>
+			<variable>TIMETOQUIZZES</variable>
+			<value>HIGH</value>
+		</condition>
+		<condition>
+			<variable>TIMETORESOURCES</variable>
+			<value>MEDIUM</value>
+		</condition>
+		<performance>FAIL</performance>
+	</rule>
+	<rule id="70" tree="2">
+		<condition>
+			<variable>QUIZZES</variable>
+			<value>LOW</value>
+		</condition>
+		<condition>
+			<variable>TIMETOQUIZZES</variable>
+			<value>HIGH</value>
+		</condition>
+		<condition>
+			<variable>TIMETORESOURCES</variable>
+			<value>HIGH</value>
+		</condition>
+		<performance>FAIL</performance>
+	</rule>
+	<rule id="71" tree="2">
+		<condition>
+			<variable>QUIZZES</variable>
+			<value>LOW</value>
+		</condition>
+		<condition>
+			<variable>TIMETOQUIZZES</variable>
+			<value>HIGH</value>
+		</condition>
+		<condition>
+			<variable>TIMETOASSIGNMENTS</variable>
+			<value>MEDIUM</value>
+		</condition>
+		<performance>FAIL</performance>
+	</rule>
+	<rule id="72" tree="2">
+		<condition>
+			<variable>QUIZZES</variable>
+			<value>LOW</value>
+		</condition>
+		<condition>
+			<variable>TIMETOQUIZZES</variable>
+			<value>HIGH</value>
+		</condition>
+		<condition>
+			<variable>TIMETOASSIGNMENTS</variable>
+			<value>HIGH</value>
+		</condition>
+		<performance>FAIL</performance>
+	</rule>
+	<rule id="73" tree="2">
+		<condition>
+			<variable>QUIZZES</variable>
+			<value>LOW</value>
+		</condition>
+		<condition>
+			<variable>TIMETOQUIZZES</variable>
+			<value>HIGH</value>
+		</condition>
+		<condition>
+			<variable>TIMETORECOMMENDED</variable>
+			<value>MEDIUM</value>
+		</condition>
+		<performance>PASS</performance>
+	</rule>
+	<rule id="74" tree="2">
+		<condition>
+			<variable>QUIZZES</variable>
+			<value>LOW</value>
+		</condition>
+		<condition>
+			<variable>TIMETOASSIGNMENTS</variable>
+			<value>LOW</value>
+		</condition>
+		<performance>PASS</performance>
+	</rule>
+	<rule id="75" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOASSIGNMENTS</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>FAIL</performance>
+		
+	</rule>
+	<rule id="76" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOASSIGNMENTS</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETOFIRSTACTION</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>FAIL</performance>
+		
+	</rule>
+	<rule id="77" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOASSIGNMENTS</variable>
+				<value>HIGH</value>
+			</condition>
+			<condition>
+				<variable>TIMETOFIRSTACTION</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>FAIL</performance>
+
+	</rule>
+	<rule id="78" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOASSIGNMENTS</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>FAIL</performance>
+
+	</rule>
+	<rule id="79" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOFIRSTACTION</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>PASS</performance>
+	</rule>
+	<rule id="80" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOFIRSTACTION</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>FAIL</performance>
+	</rule>
+	<rule id="81" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>RECOMMENDEDRESOURCES</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>FAIL</performance>
+		
+	</rule>
+	<rule id="82" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>RECOMMENDEDRESOURCES</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>FAIL</performance>
+		
+	</rule>
+	<rule id="83" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOFIRSTACTION</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>FAIL</performance>
+		
+	</rule>
+	<rule id="84" tree="2">
+		<condition>
+				<variable>QUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>FAIL</performance>
+	</rule>
+	<rule id="85" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETOQUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="86" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETOQUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>PASS</performance>
+		
+	</rule>
+	<rule id="87" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETOQUIZZES</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="88" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETOQUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETORECOMMENDED</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="89" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETOQUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETOASSIGNMENTS</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<performance>GOOD</performance>
+	
+	</rule>
+	<rule id="90" tree="2">
+	
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETOQUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<performance>GOOD</performance>
+	</rule>
+	<rule id="91" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>RECOMMENDEDRESOURCES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETORECOMMENDED</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="92" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>RECOMMENDEDRESOURCES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<performance>GOOD</performance>
+
+	</rule>
+	<rule id="93" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>RECOMMENDEDRESOURCES</variable>
+				<value>HIGH</value>
+			</condition>
+			<condition>
+				<variable>TIMETOASSIGNMENTS</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="94" tree="2">
+		<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>RECOMMENDEDRESOURCES</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>PASS</performance>
+		
+	</rule>
+	<rule id="95" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOASSIGNMENTS</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="96" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>GOOD</performance>
+	</rule>
+	<rule id="97" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="98" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETORECOMMENDED</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>PASS</performance>
+		
+	</rule>
+	<rule id="99" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>TIMETORECOMMENDED</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="100" tree="2">
+		
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>HIGH</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>TIMETOFIRSTACTION</variable>
+				<value>LOW</value>
+			</condition>
+			<condition>
+				<variable>RECOMMENDEDRESOURCES</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="101" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>HIGH</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>MEDIUM</value>
+			</condition>
+			<condition>
+				<variable>RECOMMENDEDRESOURCES</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>PASS</performance>
+		
+	</rule>
+	<rule id="102" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>HIGH</value>
+			</condition>
+			<condition>
+				<variable>TIMETORESOURCES</variable>
+				<value>HIGH</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="103" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>HIGH</value>
+			</condition>
+			<condition>
+				<variable>TIMETOASSIGNMENTS</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>GOOD</performance>
+		
+	</rule>
+	<rule id="104" tree="2">
+			<condition>
+				<variable>QUIZZES</variable>
+				<value>HIGH</value>
+			</condition>
+			<condition>
+				<variable>TIMETORECOMMENDED</variable>
+				<value>LOW</value>
+			</condition>
+			<performance>GOOD</performance>
+	</rule>
 </rules>
