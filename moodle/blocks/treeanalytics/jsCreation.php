@@ -47,7 +47,7 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 	//Set values
 //QUIZZES
 		//Quizzes
-		if(count($dataQuizStart)>0){
+		if(count($numQuizzes)>0  && count($dataQuizStart)>0){
 			$quizID=current($dataQuizStart)->objectid;
 			$dataQuizReview= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'reviewed\' AND objectid=\''.$quizID.'\' ORDER BY timecreated ASC LIMIT 1');
 			$studentValues["QUIZZES"]=current($dataQuizStart)->timecreated - current($dataQuizReview)->timecreated;
@@ -57,7 +57,7 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 			$studentValues["TIMETOQUIZZES"]= current($dataTimeToQuizzes)->timecreated -  current($startCourse)->startdate;
 	}
 //RESOURCES
-	if(count($numResources)>0){
+	if(count($numResources)>0 && count($dataResources)>0){
 		//Resources
 		$studentValues["RESOURCES"]=count($dataResources);
 		//Time to Resources
@@ -68,7 +68,7 @@ $dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_l
 		}
 	}
 //RECOMMENDED RESOURCES
-	if(count($numRecommendedResources)>0){
+	if(count($numRecommendedResources)>0 && count($dataRecommendedResources)>0){
 		//Recommended Resources
 		$studentValues["RECOMMENDEDRESOURCES"]=count($dataRecommendedResources);
 		//Time to Recommended
