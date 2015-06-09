@@ -1,11 +1,8 @@
 <?php
 require('filesConnection.php');
-
 function generateStudentValues($configData){
 	global $CFG,$USER,$COURSE,$DB;
-
 	require_once($CFG->dirroot.'/message/lib.php');
-
 	$userID=$USER->id;
 	$courseID=$COURSE->id;
 	
@@ -20,89 +17,72 @@ function generateStudentValues($configData){
 		"TIMETORECOMMENDED"=>-1,
 		"TIMETOFIRSTACTION"=>-1
 	);
-	$now=time();
 	
 	//Queries 
-$startCourse=$DB->get_records_sql('SELECT * FROM {course} WHERE id=\''.$courseID.'\'' );
+	$startCourse=$DB->get_records_sql('SELECT * FROM {course} WHERE id=\''.$courseID.'\'' );
+	$numQuizzes= $DB->get_records_sql('SELECT * FROM {quiz} WHERE course=\''.$courseID.'\'' );
+	$numResources= $DB->get_records_sql('SELECT * FROM {resource} WHERE course=\''.$courseID.'\'' );
+	$numRecommendedResources= $DB->get_records_sql('SELECT * FROM {url} WHERE course=\''.$courseID.'\'' );
+	$numAssignments= $DB->get_records_sql('SELECT * FROM {assign} WHERE course=\''.$courseID.'\'' );
 
-$numResources= $DB->get_records_sql('SELECT * FROM {resource} WHERE course=\''.$courseID.'\'' );
-$numRecommendedResources= $DB->get_records_sql('SELECT * FROM {url} WHERE course=\''.$courseID.'\'' );
-$numQuizzes= $DB->get_records_sql('SELECT * FROM {quiz} WHERE course=\''.$courseID.'\'' );
-$numAssignments= $DB->get_records_sql('SELECT * FROM {assign} WHERE course=\''.$courseID.'\'' );
-
-
-$dataQuizStart= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'started\' ORDER BY timecreated ASC LIMIT 1');
-
-$dataResources=$DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'resource\'' );
-$dataRecommendedResources=$DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'url\'');
-
-$firstActionTime= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND(objecttable=\'url\' OR objecttable=\'resource\' OR objecttable=\'assignsubmission_file\' OR (objecttable=\'quiz_attempts\' AND action=\'started\')) ORDER BY timecreated ASC LIMIT 1');
-
-$dataTimeToQuizzes= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'started\' ORDER BY timecreated ASC LIMIT 1');
-$dataTimeToResources= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'resource\' ORDER BY timecreated ASC LIMIT 1');
-$dataTimeToRecommended= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'url\' ORDER BY timecreated ASC LIMIT 1');
-$dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'assignsubmission_file\' ORDER BY timecreated ASC LIMIT 1');
-
+	$firstActionTime= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND(objecttable=\'url\' OR objecttable=\'resource\' OR objecttable=\'assignsubmission_file\' OR (objecttable=\'quiz_attempts\' AND action=\'started\')) ORDER BY timecreated ASC LIMIT 1');
 	
 	//Set values
-//QUIZZES
-		//Quizzes
-		if(count($numQuizzes)>0  && count($dataQuizStart)>0){
+	//QUIZZES
+	if(count($numQuizzes)>0){
+		$dataQuizStart= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'started\' ORDER BY timecreated ASC LIMIT 1');
+		if(count($dataQuizStart)>0){
+			//Quizzes
 			$quizID=current($dataQuizStart)->objectid;
 			$dataQuizReview= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'reviewed\' AND objectid=\''.$quizID.'\' ORDER BY timecreated ASC LIMIT 1');
 			$studentValues["QUIZZES"]=current($dataQuizStart)->timecreated - current($dataQuizReview)->timecreated;
-		}
-		//Time to Quizzes
-		if(count($dataTimeToQuizzes)>0){
-			$studentValues["TIMETOQUIZZES"]= current($dataTimeToQuizzes)->timecreated -  current($startCourse)->startdate;
+			//Time to Quizzes
+			$studentValues["TIMETOQUIZZES"]= current($dataQuizStart)->timecreated -  current($startCourse)->startdate;
+		}			
 	}
-//RESOURCES
-	if(count($numResources)>0 && count($dataResources)>0){
-		//Resources
-		$studentValues["RESOURCES"]=count($dataResources);
-		//Time to Resources
- 		if(count($dataTimeToResources)>0){
-                	$studentValues["TIMETORESOURCES"]=current($dataTimeToResources)->timecreated -  current($startCourse)->startdate;
-		}else{
-                	$studentValues["TIMETORESOURCES"]=$now;
+	//RESOURCES
+	if(count($numResources)>0){
+		$dataResources= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'resource\' ORDER BY timecreated ASC LIMIT 1');
+		if(count($dataResources)>0){
+			//Resources
+			$studentValues["RESOURCES"]=count($dataResources);
+			//Time to Resources
+			$studentValues["TIMETORESOURCES"]=current($dataResources)->timecreated -  current($startCourse)->startdate;		
 		}
 	}
-//RECOMMENDED RESOURCES
-	if(count($numRecommendedResources)>0 && count($dataRecommendedResources)>0){
-		//Recommended Resources
-		$studentValues["RECOMMENDEDRESOURCES"]=count($dataRecommendedResources);
-		//Time to Recommended
-		if(count($dataTimeToRecommended)>0){
-                	$studentValues["TIMETORECOMMENDED"]=current($dataTimeToRecommended)->timecreated -  current($startCourse)->startdate;
-	        }else{
-                	 $studentValues["TIMETORECOMMENDED"]= $now;
-	         }	
+	//RECOMMENDED RESOURCES
+	if(count($numRecommendedResources)>0){
+		$dataRecommendedResources= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'url\' ORDER BY timecreated ASC LIMIT 1');
+		if(count($dataRecommendedResources)>0){
+			//Recommended Resources
+			$studentValues["RECOMMENDEDRESOURCES"]=count($dataRecommendedResources);
+			//Time to Recommended
+			$studentValues["TIMETORECOMMENDED"]=current($dataRecommendedResources)->timecreated -  current($startCourse)->startdate;	    
+		}
 	}
-//TIME TO ASSIGNMENTS
-	if(count($dataTimeToAssignments)>0){
-		$studentValues["TIMETOASSIGNMENTS"]=current($dataTimeToAssignments)->timecreated -  current($startCourse)->startdate;
+	//TIME TO ASSIGNMENTS
+	if(count($numAssignments)>0){
+		$dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'assignsubmission_file\' ORDER BY timecreated ASC LIMIT 1');
+		if(count($dataTimeToAssignments)>0){
+			$studentValues["TIMETOASSIGNMENTS"]=current($dataTimeToAssignments)->timecreated -  current($startCourse)->startdate;
+		}
 	}
-
-//TIME TO FIRST ACTIONi
+	//TIME TO FIRST ACTION
 	if(count($firstActionTime)>0){
 		$studentValues["TIMETOFIRSTACTION"]=current($firstActionTime)->timecreated - current($startCourse)->startdate;
 	}
-
-
-
-$studentValues["QUIZZES"]=assignValue($configData,$studentValues["QUIZZES"],'quizzeslow'.$courseID,'quizzeshigh'.$courseID,'threshold.quizzes.low','threshold.quizzes.high' );
-$studentValues["RESOURCES"]=assignValue($configData,$studentValues["RESOURCES"],'resourceslow'.$courseID,'resourceshigh'.$courseID,'threshold.resources.low','threshold.resources.high' );
-$studentValues["RECOMMENDEDRESOURCES"]=assignValue($configData,$studentValues["RECOMMENDEDRESOURCES"],'recommendedresourceslow'.$courseID,'recommendedresourceshigh'.$courseID,'threshold.recommendedresources.low','threshold.recommendedresources.high' );
-$studentValues["TIMETOQUIZZES"]=assignValue($configData,$studentValues["TIMETOQUIZZES"],'timetoquizzeslow'.$courseID,'timetoquizzeshigh'.$courseID,'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
-$studentValues["TIMETORESOURCES"]=assignValue($configData,$studentValues["TIMETORESOURCES"],'timetoresourceslow'.$courseID,'timetoresourceshigh'.$courseID,'threshold.timetoresources.low','threshold.timetoresources.high' );
-$studentValues["TIMETOASSIGNMENTS"]=assignValue($configData,$studentValues["TIMETOASSIGNMENTS"],'timetoassignmentslow'.$courseID,'timetoassignmentshigh'.$courseID,'threshold.timetoassignments.low','threshold.timetoassignments.high' );
-$studentValues["TIMETORECOMMENDED"]=assignValue($configData,$studentValues["TIMETORECOMMENDED"],'timetorecommendedlow'.$courseID,'timetorecommendedhigh'.$courseID,'threshold.timetorecommended.low','threshold.timetorecommended.high' );
-$studentValues["TIMETOFIRSTACTION"]=assignValue($configData,$studentValues["TIMETOFIRSTACTION"],'timetofirstactionlow'.$courseID,'timetofirstactionhigh'.$courseID,'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
-
+	
+	$studentValues["QUIZZES"]=assignValue($configData,$studentValues["QUIZZES"],'quizzeslow'.$courseID,'quizzeshigh'.$courseID,'threshold.quizzes.low','threshold.quizzes.high' );
+	$studentValues["RESOURCES"]=assignValue($configData,$studentValues["RESOURCES"],'resourceslow'.$courseID,'resourceshigh'.$courseID,'threshold.resources.low','threshold.resources.high' );
+	$studentValues["RECOMMENDEDRESOURCES"]=assignValue($configData,$studentValues["RECOMMENDEDRESOURCES"],'recommendedresourceslow'.$courseID,'recommendedresourceshigh'.$courseID,'threshold.recommendedresources.low','threshold.recommendedresources.high' );
+	$studentValues["TIMETOQUIZZES"]=assignValue($configData,$studentValues["TIMETOQUIZZES"],'timetoquizzeslow'.$courseID,'timetoquizzeshigh'.$courseID,'threshold.timetoquizzes.low','threshold.timetoquizzes.high' );
+	$studentValues["TIMETORESOURCES"]=assignValue($configData,$studentValues["TIMETORESOURCES"],'timetoresourceslow'.$courseID,'timetoresourceshigh'.$courseID,'threshold.timetoresources.low','threshold.timetoresources.high' );
+	$studentValues["TIMETOASSIGNMENTS"]=assignValue($configData,$studentValues["TIMETOASSIGNMENTS"],'timetoassignmentslow'.$courseID,'timetoassignmentshigh'.$courseID,'threshold.timetoassignments.low','threshold.timetoassignments.high' );
+	$studentValues["TIMETORECOMMENDED"]=assignValue($configData,$studentValues["TIMETORECOMMENDED"],'timetorecommendedlow'.$courseID,'timetorecommendedhigh'.$courseID,'threshold.timetorecommended.low','threshold.timetorecommended.high' );
+	$studentValues["TIMETOFIRSTACTION"]=assignValue($configData,$studentValues["TIMETOFIRSTACTION"],'timetofirstactionlow'.$courseID,'timetofirstactionhigh'.$courseID,'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
 
 	return $studentValues;
 }
-
 /*
 */
 function assignValue($configData,$original, $lowKey,$highKey,$lowLimit,$highLimit){
@@ -117,7 +97,6 @@ function assignValue($configData,$original, $lowKey,$highKey,$lowLimit,$highLimi
 	$high=$configData->$highKey;
 	if($low==null || $low==''){$low=$lowLimit;}
 	if($high==null || $high==''){$low=$highLimit;}
-
 	if($original<=$iniFile[$low]){
 		return $lowText;
 	}else{
@@ -128,11 +107,8 @@ function assignValue($configData,$original, $lowKey,$highKey,$lowLimit,$highLimi
 		}
 	}
 }
-
-
 /*
   Function create to root node.
-
   @return rootNode
 */
 function createRoot(){
@@ -143,10 +119,8 @@ function createRoot(){
 	$rootNode->children = array();
 	return $rootNode;
 }
-
 /*
   Function to create a node for the JSON.
-
   @param $data Actual XML node
   @param $hasChildren Flag to indicate when a node has children
   @param $last_element Name of the parent element
@@ -171,12 +145,8 @@ function createNode($data, $hasChildren, $last_element){
 	}
 	return $node;
 }
-
-
-
 /*
   Function to generate a rule and if it is necessary activate the nodes.
-
   @param $rule_array Array with all conditions and results of a rule
   @param $is_active Flag to activate nodes
   @return PHP structure to generate JSON
@@ -198,10 +168,8 @@ function generateRule($rule_array, $is_active){
 	// Return root node
 	return $last;
 }
-
 /*
   Function to append new rule to the tree.
-
   @param $tree Current tree. By default, root_node
   @param new_rule New rule to append.
   @return tree generated
@@ -242,17 +210,12 @@ function appendRule($tree, $new_rule){
 		}
 	}
 }
-
 /*
 @return JSON
 */
 function createJSON($numberTree,$studentValues){
-
 	$xmlIterator=xmlFile();
-
-
 	$rules = $xmlIterator -> xpath("//rule[@tree=$numberTree]");
-
 	// Root node
 	$rootNode = createRoot();
 	
@@ -290,16 +253,12 @@ function createJSON($numberTree,$studentValues){
 	}
 	// Generate JSON
 //$json = json_encode($rootNode, JSON_PRETTY_PRINT);	
-
 	return json_encode($rootNode, JSON_PRETTY_PRINT);
 }
-
 function createJS($numberTree,$studentValues){
  $json=createJSON($numberTree,$studentValues);
-
 $js='<script>
 			var margin'.$numberTree.' = {top: 0, right: 0, bottom: 0, left:50},
-//width'.$numberTree.' = 1000 - margin'.$numberTree.'.right - margin'.$numberTree.'.left,
 				height'.$numberTree.' = 650 - margin'.$numberTree.'.top - margin'.$numberTree.'.bottom;
 				
 			var i'.$numberTree.' = 0,
@@ -328,7 +287,6 @@ $js.='
 			root'.$numberTree.' = treeData'.$numberTree.'[0];
 			root'.$numberTree.'.x0=0;
 			root'.$numberTree.'.y0=height'.$numberTree.'/2;
-
 			collapse'.$numberTree.'(root'.$numberTree.');
 $firstTime'.$numberTree.'=true;
 $("#tree").click(function(){
@@ -350,21 +308,18 @@ $firstTime'.$numberTree.'=false;
 					}
 				}
 			}
-
 			 
 			function update'.$numberTree.'(source,initialUpdate) {
 			  // Compute the new tree layout.
 			  var nodes = tree'.$numberTree.'.nodes(root'.$numberTree.').reverse(),
 				  links = tree'.$numberTree.'.links(nodes);
 			  // Normalize for fixed-depth.
-
 var separation=130;
 var actualWidth=$("#tree'.$numberTree.'").width();
 if(actualWidth>0){
 separation=actualWidth/6;
 }
 			  nodes.forEach(function(d) { d.y = d.depth * separation; });
-
 			  // Update the nodes
 			  var node = svg'.$numberTree.'.selectAll("g.node")
 				  .data(nodes, function(d) { return d.id || (d.id = ++i'.$numberTree.'); });
@@ -481,8 +436,6 @@ separation=actualWidth/6;
 					.style("opacity", 1);
 				}
 			}
-
-
 			function mousemove'.$numberTree.'(d) {			
 				if(d.active!=1){
 					var iniDiv=$("#tree'.$numberTree.'").offset();
@@ -520,7 +473,3 @@ separation=actualWidth/6;
 ';
 return $js;
 }
-
-
-//*************************************************************
-        

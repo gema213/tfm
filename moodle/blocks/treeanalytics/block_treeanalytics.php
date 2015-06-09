@@ -2,6 +2,7 @@
 
 require('jsCreation.php');
 require('htmlCreation.php');
+
 class block_treeanalytics extends block_base {
 
 	public function init() {
@@ -12,7 +13,7 @@ class block_treeanalytics extends block_base {
 	
 	public function get_content(){
 
-		global $CFG, $USER, $COURSE;       
+		global $CFG, $USER, $COURSE,$DB;       
 		require_once($CFG->dirroot.'/message/lib.php');
 
 		if ($this->content !== null) {
@@ -33,37 +34,37 @@ class block_treeanalytics extends block_base {
 					 $this->content->text.='Debe acceder a un curso para visualizar informacion de este bloque';
 				
 				}else{
-					$studentValues=generateStudentValues($this->config);
-/**/
-$key = 'quizzeslow'.$COURSE->id;
-$this->content->text .='>>>>>>>> '. $this->config->$key .'<br>';
+					$role = $DB->get_record('role', array('shortname' => 'student'));
+					$context = get_context_instance(CONTEXT_COURSE, $COURSE->id);
+					$students = get_role_users($role->id, $context);
+					if(!array_key_exists($USER->id, $students)){
+						$this->content->text.='Solo los estudiantes matriculados en este curso pueden visualzar su árbol de estado';
+					}else{
+						$studentValues=generateStudentValues($this->config);
+						$this->content->text.='
+<div id="actualStatus">
+<h2>Actual Status</h2>
+<ul>
+<li>QUIZZES: '.$studentValues["QUIZZES"].'</li>
+<li>RESOURCES: '.$studentValues["RESOURCES"].'</li>
+<li>RECOMMENDEDRESOURCES: '.$studentValues["RECOMMENDEDRESOURCES"].'</li>
+<li>TIMETOQUIZZES: '.$studentValues["TIMETOQUIZZES"].'</li>
+<li>TIMETORESOURCES: '.$studentValues["TIMETORESOURCES"].'</li>
+<li>TIMETOASSIGNMENTS: '.$studentValues["TIMETOASSIGNMENTS"].'</li>
+<li>TIMETORECOMMENDED: '.$studentValues["TIMETORECOMMENDED"].'</li>
+<li>TIMETOFIRSTACTION: '.$studentValues["TIMETOFIRSTACTION"].'</li>
 
+</ul>
+</div>';
 
-	
-$this->content->text.='User: '.$USER->id.' - '.$USER->username.'<br>';
-$this->content->text.='Course: '.$COURSE->id.' - '.$COURSE->fullname.'<br><br>';
-
-$this->content->text.='
-
-QUIZZES: '.$studentValues["QUIZZES"].'
-<br>RESOURCES: '.$studentValues["RESOURCES"].'
-<br>RECOMMENDEDRESOURCES: '.$studentValues["RECOMMENDEDRESOURCES"].'
-<br>TIMETOQUIZZES: '.$studentValues["TIMETOQUIZZES"].'
-<br>TIMETORESOURCES: '.$studentValues["TIMETORESOURCES"].'
-<br>TIMETOASSIGNMENTS: '.$studentValues["TIMETOASSIGNMENTS"].'
-<br>TIMETORECOMMENDED: '.$studentValues["TIMETORECOMMENDED"].'
-<br>TIMETOFIRSTACTION: '.$studentValues["TIMETOFIRSTACTION"];
-
-$this->content->text.='<br><br>';
-/**/
-					$this->content->text.='
+						$this->content->text.='
 <div class="container">
   
       <a href="#" id="tree" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#largeModal">Tree Analytics</a>
-  
+<!--  
 <br><br> 
       <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#basicModal">Summary Diagram</a>
-  
+-->  
 </div>
 
 <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
@@ -93,7 +94,9 @@ $this->content->text.='<br><br>';
 					$this->content->text.='</p>
 								</div>
 							<div class="tab-pane" id="tree3">
-								<p>Otra pestaña!!</p>
+								<p>';
+						$this->content->text.=createJS(3,$studentValues);
+$this->content->text.='Otra pestaña!!</p>
 								</div>
 							</div>
 						</div>	
@@ -105,7 +108,7 @@ $this->content->text.='<br><br>';
   </div>
 </div>
 
-<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+<!--<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -120,9 +123,9 @@ $this->content->text.='<br><br>';
       </div>
     </div>
   </div>
-</div>
+</div>-->
 	';  
-}}}
+}}}}
 	return $this->content;
 	}
 } 

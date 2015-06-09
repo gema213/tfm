@@ -13,6 +13,11 @@ function externalScripts() {
 }
 function style(){			return '
 		<style type="text/css">
+			.container{
+				margin-left: auto;
+    margin-right: auto;
+width: 70%;
+			}
 			/*TABS STYLE*/
 			.tabs{
 				padding: 3px 0;

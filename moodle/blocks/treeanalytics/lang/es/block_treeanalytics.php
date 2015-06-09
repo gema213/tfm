@@ -18,3 +18,5 @@ $string['timetoresources']='TIEMPO HASTA REALIZACIÓN DE RECURSOS';
 $string['timetorecommended']='TIEMPO HASTA REALIZACIÓN DE RECURSOS RECOMENDADOS';
 $string['timetoassignments']='TIEMPO HASTA REALIZACIÓN DE TAREAS';
 $string['timetofirstaction']='TIEMPO HASTA REALIZACIÓN DE FIRSTACTION';
+
+$string['tree']='Árbol';

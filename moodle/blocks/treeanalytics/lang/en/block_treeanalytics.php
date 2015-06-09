@@ -17,3 +17,5 @@
 	$string['timetorecommended']='TIME TO RECOMMENDED';
 	$string['timetoassignments']='TIME TO ASSIGNMENTS';
 	$string['timetofirstaction']='TIME TO FIRSTACTION';
+
+	$string['tree']='Tree';
