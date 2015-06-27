@@ -4,3 +4,8 @@
 #right a:visited{color:white;}
 a:visited{color:black;}
 #future{color:#444;}
+#actual{font-weight:bold;}
+#not{color:#ccc;}
+#right li #future a:visited{color:#444}
+#right li #future a{color:#444}
+
