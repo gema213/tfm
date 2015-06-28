@@ -1,5 +1,5 @@
 <?php
-require('filesConnection.php');
+require_once('filesConnection.php');
 function generateStudentValues($configData){
 	global $CFG,$USER,$COURSE,$DB;
 	require_once($CFG->dirroot.'/message/lib.php');
@@ -24,7 +24,6 @@ function generateStudentValues($configData){
 	$numResources= $DB->get_records_sql('SELECT * FROM {resource} WHERE course=\''.$courseID.'\'' );
 	$numRecommendedResources= $DB->get_records_sql('SELECT * FROM {url} WHERE course=\''.$courseID.'\'' );
 	$numAssignments= $DB->get_records_sql('SELECT * FROM {assign} WHERE course=\''.$courseID.'\'' );
-
 	$firstActionTime= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND(objecttable=\'url\' OR objecttable=\'resource\' OR objecttable=\'assignsubmission_file\' OR (objecttable=\'quiz_attempts\' AND action=\'started\')) ORDER BY timecreated ASC LIMIT 1');
 	
 	//Set values
@@ -80,7 +79,6 @@ function generateStudentValues($configData){
 	$studentValues["TIMETOASSIGNMENTS"]=assignValue($configData,$studentValues["TIMETOASSIGNMENTS"],'timetoassignmentslow'.$courseID,'timetoassignmentshigh'.$courseID,'threshold.timetoassignments.low','threshold.timetoassignments.high' );
 	$studentValues["TIMETORECOMMENDED"]=assignValue($configData,$studentValues["TIMETORECOMMENDED"],'timetorecommendedlow'.$courseID,'timetorecommendedhigh'.$courseID,'threshold.timetorecommended.low','threshold.timetorecommended.high' );
 	$studentValues["TIMETOFIRSTACTION"]=assignValue($configData,$studentValues["TIMETOFIRSTACTION"],'timetofirstactionlow'.$courseID,'timetofirstactionhigh'.$courseID,'threshold.timetofirstaction.low','threshold.timetofirstaction.high' );
-
 	return $studentValues;
 }
 /*
@@ -359,7 +357,7 @@ separation=actualWidth/6;
 				  .attr("y", function(d) { return (d.children || d._children)&& d.name!="User" ? 20 : 0; })
 				  .attr("dy", ".35em")
 				  .attr("text-anchor", function(d) { return d.name=="User" ? "end" : (d.children || d._children ? "middle " : "start");})
-				  .text(function(d) { return getNodeName'.$numberTree.'(d.name,true) });
+				  .text(function(d) { return getNodeName'.$numberTree.'(d.name,":") });
 			  // Transition nodes to their new position.
 			  var nodeUpdate = node.transition()
 				  .duration(duration'.$numberTree.')
@@ -442,7 +440,7 @@ separation=actualWidth/6;
 					var positionX=d3.event.pageX-iniDiv.left;
 					var positionY=d3.event.pageY-iniDiv.top
 					
-					div'.$numberTree.'
+					div'.$numberTree.'				
 						.text(d.name)
 						.style("left",(positionX)+"px")
 						.style("top", (positionY) + "px")
@@ -457,15 +455,15 @@ separation=actualWidth/6;
 				.style("opacity", 1e-6);
 			}
 			
-			function getNodeName'.$numberTree.'(original,space) {
+			function getNodeName'.$numberTree.'(original,separator) {
 				var name = "";	
-				var separator="";
-				if(space){separator=" ";}
+				var tempSeparator=" ";
+				
 				$.each(original.split("="), function( index, value ) {
-					name+=value+separator;
+					name+=value+tempSeparator;
 				});
 				name=$.trim(name);
-				return name.replace(" ", ": ");
+				return name.replace(" ", separator+" ");
 			}
 			  
 			 

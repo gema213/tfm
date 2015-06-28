@@ -15,9 +15,10 @@ function style(){			return '
 		<style type="text/css">
 			.container{
 				margin-left: auto;
-    margin-right: auto;
-width: 70%;
+				margin-right: auto;
+				width: 70%;
 			}
+
 			/*TABS STYLE*/
 			.tabs{
 				padding: 3px 0;
@@ -44,9 +45,7 @@ width: 70%;
 			
 			/*TREE STYLE*/
 
-			.node circle {		 
-			  stroke-width: 3px;
-			}
+			.node circle {stroke-width: 3px;}
 
 			.node	.inactive{fill:#ddd;stroke:#ccc;}
 			.node	.active{fill:#00C4C4;stroke:blue;}
@@ -69,14 +68,13 @@ width: 70%;
 			}
 			
 			div.tooltip {
-                position: absolute;
-                text-align: center;
-                padding: 20px;
-                font: 10px bold; 				
-			//	font-family: \'Chewy\', cursive;
-                border: solid 3px;
-                border-radius: 5px;				
-            }
+		                position: absolute;
+		                text-align: center;
+		                padding: 20px;
+		                font: 10px bold; 				
+		                border: solid 3px;
+		                border-radius: 5px;				
+			}
 
 		</style>
 	';
