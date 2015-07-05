@@ -94,7 +94,7 @@ function assignValue($configData,$original, $lowKey,$highKey,$lowLimit,$highLimi
 	$low=$configData->$lowKey;
 	$high=$configData->$highKey;
 	if($low==null || $low==''){$low=$lowLimit;}
-	if($high==null || $high==''){$low=$highLimit;}
+	if($high==null || $high==''){$high=$highLimit;}
 	if($original<=$iniFile[$low]){
 		return $lowText;
 	}else{
@@ -229,7 +229,6 @@ function createJSON($numberTree,$studentValues){
 		foreach($rule->condition as $cond){
 			$varia = $cond->variable;
 			$actual_value = $studentValues["$varia"];
-			//$actual_value=$studentValues[$varia];
 			$sum_conditions = $sum_conditions + ($actual_value == $cond->value);
 			// Add condition to array
 			array_push($cond_array, createNode($cond, 1, $last_element));
@@ -239,18 +238,17 @@ function createJSON($numberTree,$studentValues){
 		// Generate leaf node
 		array_push($cond_array, createNode($rule->performance, 0, $last_element));
 		// If sum_conditions = number of conditions then rule satisfied
+		$rule_tree="";
 		if ($sum_conditions == sizeof($rule->condition)){
 			// Generate rule and activate nodes
 			$rule_tree = generateRule($cond_array, 1);
-			$rootNode = appendRule($rootNode, $rule_tree);
 		} else {
 			// Generate rule with all nodes inactives
 			$rule_tree = generateRule($cond_array, 0);
-			$rootNode = appendRule($rootNode, $rule_tree);
 		}
+		$rootNode = appendRule($rootNode, $rule_tree);
 	}
 	// Generate JSON
-//$json = json_encode($rootNode, JSON_PRETTY_PRINT);	
 	return json_encode($rootNode, JSON_PRETTY_PRINT);
 }
 function createJS($numberTree,$studentValues){
@@ -286,13 +284,14 @@ $js.='
 			root'.$numberTree.'.x0=0;
 			root'.$numberTree.'.y0=height'.$numberTree.'/2;
 			collapse'.$numberTree.'(root'.$numberTree.');
-$firstTime'.$numberTree.'=true;
-$("#tree").click(function(){
-if($firstTime'.$numberTree.'==true){
-			update'.$numberTree.'(root'.$numberTree.',true);
-$firstTime'.$numberTree.'=false;
-}
-});
+			
+			var firstTime'.$numberTree.'=true;
+			$("#tree").click(function(){
+				if(firstTime'.$numberTree.'==true){
+					update'.$numberTree.'(root'.$numberTree.',true);
+					firstTime'.$numberTree.'=false;
+				}
+			});
 			function collapse'.$numberTree.'(d) {
 				if(d.active==0){
 					if (d.children) {
@@ -312,11 +311,11 @@ $firstTime'.$numberTree.'=false;
 			  var nodes = tree'.$numberTree.'.nodes(root'.$numberTree.').reverse(),
 				  links = tree'.$numberTree.'.links(nodes);
 			  // Normalize for fixed-depth.
-var separation=130;
-var actualWidth=$("#tree'.$numberTree.'").width();
-if(actualWidth>0){
-separation=actualWidth/6;
-}
+			var separation=130;
+			var actualWidth=$("#tree'.$numberTree.'").width();
+			if(actualWidth>0){
+				separation=actualWidth/6;
+			}
 			  nodes.forEach(function(d) { d.y = d.depth * separation; });
 			  // Update the nodes
 			  var node = svg'.$numberTree.'.selectAll("g.node")

@@ -19,27 +19,24 @@ class block_treeanalytics extends block_base {
 		$this->content->text.=style();
 		if($USER->id==0){
 			$this->content->text.=get_string('loginRequired', 'block_treeanalytics');
-			//'Debe iniciar sesión para visualizar información en este bloque';
 		}else{
 			if($USER->id==1){
 				$this->content->text.=get_string('signupRequired', 'block_treeanalytics');
-				//'Debe iniciar sesión con un usuario registrado para visualizar información en este bloque';
 			}else{
 				if($COURSE->id==1){
 					 $this->content->text.=get_string('courseRequired', 'block_treeanalytics');
-					 //'Debe acceder a un curso para visualizar informacion de este bloque';				
 				}else{
 					$role = $DB->get_record('role', array('shortname' => 'student'));
 					$context = get_context_instance(CONTEXT_COURSE, $COURSE->id);
 					$students = get_role_users($role->id, $context);
 					if(!array_key_exists($USER->id, $students)){
 						$this->content->text.=get_string('onlyStudents', 'block_treeanalytics');
-						//'Solo los estudiantes matriculados en este curso pueden visualzar su árbol de estado';
 					}else{
 						$studentValues=generateStudentValues($this->config);
+
 						$this->content->text.='
 						<div id="actualStatus">
-						<h2>Actual Status</h2>
+						<h2>'.get_string('actualStatus','block_treeanalytics').'</h2>
 						<ul>
 						<li>'.get_string('quizzes', 'block_treeanalytics').': '.get_string(strtolower($studentValues["QUIZZES"]), 'block_treeanalytics').'</li>
 						<li>'.get_string('resources', 'block_treeanalytics').': '.get_string(strtolower($studentValues["RESOURCES"]), 'block_treeanalytics').'</li>
@@ -71,26 +68,20 @@ class block_treeanalytics extends block_base {
 												<ul class="tabs" data-tabs="tabs">
 													<li class="active"><a href="#tree1">'.get_string('tree', 'block_treeanalytics').' 1</a></li>
 													<li><a href="#tree2">'.get_string('tree', 'block_treeanalytics').' 2</a></li>
-													<li><a href="#tree3">'.get_string('tree', 'block_treeanalytics').' 3</a></li>							
 													</ul>
 												<div id="my-tab-content" class="tab-content">
 													<div class="active tab-pane" id="tree1">
 														<p>';
 											$this->content->text.=createJS(1,$studentValues);
 											$this->content->text.='</p>
-														</div>
+													</div>
 													<div class="tab-pane" id="tree2">
-														<p>';
+													<p>';
 											$this->content->text.=createJS(2,$studentValues);
 											$this->content->text.='</p>
-														</div>
-													<div class="tab-pane" id="tree3">
-														<p>';
-												$this->content->text.=createJS(3,$studentValues);
-$this->content->text.='Otra pestaña!!</p>';
-											$this->content->text.='</div>
 													</div>
-												</div>	
+												</div>
+								</div>	
 							  </div>
 							  <div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">'.get_string('close', 'block_treeanalytics').'</button>

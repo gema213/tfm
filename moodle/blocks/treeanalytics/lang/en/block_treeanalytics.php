@@ -29,6 +29,8 @@
 	
 	$string['tree']='Tree';
 	$string['close']='Close';
+
+	$string['actualStatus']='Actual Status';
 	
 	$string['loginRequired']='Login is required to view information in this block';
 	$string['signupRequired']='Only available for signed up users';

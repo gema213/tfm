@@ -1,5 +1,5 @@
 <?php
-	$capabilities = array{
+	$capabilities = array(
 		'block/treeanalytics:myaddinstance' => array(
 			'captype' => 'write',
 			'contextlevel' => CONTEXT_SYSTEM,

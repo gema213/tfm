@@ -530,7 +530,7 @@ class core_media_player_youtube extends core_media_player_external {
 
         $info = trim($name);
         if (empty($info) or strpos($info, 'http') === 0) {
-            $info = get_string('siteyoutube', 'core_media');
+        //    $info = get_string('siteyoutube', 'core_media');
         }
         $info = s($info);
 

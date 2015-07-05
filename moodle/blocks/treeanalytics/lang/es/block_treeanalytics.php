@@ -29,6 +29,8 @@
 	
 	$string['tree']='Árbol';
 	$string['close']='Cerrar';
+
+	$string['actualStatus']='Situación Actual';
 	
 	$string['loginRequired']='Debe iniciar sesión para visualizar información en este bloque';
 	$string['signupRequired']='Debe iniciar sesión con un usuario registrado para visualizar información en este bloque';
