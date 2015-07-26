@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Ejemplo Arbol TFM</title>
+
+    <style>
+
+	.node circle {		 
+	  stroke-width: 3px;
+	}
+
+	.node	.inactive{fill:#ddd;stroke:#ccc;}
+	.node	.active{fill:aqua;stroke:blue;}
+	.node .good{fill:#00FF00;stroke:#04B404;}/*green*/
+	.node .pass{fill:#FE9A2E;stroke:#FF4000;}/*orange*/
+	.node .fail{fill:#FF0000;stroke:#610B0B;}/*red*/
+
+	.node text {color:green;  font: 12px sans-serif; }
+	.node .off {fill:gray;}
+	.node text.on{fill:black;}
+
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+	
+    </style>
+
+  </head>
+
+  <body>
+
+<header>
+<h1><a href="http://156.35.95.149">TFM de Gema S.Careaga</a></h1>
+</header>
+
+<!-- load the d3.js library -->	
+<script src="http://d3js.org/d3.v3.min.js"></script>
+	
+<script>
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+	width = 960 - margin.right - margin.left,
+	height = 500 - margin.top - margin.bottom;
+	
+var i = 0;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// load the external data
+var url ="http://156.35.95.149/pruebas/treeDataTFM22.json";
+d3.json(url, function (treeData) {
+  root = treeData[0];
+  update(root);
+});
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+  // Declare the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter the nodes.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")/*.attr("class",function(d){if(d.active==1){return "active";}else{return "inactive";}})*/
+	  .attr("transform", function(d) { 
+		  return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeEnter.append("circle")
+	  .attr("r", function(d){return d.value;})
+	  .attr("class", function(d){
+			if(d.active==1){
+				if(d.name=="GOOD"){return "good";}else{if(d.name=="PASS"){return "pass";}else{
+				if(d.name=="FAIL"){return "fail";}else{
+				if(d.name=="UNKNOWN"){return "unknown";}else{
+				return "active";}}}}
+			}else{
+				return "inactive";
+			};
+		});/*
+	  .style("fill", "green");*/
+
+  nodeEnter.append("text")
+	  .attr("class",function(d){if(d.active==1){return "on"}else{return "off";}})
+	  .attr("x", function(d) { 
+		  return d.children || d._children ? -13 : 13; })
+	  .attr("dy", ".35em")
+	  .attr("text-anchor", function(d) { 
+		  return d.children || d._children ? "end" : "start"; })
+	  .text(function(d) { return d.name; })
+/*	  .style("fill-opacity", 1)*/;
+
+  // Declare the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter the links.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", diagonal);
+
+}
+
+</script>
+	
+  </body>
+</html>
+
+
+
