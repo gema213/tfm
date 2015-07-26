@@ -1,0 +1,84 @@
+SimpleXMLElement Object
+(
+    [@attributes] => Array
+        (
+            [id] => 1
+            [tree] => 1
+        )
+
+    [condition] => Array
+        (
+            [0] => SimpleXMLElement Object
+                (
+                    [variable] => RESOURCES
+                    [value] => LOW
+                )
+
+            [1] => SimpleXMLElement Object
+                (
+                    [variable] => QUIZZES
+                    [value] => LOW
+                )
+
+        )
+
+    [performance] => FAIL
+)
+SimpleXMLElement Object
+(
+    [@attributes] => Array
+        (
+            [id] => 3
+            [tree] => 1
+        )
+
+    [condition] => Array
+        (
+            [0] => SimpleXMLElement Object
+                (
+                    [variable] => RESOURCES
+                    [value] => LOW
+                )
+
+            [1] => SimpleXMLElement Object
+                (
+                    [variable] => QUIZZES
+                    [value] => LOW
+                )
+
+            [2] => SimpleXMLElement Object
+                (
+                    [variable] => TIMETORESOURCES
+                    [value] => LOW
+                )
+
+        )
+
+    [performance] => PASS
+)
+SimpleXMLElement Object
+(
+    [@attributes] => Array
+        (
+            [id] => 22
+            [tree] => 1
+        )
+
+    [condition] => Array
+        (
+            [0] => SimpleXMLElement Object
+                (
+                    [variable] => RESOURCES
+                    [value] => LOW
+                )
+
+            [1] => SimpleXMLElement Object
+                (
+                    [variable] => TIMETOEXTERNALS
+                    [value] => LOW
+                )
+
+        )
+
+    [performance] => PASS
+)

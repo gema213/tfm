@@ -1,0 +1,1684 @@
+FINAL TREE -------------------------------------------------------------
+stdClass Object
+(
+    [name] => User
+    [value] => 10
+    [active] => 1
+    [children] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [parent] => User
+                    [value] => 10
+                    [active] => 1
+                    [isLeaf] => 0
+                    [name] => RESOURCES=LOW
+                    [children] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 1
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 1
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOQUIZZES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOQUIZZES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 1
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=LOW
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=LOW
+                                                                    [value] => 10
+                                                                    [active] => 1
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [3] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOASSIGNMENTS=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [4] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOEXTERNALS=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOEXTERNALS=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOQUIZZES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOQUIZZES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [2] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOASSIGNMENTS=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOASSIGNMENTS=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [3] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOASSIGNMENTS=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [4] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOASSIGNMENTS=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOQUIZZES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOQUIZZES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [5] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOASSIGNMENTS=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOFIRSTACTION=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOFIRSTACTION=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [6] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOQUIZZES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOEXTERNALS=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOEXTERNALS=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOFIRSTACTION=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOFIRSTACTION=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => EXTERNALRESOURCES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => EXTERNALRESOURCES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [7] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOQUIZZES=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                        )
+
+                                )
+
+                            [8] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOFIRSTACTION=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOFIRSTACTION=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => EXTERNALRESOURCES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => EXTERNALRESOURCES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [9] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOFIRSTACTION=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOFIRSTACTION=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                        )
+
+                                )
+
+                            [10] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETORESOURCES=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETORESOURCES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                        )
+
+                                )
+
+                            [11] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => EXTERNALRESOURCES=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => EXTERNALRESOURCES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => PASS
+                                                )
+
+                                        )
+
+                                )
+
+                            [12] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 1
+                                    [isLeaf] => 0
+                                    [name] => TIMETOEXTERNALS=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=LOW
+                                                    [value] => 10
+                                                    [active] => 1
+                                                    [isLeaf] => 1
+                                                    [name] => PASS
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [parent] => User
+                    [value] => 10
+                    [active] => 
+                    [isLeaf] => 0
+                    [name] => RESOURCES=MEDIUM
+                    [children] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOEXTERNALS=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOEXTERNALS=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => PASS
+                                                )
+
+                                        )
+
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 0
+                                                                    [name] => EXTERNALRESOURCES=MEDIUM
+                                                                    [children] => Array
+                                                                        (
+                                                                            [0] => stdClass Object
+                                                                                (
+                                                                                    [parent] => EXTERNALRESOURCES=MEDIUM
+                                                                                    [value] => 10
+                                                                                    [active] => 0
+                                                                                    [isLeaf] => 1
+                                                                                    [name] => FAIL
+                                                                                )
+
+                                                                        )
+
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => PASS
+                                                )
+
+                                        )
+
+                                )
+
+                            [2] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOFIRSTACTION=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOFIRSTACTION=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => EXTERNALRESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => EXTERNALRESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [3] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOQUIZZES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => EXTERNALRESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => EXTERNALRESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOEXTERNALS=LOW
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOEXTERNALS=LOW
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [4] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOQUIZZES=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=LOW
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=LOW
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOFIRSTACTION=LOW
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOFIRSTACTION=LOW
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [5] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOASSIGNMENTS=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [6] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOASSIGNMENTS=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => EXTERNALRESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => EXTERNALRESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => PASS
+                                                )
+
+                                        )
+
+                                )
+
+                            [7] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOFIRSTACTION=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOFIRSTACTION=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [8] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOFIRSTACTION=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOFIRSTACTION=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOEXTERNALS=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOEXTERNALS=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOFIRSTACTION=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => EXTERNALRESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => EXTERNALRESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [9] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOEXTERNALS=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [10] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=MEDIUM
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => EXTERNALRESOURCES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => EXTERNALRESOURCES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [2] => stdClass Object
+                (
+                    [parent] => User
+                    [value] => 10
+                    [active] => 
+                    [isLeaf] => 0
+                    [name] => RESOURCES=HIGH
+                    [children] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOEXTERNALS=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => EXTERNALRESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => EXTERNALRESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOQUIZZES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOQUIZZES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOFIRSTACTION=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOFIRSTACTION=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [3] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOEXTERNALS=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                        )
+
+                                )
+
+                            [2] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOEXTERNALS=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOASSIGNMENTS=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [3] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOASSIGNMENTS=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [4] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOASSIGNMENTS=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => QUIZZES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => QUIZZES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => GOOD
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [5] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => TIMETOASSIGNMENTS=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => EXTERNALRESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => EXTERNALRESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOASSIGNMENTS=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [6] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETOQUIZZES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETOQUIZZES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                        )
+
+                                )
+
+                            [7] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [8] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=MEDIUM
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=MEDIUM
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [9] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOQUIZZES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [10] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOQUIZZES=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [11] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOQUIZZES=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOQUIZZES=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=HIGH
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=HIGH
+                                                                    [value] => 10
+                                                                    [active] => 0
+                                                                    [isLeaf] => 1
+                                                                    [name] => FAIL
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [12] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOFIRSTACTION=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOFIRSTACTION=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [13] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOFIRSTACTION=MEDIUM
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOFIRSTACTION=MEDIUM
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                            [14] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETOFIRSTACTION=HIGH
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOFIRSTACTION=HIGH
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                        )
+
+                                )
+
+                            [15] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=HIGH
+                                    [value] => 10
+                                    [active] => 0
+                                    [isLeaf] => 0
+                                    [name] => TIMETORESOURCES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETORESOURCES=LOW
+                                                    [value] => 10
+                                                    [active] => 0
+                                                    [isLeaf] => 1
+                                                    [name] => GOOD
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)

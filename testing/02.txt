@@ -1,0 +1,330 @@
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => LOW
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => MEDIUM
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)
+SimpleXMLElement Object
+(
+    [variable] => RESOURCES
+    [value] => HIGH
+)

@@ -1,0 +1,1216 @@
+{
+    "name": "User",
+    "value": 10,
+    "active": 1,
+    "children": [
+        {
+            "parent": "User",
+            "value": 10,
+            "active": 1,
+            "isLeaf": 0,
+            "name": "RESOURCES=LOW",
+            "children": [
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 1,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=LOW",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 1,
+                            "isLeaf": 1,
+                            "name": "FAIL"
+                        },
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOQUIZZES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETOQUIZZES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 1,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=LOW",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=LOW",
+                                    "value": 10,
+                                    "active": 1,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOASSIGNMENTS=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETOASSIGNMENTS=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOEXTERNALS=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETOEXTERNALS=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOQUIZZES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOQUIZZES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=HIGH",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        },
+                        {
+                            "parent": "QUIZZES=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOASSIGNMENTS=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOASSIGNMENTS=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOASSIGNMENTS=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOASSIGNMENTS=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOASSIGNMENTS=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "TIMETOASSIGNMENTS=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOQUIZZES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOQUIZZES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOASSIGNMENTS=HIGH",
+                    "children": [
+                        {
+                            "parent": "TIMETOASSIGNMENTS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "FAIL"
+                        },
+                        {
+                            "parent": "TIMETOASSIGNMENTS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOASSIGNMENTS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOFIRSTACTION=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETOFIRSTACTION=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOQUIZZES=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOQUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOEXTERNALS=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOEXTERNALS=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOQUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOFIRSTACTION=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETOFIRSTACTION=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOQUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "EXTERNALRESOURCES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "EXTERNALRESOURCES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOQUIZZES=HIGH",
+                    "children": [
+                        {
+                            "parent": "TIMETOQUIZZES=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "FAIL"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOFIRSTACTION=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOFIRSTACTION=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "EXTERNALRESOURCES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "EXTERNALRESOURCES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOFIRSTACTION=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "TIMETOFIRSTACTION=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "FAIL"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETORESOURCES=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "TIMETORESOURCES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "FAIL"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "EXTERNALRESOURCES=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "EXTERNALRESOURCES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "PASS"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=LOW",
+                    "value": 10,
+                    "active": 1,
+                    "isLeaf": 0,
+                    "name": "TIMETOEXTERNALS=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOEXTERNALS=LOW",
+                            "value": 10,
+                            "active": 1,
+                            "isLeaf": 1,
+                            "name": "PASS"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "parent": "User",
+            "value": 10,
+            "active": 0,
+            "isLeaf": 0,
+            "name": "RESOURCES=MEDIUM",
+            "children": [
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=LOW",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOEXTERNALS=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOEXTERNALS=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "PASS"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 0,
+                                    "name": "EXTERNALRESOURCES=MEDIUM",
+                                    "children": [
+                                        {
+                                            "parent": "EXTERNALRESOURCES=MEDIUM",
+                                            "value": 10,
+                                            "active": 0,
+                                            "isLeaf": 1,
+                                            "name": "FAIL"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "QUIZZES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "PASS"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=HIGH",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOFIRSTACTION=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOFIRSTACTION=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "QUIZZES=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "EXTERNALRESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "EXTERNALRESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOQUIZZES=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOQUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "EXTERNALRESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "EXTERNALRESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOQUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOEXTERNALS=LOW",
+                            "children": [
+                                {
+                                    "parent": "TIMETOEXTERNALS=LOW",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOQUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOQUIZZES=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "TIMETOQUIZZES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=LOW",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=LOW",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOQUIZZES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOFIRSTACTION=LOW",
+                            "children": [
+                                {
+                                    "parent": "TIMETOFIRSTACTION=LOW",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOASSIGNMENTS=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOASSIGNMENTS=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOASSIGNMENTS=HIGH",
+                    "children": [
+                        {
+                            "parent": "TIMETOASSIGNMENTS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "EXTERNALRESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "EXTERNALRESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOASSIGNMENTS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "PASS"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOFIRSTACTION=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOFIRSTACTION=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOFIRSTACTION=HIGH",
+                    "children": [
+                        {
+                            "parent": "TIMETOFIRSTACTION=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOEXTERNALS=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOEXTERNALS=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOFIRSTACTION=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "EXTERNALRESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "EXTERNALRESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOEXTERNALS=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOEXTERNALS=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=MEDIUM",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "EXTERNALRESOURCES=LOW",
+                    "children": [
+                        {
+                            "parent": "EXTERNALRESOURCES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "parent": "User",
+            "value": 10,
+            "active": 0,
+            "isLeaf": 0,
+            "name": "RESOURCES=HIGH",
+            "children": [
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOEXTERNALS=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOEXTERNALS=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "EXTERNALRESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "EXTERNALRESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOEXTERNALS=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOQUIZZES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOQUIZZES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOEXTERNALS=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOFIRSTACTION=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETOFIRSTACTION=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOEXTERNALS=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOEXTERNALS=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "TIMETOEXTERNALS=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOEXTERNALS=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "FAIL"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOEXTERNALS=HIGH",
+                    "children": [
+                        {
+                            "parent": "TIMETOEXTERNALS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOASSIGNMENTS=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETOASSIGNMENTS=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOEXTERNALS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOASSIGNMENTS=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOASSIGNMENTS=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOASSIGNMENTS=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "TIMETOASSIGNMENTS=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOASSIGNMENTS=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "QUIZZES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "QUIZZES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "GOOD"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOASSIGNMENTS=HIGH",
+                    "children": [
+                        {
+                            "parent": "TIMETOASSIGNMENTS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "EXTERNALRESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "EXTERNALRESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOASSIGNMENTS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "TIMETOASSIGNMENTS=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=LOW",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETOQUIZZES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETOQUIZZES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        },
+                        {
+                            "parent": "QUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "FAIL"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "QUIZZES=HIGH",
+                    "children": [
+                        {
+                            "parent": "QUIZZES=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=MEDIUM",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=MEDIUM",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "PASS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOQUIZZES=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOQUIZZES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOQUIZZES=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "TIMETOQUIZZES=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOQUIZZES=HIGH",
+                    "children": [
+                        {
+                            "parent": "TIMETOQUIZZES=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 0,
+                            "name": "TIMETORESOURCES=HIGH",
+                            "children": [
+                                {
+                                    "parent": "TIMETORESOURCES=HIGH",
+                                    "value": 10,
+                                    "active": 0,
+                                    "isLeaf": 1,
+                                    "name": "FAIL"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOFIRSTACTION=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETOFIRSTACTION=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOFIRSTACTION=MEDIUM",
+                    "children": [
+                        {
+                            "parent": "TIMETOFIRSTACTION=MEDIUM",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETOFIRSTACTION=HIGH",
+                    "children": [
+                        {
+                            "parent": "TIMETOFIRSTACTION=HIGH",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "FAIL"
+                        }
+                    ]
+                },
+                {
+                    "parent": "RESOURCES=HIGH",
+                    "value": 10,
+                    "active": 0,
+                    "isLeaf": 0,
+                    "name": "TIMETORESOURCES=LOW",
+                    "children": [
+                        {
+                            "parent": "TIMETORESOURCES=LOW",
+                            "value": 10,
+                            "active": 0,
+                            "isLeaf": 1,
+                            "name": "GOOD"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

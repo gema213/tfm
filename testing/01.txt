@@ -1,0 +1,2025 @@
+Array
+(
+    [0] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 1
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [1] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 2
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [2] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 3
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [3] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 4
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [4] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 5
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [5] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 6
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => MEDIUM
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [6] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 7
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [7] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 8
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [8] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 9
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [9] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 10
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => MEDIUM
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [10] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 11
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [11] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 12
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [12] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 13
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [13] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 14
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [14] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 15
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [15] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 16
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [16] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 17
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [17] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 18
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [18] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 19
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [19] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 20
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [20] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 21
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [21] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 22
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => LOW
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [22] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 23
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [23] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 24
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [24] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 25
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => MEDIUM
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [3] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [25] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 26
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [26] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 27
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [27] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 28
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [28] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 29
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [29] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 30
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [30] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 31
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [31] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 32
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => MEDIUM
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [32] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 33
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => MEDIUM
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [33] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 34
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [34] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 35
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [35] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 36
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [36] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 37
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [37] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 38
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [38] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 39
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [39] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 40
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [40] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 41
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => MEDIUM
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [41] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 42
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [42] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 43
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [43] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 44
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [44] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 45
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [45] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 46
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => MEDIUM
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [46] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 47
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [47] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 48
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [48] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 49
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOEXTERNALS
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [49] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 50
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [50] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 51
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => MEDIUM
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [51] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 52
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => MEDIUM
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [52] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 53
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => EXTERNALRESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [53] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 54
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [54] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 55
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOASSIGNMENTS
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [55] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 56
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [56] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 57
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [57] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 58
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [58] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 59
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => QUIZZES
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => PASS
+        )
+
+    [59] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 60
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [60] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 61
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [61] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 62
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOQUIZZES
+                            [value] => HIGH
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [62] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 63
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [63] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 64
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => MEDIUM
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+    [64] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 65
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETOFIRSTACTION
+                            [value] => HIGH
+                        )
+
+                )
+
+            [performance] => FAIL
+        )
+
+    [65] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [id] => 66
+                    [tree] => 1
+                )
+
+            [condition] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [variable] => RESOURCES
+                            [value] => HIGH
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [variable] => TIMETORESOURCES
+                            [value] => LOW
+                        )
+
+                )
+
+            [performance] => GOOD
+        )
+
+)

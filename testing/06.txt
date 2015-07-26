@@ -1,0 +1,126 @@
+Array
+(
+    [0] => stdClass Object
+        (
+            [parent] => User
+            [value] => 10
+            [active] => 0
+            [name] => RESOURCES=LOW
+            [children] => Array
+                (
+                )
+
+        )
+
+    [1] => stdClass Object
+        (
+            [parent] => RESOURCES=LOW
+            [value] => 10
+            [active] => 0
+            [name] => QUIZZES=LOW
+            [children] => Array
+                (
+                )
+
+        )
+
+    [2] => stdClass Object
+        (
+            [parent] => QUIZZES=LOW
+            [value] => 10
+            [active] => 0
+            [name] => SimpleXMLElement Object
+                (
+                )
+
+        )
+
+)
+Array
+(
+    [0] => stdClass Object
+        (
+            [parent] => User
+            [value] => 10
+            [active] => 0
+            [name] => RESOURCES=LOW
+            [children] => Array
+                (
+                )
+
+        )
+
+    [1] => stdClass Object
+        (
+            [parent] => RESOURCES=LOW
+            [value] => 10
+            [active] => 0
+            [name] => QUIZZES=LOW
+            [children] => Array
+                (
+                )
+
+        )
+
+    [2] => stdClass Object
+        (
+            [parent] => QUIZZES=LOW
+            [value] => 10
+            [active] => 0
+            [name] => TIMETORESOURCES=LOW
+            [children] => Array
+                (
+                )
+
+        )
+
+    [3] => stdClass Object
+        (
+            [parent] => TIMETORESOURCES=LOW
+            [value] => 10
+            [active] => 0
+            [name] => SimpleXMLElement Object
+                (
+                )
+
+        )
+
+)
+Array
+(
+    [0] => stdClass Object
+        (
+            [parent] => User
+            [value] => 10
+            [active] => 0
+            [name] => RESOURCES=LOW
+            [children] => Array
+                (
+                )
+
+        )
+
+    [1] => stdClass Object
+        (
+            [parent] => RESOURCES=LOW
+            [value] => 10
+            [active] => 0
+            [name] => TIMETOEXTERNALS=LOW
+            [children] => Array
+                (
+                )
+
+        )
+
+    [2] => stdClass Object
+        (
+            [parent] => TIMETOEXTERNALS=LOW
+            [value] => 10
+            [active] => 0
+            [name] => SimpleXMLElement Object
+                (
+                )
+
+        )
+
+)

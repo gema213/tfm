@@ -1,0 +1,90 @@
+FINAL TREE -------------------------------------------------------------
+stdClass Object
+(
+    [name] => User
+    [value] => 10
+    [active] => 1
+    [children] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [parent] => User
+                    [value] => 10
+                    [active] => 1
+                    [isLeaf] => 0
+                    [name] => RESOURCES=LOW
+                    [children] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 1
+                                    [isLeaf] => 0
+                                    [name] => QUIZZES=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 1
+                                                    [isLeaf] => 1
+                                                    [name] => FAIL
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [parent] => QUIZZES=LOW
+                                                    [value] => 10
+                                                    [active] => 1
+                                                    [isLeaf] => 0
+                                                    [name] => TIMETORESOURCES=LOW
+                                                    [children] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [parent] => TIMETORESOURCES=LOW
+                                                                    [value] => 10
+                                                                    [active] => 1
+                                                                    [isLeaf] => 1
+                                                                    [name] => PASS
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [parent] => RESOURCES=LOW
+                                    [value] => 10
+                                    [active] => 1
+                                    [isLeaf] => 0
+                                    [name] => TIMETOEXTERNALS=LOW
+                                    [children] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [parent] => TIMETOEXTERNALS=LOW
+                                                    [value] => 10
+                                                    [active] => 1
+                                                    [isLeaf] => 1
+                                                    [name] => PASS
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
