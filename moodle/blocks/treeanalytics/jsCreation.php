@@ -29,19 +29,19 @@ function generateStudentValues($configData){
 	//Set values
 	//QUIZZES
 	if(count($numQuizzes)>0){
-		$dataQuizStart= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'started\' ORDER BY timecreated ASC LIMIT 1');
+		$dataQuizStart= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'started\' ORDER BY timecreated ASC');
 		if(count($dataQuizStart)>0){
 			//Quizzes
 			$quizID=current($dataQuizStart)->objectid;
 			$dataQuizReview= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'quiz_attempts\' AND action=\'reviewed\' AND objectid=\''.$quizID.'\' ORDER BY timecreated ASC LIMIT 1');
-			$studentValues["QUIZZES"]=current($dataQuizStart)->timecreated - current($dataQuizReview)->timecreated;
+			$studentValues["QUIZZES"]=current($dataQuizReview)->timecreated - current($dataQuizStart)->timecreated;
 			//Time to Quizzes
 			$studentValues["TIMETOQUIZZES"]= current($dataQuizStart)->timecreated -  current($startCourse)->startdate;
 		}			
 	}
 	//RESOURCES
 	if(count($numResources)>0){
-		$dataResources= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'resource\' ORDER BY timecreated ASC LIMIT 1');
+		$dataResources= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'resource\' ORDER BY timecreated ASC');
 		if(count($dataResources)>0){
 			//Resources
 			$studentValues["RESOURCES"]=count($dataResources);
@@ -51,7 +51,7 @@ function generateStudentValues($configData){
 	}
 	//RECOMMENDED RESOURCES
 	if(count($numRecommendedResources)>0){
-		$dataRecommendedResources= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'url\' ORDER BY timecreated ASC LIMIT 1');
+		$dataRecommendedResources= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'url\' ORDER BY timecreated ASC');
 		if(count($dataRecommendedResources)>0){
 			//Recommended Resources
 			$studentValues["RECOMMENDEDRESOURCES"]=count($dataRecommendedResources);
@@ -61,7 +61,7 @@ function generateStudentValues($configData){
 	}
 	//TIME TO ASSIGNMENTS
 	if(count($numAssignments)>0){
-		$dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'assignsubmission_file\' ORDER BY timecreated ASC LIMIT 1');
+		$dataTimeToAssignments= $DB->get_records_sql('SELECT * FROM {logstore_standard_log} WHERE userid=\''.$userID.'\' AND courseid=\''.$courseID.'\' AND objecttable=\'assignsubmission_file\' ORDER BY timecreated ASC');
 		if(count($dataTimeToAssignments)>0){
 			$studentValues["TIMETOASSIGNMENTS"]=current($dataTimeToAssignments)->timecreated -  current($startCourse)->startdate;
 		}
@@ -70,7 +70,6 @@ function generateStudentValues($configData){
 	if(count($firstActionTime)>0){
 		$studentValues["TIMETOFIRSTACTION"]=current($firstActionTime)->timecreated - current($startCourse)->startdate;
 	}
-	
 	$studentValues["QUIZZES"]=assignValue($configData,$studentValues["QUIZZES"],'quizzeslow'.$courseID,'quizzeshigh'.$courseID,'threshold.quizzes.low','threshold.quizzes.high' );
 	$studentValues["RESOURCES"]=assignValue($configData,$studentValues["RESOURCES"],'resourceslow'.$courseID,'resourceshigh'.$courseID,'threshold.resources.low','threshold.resources.high' );
 	$studentValues["RECOMMENDEDRESOURCES"]=assignValue($configData,$studentValues["RECOMMENDEDRESOURCES"],'recommendedresourceslow'.$courseID,'recommendedresourceshigh'.$courseID,'threshold.recommendedresources.low','threshold.recommendedresources.high' );
@@ -93,12 +92,13 @@ function assignValue($configData,$original, $lowKey,$highKey,$lowLimit,$highLimi
 	
 	$low=$configData->$lowKey;
 	$high=$configData->$highKey;
-	if($low==null || $low==''){$low=$lowLimit;}
-	if($high==null || $high==''){$high=$highLimit;}
-	if($original<=$iniFile[$low]){
+	if($low==null || $low==''){$low=$iniFile[$lowLimit];}
+	if($high==null || $high==''){$high=$iniFile[$highLimit];}
+	
+	if($original<=$low){
 		return $lowText;
 	}else{
-		if($original>=$iniFile[$high]){
+		if($original>=$high){
 			return $highText;
 		}else{
 			return $mediumText;
@@ -470,3 +470,4 @@ $js.='
 ';
 return $js;
 }
+

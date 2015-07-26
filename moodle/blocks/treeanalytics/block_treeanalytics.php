@@ -32,6 +32,7 @@ class block_treeanalytics extends block_base {
 					if(!array_key_exists($USER->id, $students)){
 						$this->content->text.=get_string('onlyStudents', 'block_treeanalytics');
 					}else{
+					
 						$studentValues=generateStudentValues($this->config);
 
 						$this->content->text.='

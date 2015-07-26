@@ -11,10 +11,10 @@
 	$string['high']='Alto';
 	$string['na']='No disponible';
 	
-	$string['quizzes']='Questionarios';
+	$string['quizzes']='Cuestionarios';
 	$string['resources']='Recursos';
 	$string['recommendedresources']='Recursos Recomendados';
-	$string['timetoquizzes']='Tiempo hasta realización de Questionarios';
+	$string['timetoquizzes']='Tiempo hasta realización de Cuestionarios';
 	$string['timetoresources']='Tiempo hasta realización de Recursos';
 	$string['timetorecommended']='Tiempo hasta realización de Recursos Recomendados';
 	$string['timetoassignments']='Tiempo hasta realización de Tareas';
